@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Quote Cart — Setia Trafik Sdn Bhd</title>
+  <meta name="description" content="Review the products in your quote cart and send your full list to Setia Trafik on WhatsApp for fast pricing and availability."/>
+  <link rel="canonical" href="https://setiatrafik.com/?page_id=309">
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" href="favicon.png" type="image/png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --blue:#1a3a6e; --blue-dark:#0f2548; --navy:#0a1628;
+      --blue-light:#e8eef8; --gray-50:#f7f8fa; --gray-200:#eef0f3;
+      --gray-400:#9aa3af; --gray-600:#5b6573; --gray-800:#2d3748;
+      --green:#25D366; --green-dark:#1ea352; --red:#ef4444;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.5}
+    a{color:inherit}
+
+    /* Navbar */
+    nav#navbar{position:sticky;top:0;z-index:100;background:rgba(10,22,40,.97);backdrop-filter:blur(8px)}
+    .nav-inner{max-width:1180px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:18px}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-img{height:38px;width:auto}
+    .logo-text{color:#fff;font-weight:800;font-size:19px;letter-spacing:-.3px}
+    .logo-text span{color:#5a8fd6}
+    .nav-links{margin-left:auto;display:flex;align-items:center;gap:20px}
+    .nav-links a{color:#cdd8ea;text-decoration:none;font-size:14px;font-weight:500;transition:.2s}
+    .nav-links a:hover{color:#fff}
+    .nav-cta{background:var(--green);color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:700 !important}
+    .nav-cta:hover{background:var(--green-dark)}
+    @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}.nav-inner{padding:12px 16px}}
+
+    /* Layout */
+    .wrap{max-width:880px;margin:0 auto;padding:34px 22px 80px}
+    .page-head{margin-bottom:22px}
+    .page-head h1{font-size:27px;font-weight:800;color:var(--navy);letter-spacing:-.5px;display:flex;align-items:center;gap:11px}
+    .page-head p{color:var(--gray-600);font-size:14.5px;margin-top:6px}
+    .crumb{font-size:13px;color:var(--gray-400);margin-bottom:14px}
+    .crumb a{color:var(--blue);text-decoration:none}
+
+    /* Cart card */
+    .cart-card{background:#fff;border:1px solid var(--gray-200);border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(10,22,40,.06)}
+    .cart-list{padding:6px 0}
+    .cart-item{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--gray-200)}
+    .cart-item:last-child{border-bottom:none}
+    .ci-img{width:62px;height:62px;flex-shrink:0;border-radius:10px;background:var(--blue-light);object-fit:cover;display:flex;align-items:center;justify-content:center;color:var(--gray-400);font-size:10px;text-align:center}
+    .ci-info{flex:1;min-width:0}
+    .ci-cat{font-size:11.5px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.4px}
+    .ci-name{font-size:15px;font-weight:700;color:var(--navy);margin-top:2px}
+    .ci-qtywrap{display:flex;align-items:center;gap:9px;flex-shrink:0}
+    .ci-qtybtn{width:30px;height:30px;border:1px solid #d6dbe3;background:#fff;border-radius:8px;cursor:pointer;font-size:17px;font-weight:700;color:var(--blue);line-height:1;display:flex;align-items:center;justify-content:center}
+    .ci-qtybtn:hover{background:var(--blue-light)}
+    .ci-qty{font-size:15px;font-weight:700;min-width:26px;text-align:center}
+    .ci-remove{background:none;border:none;color:var(--gray-400);cursor:pointer;font-size:13px;margin-left:6px;flex-shrink:0}
+    .ci-remove:hover{color:var(--red)}
+
+    .cart-foot{padding:18px 20px;background:var(--gray-50);border-top:1px solid var(--gray-200)}
+    .cart-total{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--gray-600);margin-bottom:14px}
+    .cart-total strong{color:var(--navy);font-size:16px}
+    .btn-wa{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--green);color:#fff;border:none;border-radius:11px;padding:15px;font-size:15.5px;font-weight:800;cursor:pointer;font-family:inherit;text-decoration:none;transition:.2s}
+    .btn-wa:hover{background:var(--green-dark)}
+    .cart-actions{display:flex;justify-content:space-between;align-items:center;margin-top:13px}
+    .link-muted{background:none;border:none;color:var(--gray-400);font-size:13px;cursor:pointer;text-decoration:underline;font-family:inherit}
+    .link-shop{color:var(--blue);font-size:13.5px;font-weight:600;text-decoration:none}
+
+    /* Empty */
+    .empty{text-align:center;padding:60px 24px}
+    .empty svg{color:#cbd5e1;margin-bottom:14px}
+    .empty h2{font-size:19px;color:var(--navy);margin-bottom:8px}
+    .empty p{color:var(--gray-600);font-size:14px;margin-bottom:22px}
+    .btn-shop{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:12px 26px;border-radius:9px;font-weight:700;font-size:14px}
+    .btn-shop:hover{background:var(--blue-dark)}
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <img src="https://setiatrafik.com/wp-content/uploads/2018/03/cropped-logo2-5.png" alt="Setia Trafik" class="logo-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+      <div class="logo-text" style="display:none;">Setia <span>Trafik</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="/?page_id=149">What We Do</a>
+      <a href="/?page_id=163">Products</a>
+      <a href="/?page_id=227">Who Are We</a>
+      <a href="/?page_id=190">News</a>
+      <a href="/?page_id=300" class="nav-cta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="crumb"><a href="/">Home</a> &rsaquo; <a href="/?page_id=163">Products</a> &rsaquo; Quote Cart</div>
+  <div class="page-head">
+    <h1>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a3a6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      Your Quote Cart
+    </h1>
+    <p>Review your items below, adjust quantities, then send the whole list to us on WhatsApp for fast pricing &amp; availability.</p>
+  </div>
+
+  <div id="cart-mount"></div>
+</div>
+
+<script>
+  var WA = '60162244163';
+  function gb(){ try{ return JSON.parse(localStorage.getItem('st_quote')||'[]'); }catch(e){ return []; } }
+  function sb(b){ try{ localStorage.setItem('st_quote', JSON.stringify(b)); }catch(e){} }
+  function esc(t){ return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function detailLink(it){
+    return 'product-detail.html?slug='+encodeURIComponent(it.slug||'')+'&name='+encodeURIComponent(it.name||'')+'&cat='+encodeURIComponent(it.cat||'')+'&img='+encodeURIComponent(it.img||'');
+  }
+
+  function render(){
+    var b = gb();
+    var mount = document.getElementById('cart-mount');
+    if(!b.length){
+      mount.innerHTML =
+        '<div class="cart-card"><div class="empty">'+
+          '<svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>'+
+          '<h2>Your cart is empty</h2>'+
+          '<p>Browse our products and tap &ldquo;Add to Quote&rdquo; to build your list.</p>'+
+          '<a class="btn-shop" href="/?page_id=163">Browse Products &rarr;</a>'+
+        '</div></div>';
+      return;
+    }
+
+    var totalQty = b.reduce(function(s,i){ return s + (i.qty||1); }, 0);
+    var rows = b.map(function(it, idx){
+      var img = it.img
+        ? '<img class="ci-img" src="'+esc(it.img)+'" alt="'+esc(it.name)+'" loading="lazy" onerror="this.outerHTML=\'<div class=&quot;ci-img&quot;>No image</div>\'">'
+        : '<div class="ci-img">No image</div>';
+      return ''+
+        '<div class="cart-item">'+
+          '<a href="'+detailLink(it)+'" style="flex-shrink:0">'+img+'</a>'+
+          '<div class="ci-info">'+
+            (it.cat ? '<div class="ci-cat">'+esc(it.cat)+'</div>' : '')+
+            '<a href="'+detailLink(it)+'" style="text-decoration:none"><div class="ci-name">'+esc(it.name||'Item')+'</div></a>'+
+          '</div>'+
+          '<div class="ci-qtywrap">'+
+            '<button class="ci-qtybtn" onclick="changeQty('+idx+',-1)" aria-label="Decrease">&minus;</button>'+
+            '<span class="ci-qty">'+(it.qty||1)+'</span>'+
+            '<button class="ci-qtybtn" onclick="changeQty('+idx+',1)" aria-label="Increase">+</button>'+
+          '</div>'+
+          '<button class="ci-remove" onclick="removeItem('+idx+')" aria-label="Remove">&times;</button>'+
+        '</div>';
+    }).join('');
+
+    mount.innerHTML =
+      '<div class="cart-card">'+
+        '<div class="cart-list">'+rows+'</div>'+
+        '<div class="cart-foot">'+
+          '<div class="cart-total"><span>'+b.length+' product'+(b.length>1?'s':'')+' in your quote</span><strong>'+totalQty+' item'+(totalQty>1?'s':'')+'</strong></div>'+
+          '<button class="btn-wa" onclick="sendWhatsApp()">'+
+            '<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>'+
+            'Send Quote on WhatsApp'+
+          '</button>'+
+          '<div class="cart-actions">'+
+            '<a class="link-shop" href="/?page_id=163">&larr; Continue shopping</a>'+
+            '<button class="link-muted" onclick="clearCart()">Clear cart</button>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+  }
+
+  window.changeQty = function(idx, d){
+    var b = gb();
+    if(!b[idx]) return;
+    b[idx].qty = (b[idx].qty||1) + d;
+    if(b[idx].qty < 1) b.splice(idx,1);
+    sb(b); render();
+  };
+  window.removeItem = function(idx){
+    var b = gb(); if(!b[idx]) return;
+    b.splice(idx,1); sb(b); render();
+  };
+  window.clearCart = function(){
+    if(confirm('Remove all items from your quote cart?')){ sb([]); render(); }
+  };
+  window.sendWhatsApp = function(){
+    var b = gb();
+    if(!b.length){ alert('Your quote cart is empty. Add some products first.'); return; }
+    var lines = b.map(function(it, i){
+      var detail = it.cat ? ' — ' + it.cat : '';
+      return (i+1) + '. ' + (it.name||'Item') + detail + ' (Qty: ' + (it.qty||1) + ')';
+    }).join('\n');
+    var totalQty = b.reduce(function(s,i){ return s + (i.qty||1); }, 0);
+    var msg = 'Hi Setia Trafik,\n\n' +
+      'I would like to request a quote for the following items:\n\n' +
+      lines + '\n\n' +
+      'Total: ' + totalQty + ' item' + (totalQty>1?'s':'') + ' across ' + b.length + ' product' + (b.length>1?'s':'') + '.\n\n' +
+      'Please advise on pricing and availability. Thank you.';
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank');
+  };
+
+  render();
+</script>
+</body>
+</html>

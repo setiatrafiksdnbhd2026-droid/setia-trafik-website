@@ -1,12 +1,22 @@
 {
   "cleanUrls": false,
   "trailingSlash": false,
-  "redirects": [
-    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "149" }], "destination": "/services.html",       "permanent": true },
-    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "163" }], "destination": "/products.html",       "permanent": true },
-    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "227" }], "destination": "/who.html",            "permanent": true },
-    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "281" }], "destination": "/coverage.html",       "permanent": true },
-    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "170" }], "destination": "/certifications.html", "permanent": true },
-    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "190" }], "destination": "/news.html",           "permanent": true }
+  "rewrites": [
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "149" }], "destination": "/services.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "163" }], "destination": "/products.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "227" }], "destination": "/who.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "281" }], "destination": "/coverage.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "170" }], "destination": "/certifications.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "190" }], "destination": "/news.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "300" }], "destination": "/quote.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "301" }], "destination": "/products-cones.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "302" }], "destination": "/products-barriers.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "303" }], "destination": "/products-lights.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "304" }], "destination": "/products-mirrors.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "305" }], "destination": "/products-studs.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "306" }], "destination": "/products-signage.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "307" }], "destination": "/products-vms.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "308" }], "destination": "/products-ppe.html" },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "309" }], "destination": "/cart.html" }
   ]
 }

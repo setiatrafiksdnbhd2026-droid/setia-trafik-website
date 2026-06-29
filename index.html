@@ -5,12 +5,12 @@
   <script>
   (function(){
     var MAP = {
-      '149': 'services.html',       // What We Do / Services
-      '163': 'products.html',       // Products
-      '227': 'who.html',            // Who Are We
-      '281': 'coverage.html',       // Coverage
-      '170': 'certifications.html', // Certifications
-      '190': 'news.html'            // News & Projects
+      '149': '/?page_id=149',       // What We Do / Services
+      '163': '/?page_id=163',       // Products
+      '227': '/?page_id=227',            // Who Are We
+      '281': '/?page_id=281',       // Coverage
+      '170': '/?page_id=170', // Certifications
+      '190': '/?page_id=190'            // News & Projects
     };
     try {
       var id = new URLSearchParams(window.location.search).get('page_id');
@@ -838,7 +838,7 @@
 <!-- ═══════════ NAVBAR ═══════════ -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="logo">
+    <a href="/" class="logo">
       <img src="https://setiatrafik.com/wp-content/uploads/2018/03/cropped-logo2-5.png"
            alt="Setia Trafik" class="logo-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
@@ -848,16 +848,16 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links">
-      <a href="services.html">What We Do</a>
-      <a href="products.html">Products</a>
-      <a href="who.html">Who Are We</a>
-      <a href="coverage.html">Coverage</a>
-      <a href="certifications.html">Certifications</a>
-      <a href="news.html">News &amp; Projects</a>
-      <a href="quote.html" title="Quote Cart">
+      <a href="/?page_id=149">What We Do</a>
+      <a href="/?page_id=163">Products</a>
+      <a href="/?page_id=227">Who Are We</a>
+      <a href="/?page_id=281">Coverage</a>
+      <a href="/?page_id=170">Certifications</a>
+      <a href="/?page_id=190">News &amp; Projects</a>
+      <a href="/?page_id=309" title="Quote Cart">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
       </a>
-      <a href="quote.html" class="nav-cta">Get a Quote</a>
+      <a href="/?page_id=300" class="nav-cta">Get a Quote</a>
     </div>
   </div>
 </nav>
@@ -888,7 +888,7 @@
     <div class="hero-content">
       <div class="hero-tag">Est. 2015 · Pengurusan Trafik Malaysia</div>
       <h1 class="hero-h1">Malaysia's <span>Specialist</span> Traffic Management &amp; Road Safety Partner</h1>
-        <p class="hero-tagline">We plan, staff, equip and run the work zone — Pengurusan Trafik for highway concessionaires, JKR projects, MRT/LRT rail works, G7 main contractors and local councils nationwide. One partner, full scope, zero headaches.</p>
+        <p class="hero-tagline">We plan, staff, equip and run the work zone — Pengurusan Trafik for highway concessionaires, JKR projects, MRT/LRT rail works, G5 main contractors and local councils nationwide. One partner, full scope, zero headaches.</p>
       <div class="hero-stats">
         <a href="#" class="hero-stat" onclick="openModal('about'); return false;">
           <div class="hero-stat-num">9+</div>
@@ -898,14 +898,14 @@
           <div class="hero-stat-num">G5</div>
           <div class="hero-stat-label">CIDB Grade ↗ Certifications</div>
         </a>
-        <a href="coverage.html" class="hero-stat">
+        <a href="/?page_id=281" class="hero-stat">
           <div class="hero-stat-num">13+</div>
           <div class="hero-stat-label">States Covered</div>
         </a>
       </div>
       <div class="hero-btns">
-        <a href="quote.html" class="btn-primary">Get Fast Quote</a>
-        <a href="services.html" class="btn-outline">Our Services →</a>
+        <a href="/?page_id=300" class="btn-primary">Get Fast Quote</a>
+        <a href="/?page_id=149" class="btn-outline">Our Services →</a>
       </div>
     </div>
 
@@ -1023,12 +1023,12 @@
       <div class="tm-card" style="background:var(--navy);border-color:var(--navy);display:flex;flex-direction:column;justify-content:center;">
         <h3 style="color:white;">One Partner, Full Scope</h3>
         <p style="font-size:13px;color:#a8c0e0;line-height:1.6;margin-bottom:18px;">Everything from plan to deployment under one accredited roof — no subcontractor gaps, no compliance surprises.</p>
-        <a href="services.html" style="background:var(--blue);color:white;padding:11px 22px;border-radius:8px;text-decoration:none;font-weight:700;font-size:13.5px;text-align:center;">Explore Traffic Management &rarr;</a>
+        <a href="/?page_id=149" style="background:var(--blue);color:white;padding:11px 22px;border-radius:8px;text-decoration:none;font-weight:700;font-size:13.5px;text-align:center;">Explore Traffic Management &rarr;</a>
       </div>
     </div>
     <div style="text-align:center;margin-top:40px;">
-      <a href="services.html" style="background:var(--blue);color:white;padding:13px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;margin-right:12px;display:inline-block;">View All Services &rarr;</a>
-      <a href="quote.html" style="background:transparent;color:var(--blue);border:2px solid var(--blue);padding:11px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;display:inline-block;">Get a Quote</a>
+      <a href="/?page_id=149" style="background:var(--blue);color:white;padding:13px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;margin-right:12px;display:inline-block;">View All Services &rarr;</a>
+      <a href="/?page_id=300" style="background:transparent;color:var(--blue);border:2px solid var(--blue);padding:11px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;display:inline-block;">Get a Quote</a>
     </div>
   </div>
 </section>
@@ -1039,7 +1039,7 @@
       <div class="section-label" style="color:#7eb3f5;">80+ Products</div>
       <h2 style="font-size:clamp(22px,4vw,38px);font-weight:800;margin-bottom:14px;color:white;">Traffic Equipment Catalogue</h2>
       <p style="color:#a8c0e0;font-size:15px;max-width:520px;margin:0 auto 28px;">Cones, barriers, VMS, road studs, signage and more &mdash; all JKR/REAM approved. Build and send your quote in minutes.</p>
-      <a href="products.html" style="background:var(--blue);color:white;padding:13px 32px;border-radius:8px;text-decoration:none;font-weight:800;font-size:14px;margin-right:10px;display:inline-block;">Browse Products &amp; Build Quote &rarr;</a>
+      <a href="/?page_id=163" style="background:var(--blue);color:white;padding:13px 32px;border-radius:8px;text-decoration:none;font-weight:800;font-size:14px;margin-right:10px;display:inline-block;">Browse Products &amp; Build Quote &rarr;</a>
     </div>
   </div>
 </section>
@@ -1054,7 +1054,7 @@
       <p class="section-sub">Recent projects, mobilisations and company milestones from across Malaysia.</p>
     </div>
     <div class="news-grid fade-in">
-      <a href="news.html" class="news-card">
+      <a href="/?page_id=190" class="news-card">
         <div class="news-img"><img src="1212121.jpg" alt="Penang Bypass TMP" onerror="this.style.display='none'" /></div>
         <div class="news-body">
           <div class="news-date">JUNE 2025</div>
@@ -1063,7 +1063,7 @@
           <span class="news-read">Read More →</span>
         </div>
       </a>
-      <a href="news.html" class="news-card">
+      <a href="/?page_id=190" class="news-card">
         <div class="news-img"><img src="P8041034-copy.jpg" alt="PLUS Highway Widening" onerror="this.style.display='none'" /></div>
         <div class="news-body">
           <div class="news-date">APRIL 2025</div>
@@ -1072,7 +1072,7 @@
           <span class="news-read">Read More →</span>
         </div>
       </a>
-      <a href="news.html" class="news-card">
+      <a href="/?page_id=190" class="news-card">
         <div class="news-img"><img src="2-copy.jpg" alt="Central Spine Road Kelantan" onerror="this.style.display='none'" /></div>
         <div class="news-body">
           <div class="news-date">FEBRUARY 2025</div>
@@ -1081,7 +1081,7 @@
           <span class="news-read">Read More →</span>
         </div>
       </a>
-      <a href="news.html" class="news-card">
+      <a href="/?page_id=190" class="news-card">
         <div class="news-img"><img src="5.jpg" alt="CIDB Certification" onerror="this.style.display='none'" /></div>
         <div class="news-body">
           <div class="news-date">JANUARY 2025</div>
@@ -1092,7 +1092,7 @@
       </a>
     </div>
     <div style="text-align:center;margin-top:40px;">
-      <a href="news.html" style="background:var(--blue);color:white;padding:13px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;display:inline-block;">View All News &amp; Projects &rarr;</a>
+      <a href="/?page_id=190" style="background:var(--blue);color:white;padding:13px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;display:inline-block;">View All News &amp; Projects &rarr;</a>
     </div>
   </div>
 </section>
@@ -1127,34 +1127,34 @@
     <div class="footer-col">
       <h5>Services</h5>
       <ul>
-        <li><a href="services.html">Traffic Management</a></li>
-        <li><a href="services.html">TM Equipment &amp; Materials</a></li>
-        <li><a href="services.html">Traffic Equipment Catalog</a></li>
-        <li><a href="services.html">Road Barrier Systems</a></li>
-        <li><a href="services.html">Construction TM</a></li>
-        <li><a href="services.html">TMP Design &amp; Submission</a></li>
+        <li><a href="/?page_id=149">Traffic Management</a></li>
+        <li><a href="/?page_id=149">TM Equipment &amp; Materials</a></li>
+        <li><a href="/?page_id=149">Traffic Equipment Catalog</a></li>
+        <li><a href="/?page_id=149">Road Barrier Systems</a></li>
+        <li><a href="/?page_id=149">Construction TM</a></li>
+        <li><a href="/?page_id=149">TMP Design &amp; Submission</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Company</h5>
       <ul>
-        <li><a href="who.html">Who Are We</a></li>
-        <li><a href="who.html">Our History</a></li>
+        <li><a href="/?page_id=227">Who Are We</a></li>
+        <li><a href="/?page_id=227">Our History</a></li>
         <li><a href="#news">Latest News</a></li>
-        <li><a href="coverage.html">Coverage Areas</a></li>
+        <li><a href="/?page_id=281">Coverage Areas</a></li>
         <li><a href="#" onclick="openModal('certs'); return false;">Certifications</a></li>
-        <li><a href="quote.html">Contact Us</a></li>
+        <li><a href="/?page_id=300">Contact Us</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Products</h5>
       <ul>
-        <li><a href="products.html">Traffic Cones</a></li>
-        <li><a href="products.html">Road Barriers</a></li>
-        <li><a href="products.html">Solar Arrow Boards</a></li>
-        <li><a href="products.html">Variable Message Signs</a></li>
-        <li><a href="products.html">Road Markings</a></li>
-        <li><a href="products.html">Signage &amp; Road Studs</a></li>
+        <li><a href="/?page_id=163">Traffic Cones</a></li>
+        <li><a href="/?page_id=163">Road Barriers</a></li>
+        <li><a href="/?page_id=163">Solar Arrow Boards</a></li>
+        <li><a href="/?page_id=163">Variable Message Signs</a></li>
+        <li><a href="/?page_id=163">Road Markings</a></li>
+        <li><a href="/?page_id=163">Signage &amp; Road Studs</a></li>
       </ul>
     </div>
   </div>
@@ -1942,7 +1942,7 @@
   </div>
 </div>
 <div id="st-cta">
-  <button class="st-cta-btn st-cta-cart" onclick="stCartToggle()" aria-label="Quote Cart">
+  <button class="st-cta-btn st-cta-cart" onclick="location.href='/?page_id=309'" aria-label="Quote Cart">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
     <span class="st-cta-label">Quote Cart</span>
     <span class="st-cta-badge" id="st-cart-badge">0</span>
