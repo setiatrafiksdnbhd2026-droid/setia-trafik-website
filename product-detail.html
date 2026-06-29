@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Product Details — Setia Trafik Sdn Bhd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{--blue:#1a3a6e;--navy:#0a1628;--gray-100:#f7f8fa;--gray-200:#eef0f3;--gray-400:#9aa3af;--gray-600:#5a6474;--gray-800:#2d3748;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#fff;color:var(--gray-800);line-height:1.6}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);box-shadow:0 2px 12px rgba(26,58,110,.08)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:70px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.nav-links a{color:#5a6474;text-decoration:none;font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:#f0f5ff}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px}
+@media(max-width:900px){.nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:white;flex-direction:column;padding:16px;border-bottom:1px solid var(--gray-200);box-shadow:0 4px 12px rgba(0,0,0,.1)}nav.open .nav-links{display:flex}.nav-burger{display:flex}}
+.page-wrap{margin-top:70px;padding:40px 32px 160px;max-width:1100px;margin-left:auto;margin-right:auto}
+.breadcrumb{font-size:12px;color:var(--gray-400);margin-bottom:24px}
+.breadcrumb a{color:var(--gray-400);text-decoration:none}
+.breadcrumb a:hover{color:var(--blue)}
+.breadcrumb span{color:var(--gray-800)}
+.product-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:768px){.product-layout{grid-template-columns:1fr;gap:24px}}
+.img-wrap{background:var(--gray-100);border-radius:18px;overflow:hidden;border:2px solid var(--gray-200);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.img-wrap img{width:100%;height:100%;object-fit:contain;padding:24px}
+.product-info{}
+.cat-badge{display:inline-block;background:#e8eef8;color:var(--blue);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.product-info h1{font-size:clamp(20px,3vw,32px);font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:8px}
+.product-sku{font-size:13px;color:var(--gray-400);margin-bottom:20px}
+.specs-table{width:100%;border-collapse:collapse;margin-bottom:24px;font-size:13.5px}
+.specs-table tr:nth-child(odd){background:var(--gray-100)}
+.specs-table td{padding:9px 14px;border-bottom:1px solid var(--gray-200)}
+.specs-table td:first-child{font-weight:600;color:var(--gray-600);white-space:nowrap;width:40%}
+.info-note{background:#f0f7ff;border:1px solid #c3dcf5;border-radius:10px;padding:14px 16px;font-size:13px;color:var(--blue);margin-bottom:24px}
+.action-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.btn{padding:13px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-family:inherit}
+.btn-primary{background:var(--navy);color:white;flex:1}
+.btn-primary:hover{background:var(--blue)}
+.btn-wa{background:#25D366;color:white;flex:1}
+.btn-wa:hover{background:#1ea352}
+.btn-basket{background:var(--gray-100);color:var(--navy);border:2px solid var(--gray-200)}
+.btn-basket:hover{background:#e8eef8;border-color:var(--blue)}
+.btn-added{background:#d1fae5!important;border-color:#059669!important;color:#059669!important}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--gray-600);text-decoration:none;font-size:13px;font-weight:600;margin-top:16px;transition:.2s}
+.back-link:hover{color:var(--blue)}
+/* Sticky panel */
+.sticky-panel{position:fixed;bottom:0;left:0;right:0;z-index:500;background:white;border-top:2px solid var(--gray-200);padding:14px 24px;box-shadow:0 -4px 24px rgba(0,0,0,.1);display:flex;gap:10px;align-items:center}
+.sticky-panel .btn{padding:11px 18px;font-size:13px}
+@media(min-width:769px){.sticky-panel{display:none}}
+footer{background:var(--navy);color:rgba(255,255,255,.7);padding:40px 32px;text-align:center;font-size:13px}
+footer a{color:rgba(255,255,255,.7);text-decoration:none}
+/* ─── ENTRANCE TRANSITIONS ─── */
+@keyframes stFadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.product-layout{animation:stFadeUp .55s cubic-bezier(.22,1,.36,1) both}
+.product-info>*{animation:stFadeUp .55s cubic-bezier(.22,1,.36,1) both}
+.product-info>*:nth-child(1){animation-delay:.04s}.product-info>*:nth-child(2){animation-delay:.09s}.product-info>*:nth-child(3){animation-delay:.14s}.product-info>*:nth-child(4){animation-delay:.19s}.product-info>*:nth-child(5){animation-delay:.24s}.product-info>*:nth-child(6){animation-delay:.29s}.product-info>*:nth-child(7){animation-delay:.34s}
+.img-wrap{animation:stFadeUp .55s cubic-bezier(.22,1,.36,1) both}
+.img-wrap img{transition:transform .45s ease}
+.img-wrap:hover img{transform:scale(1.06)}
+/* ─── BIG WHATSAPP CTA ─── */
+.btn-wa-lg{width:100%;font-size:16px;padding:17px 24px;box-shadow:0 8px 24px rgba(37,211,102,.42);animation:waGlow 2.6s ease-in-out infinite}
+.btn-wa-lg svg{width:22px;height:22px}
+@keyframes waGlow{0%,100%{box-shadow:0 8px 24px rgba(37,211,102,.42)}50%{box-shadow:0 8px 30px rgba(37,211,102,.65)}}
+.btn-wa-lg:hover{transform:translateY(-2px)}
+/* ─── RELATED PRODUCTS ─── */
+.related{margin-top:68px}
+.related-head{font-size:21px;font-weight:800;color:var(--navy);line-height:1.2}
+.related-sub{font-size:13px;color:var(--gray-400);margin:4px 0 22px}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:900px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.related-grid{grid-template-columns:1fr 1fr;gap:12px}}
+.rel-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(18px);animation:stFadeUp .5s cubic-bezier(.22,1,.36,1) forwards;transition:border-color .25s,transform .25s,box-shadow .25s}
+.rel-card:hover{border-color:var(--blue);transform:translateY(-6px);box-shadow:0 14px 32px rgba(26,58,110,.17)}
+.rel-img{aspect-ratio:1;background:var(--gray-100);display:flex;align-items:center;justify-content:center;overflow:hidden;text-decoration:none}
+.rel-img img{width:100%;height:100%;object-fit:contain;padding:14px;transition:transform .35s ease}
+.rel-card:hover .rel-img img{transform:scale(1.08)}
+.rel-body{padding:12px 13px;display:flex;flex-direction:column;gap:6px;flex:1}
+.rel-cat{font-size:10.5px;color:var(--gray-400);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.rel-name{font-size:13px;font-weight:700;color:var(--navy);line-height:1.35}
+.rel-wa{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:6px;background:#25D366;color:#fff;font-size:12px;font-weight:700;padding:9px;border-radius:8px;text-decoration:none;transition:.2s}
+.rel-wa:hover{background:#1ea352}
+</style>
+  <!-- launch-meta -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="canonical" href="https://setiatrafik.com/product-detail.html">
+  <meta name="description" content="Product details and specifications — Setia Trafik road safety and traffic management equipment.">
+  <!-- Open Graph / social share preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Setia Trafik">
+  <meta property="og:title" content="Product Details — Setia Trafik Sdn Bhd">
+  <meta property="og:description" content="Product details and specifications — Setia Trafik road safety and traffic management equipment.">
+  <meta property="og:url" content="https://setiatrafik.com/product-detail.html">
+  <meta property="og:image" content="https://setiatrafik.com/favicon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Product Details — Setia Trafik Sdn Bhd">
+  <meta name="twitter:description" content="Product details and specifications — Setia Trafik road safety and traffic management equipment.">
+  <meta name="twitter:image" content="https://setiatrafik.com/favicon.png">
+  <!-- Google Analytics (GA4) — replace G-FD0B3GG3EW with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FD0B3GG3EW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FD0B3GG3EW');</script>
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><img src="https://setiatrafik.com/wp-content/uploads/2018/03/cropped-logo2-5.png" alt="Setia Trafik" style="height:48px;object-fit:contain" onerror="this.style.display='none'"/><span class="logo-name" style="margin-left:10px;font-weight:800;font-size:18px;color:#0a1628;line-height:1.1;letter-spacing:-.2px">Setia <span style="color:#1a3a6e">Trafik</span></span></a>
+    <button class="nav-burger" onclick="this.closest('nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="services.html">What We Do</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="who.html">Who Are We</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="news.html">News</a>
+      <a href="quote.html" style="position:relative;padding:8px 14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span id="cartBadge" style="position:absolute;top:-4px;right:-4px;background:#e53e3e;color:white;border-radius:50%;width:16px;height:16px;font-size:10px;font-weight:700;display:none;align-items:center;justify-content:center">0</span></a>
+      <a href="quote.html" style="background:#1a3a6e;color:white;padding:9px 20px;border-radius:8px;font-weight:600">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="breadcrumb" id="bc">
+    <a href="products.html">Products</a> / <a href="#" id="catLink">Category</a> / <span id="bcName">Product</span>
+  </div>
+
+  <div class="product-layout">
+    <div class="img-wrap">
+      <img id="prodImg" src="" alt="Product" style="display:none" onerror="showImgFallback()"/>
+      <div id="imgFallback" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--gray-400);text-align:center;padding:24px">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span style="font-size:13px;font-weight:600">Image available on request</span>
+      </div>
+    </div>
+    <div class="product-info">
+      <div class="cat-badge" id="catBadge">Category</div>
+      <h1 id="prodName">Product Name</h1>
+      <div class="product-sku" id="prodSlug"></div>
+      <div class="info-note">&#128222; For pricing and availability, contact us via WhatsApp or request a quote below. Bulk orders welcome.</div>
+      <table class="specs-table" id="specsTable"></table>
+      <a class="btn btn-wa btn-wa-lg" id="waBtn" href="#" target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Now &mdash; Fast Reply
+      </a>
+      <div class="action-btns" style="margin-top:10px">
+        <button class="btn btn-primary" id="addBtn" onclick="addToQuote()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Add to Quote
+        </button>
+        <a class="btn" id="callBtn" href="tel:+60162244163" style="background:var(--blue);color:#fff;flex:1">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78A16 16 0 0 0 15.22 16.1l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.2z"/></svg>
+          Call
+        </a>
+      </div>
+      <a class="back-link" id="backLink" href="products.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Products
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══════════ YOU MAY ALSO LIKE ═══════════ -->
+  <section class="related" id="related" style="display:none">
+    <div class="related-head">You May Also Like</div>
+    <div class="related-sub" id="related-sub">More from our range</div>
+    <div class="related-grid" id="related-grid"></div>
+  </section>
+</div>
+
+<!-- Mobile sticky panel -->
+<div class="sticky-panel">
+  <button class="btn btn-primary" onclick="addToQuote()" style="flex:1">+ Add to Quote</button>
+  <a class="btn btn-wa" id="waBtn2" href="#" target="_blank" style="flex:1">WhatsApp</a>
+  <a class="btn" href="tel:+60162244163" style="background:var(--blue);color:#fff;flex:1">Call</a>
+</div>
+
+<footer><p>&copy; 2025 Setia Trafik Sdn Bhd &nbsp;&middot;&nbsp; <a href="index.html">Home</a> &nbsp;&middot;&nbsp; <a href="products.html">Products</a> &nbsp;&middot;&nbsp; <a href="quote.html">Quote Basket</a> &nbsp;&middot;&nbsp; <a href="tel:+60162244163">+60 16-224 4163</a></p></footer>
+
+<script src="products-data.js"></script>
+<script>
+var WA = '60162244163';
+
+var CAT_PAGES = {
+  'Barriers & Hoardings': 'products-barriers.html',
+  'Cones & Posts': 'products-cones.html',
+  'Lights & Blinkers': 'products-lights.html',
+  'Road Studs & Accessories': 'products-studs.html',
+  'Convex Mirrors & Safety': 'products-mirrors.html',
+  'PPE & Safety': 'products-ppe.html',
+  'VMS / Solar PVMS': 'products-vms.html',
+  'Signage': 'products-signage.html'
+};
+
+var SPECS = {
+  'plastic-barrier-standard':{'Material':'HDPE / LLDPE','Capacity':'400 litres water-fill','Height':'800mm','Weight (empty)':'13 kg','Weight (filled)':'~400 kg','Colour':'Safety Orange / White','Standard':'MS EN 13422'},
+  'stainless-steel-barrier':{'Material':'Stainless Steel 304','Height':'1000mm','Weight':'25 kg','Surface':'Polished / Brushed','Finish':'Anti-corrosion coated'},
+  'steel-barrier':{'Material':'Galvanised Steel','Height':'1000mm','Weight':'30 kg','Coating':'Hot-dip galvanised'},
+  'plastic-road-barrier-8kg':{'Material':'HDPE','Weight':'8 kg','Height':'800mm','Reflective':'Yes – Class RA1'},
+  'precast-concrete-450':{'Material':'Pre-stressed concrete','Height':'450mm','Length':'1m / 2m','Weight':'~600 kg per m','Standard':'JKR Spec'},
+  'precast-concrete-500':{'Material':'Pre-stressed concrete','Height':'500mm','Length':'1m / 2m','Weight':'~700 kg per m','Standard':'JKR Spec'},
+  'precast-concrete-2m-450':{'Material':'Pre-stressed concrete','Height':'450mm','Length':'2m','Weight':'~1200 kg','Standard':'JKR Spec'},
+  'precast-concrete-2m-600':{'Material':'Pre-stressed concrete','Height':'600mm','Length':'2m','Weight':'~1500 kg','Standard':'JKR Spec'},
+  'pe-cone-rubber-750':{'Material':'PE + Rubber base','Height':'750mm','Weight':'3.0 kg','Reflective Band':'Yes – Class RA2','Certification':'SIRIM / JKR Approved'},
+  'pvc-cone-5kg-750':{'Material':'PVC','Height':'750mm','Weight':'5.0 kg','Base':'Rubber','Reflective Band':'Yes'},
+  'super-cone-mdpe-1000':{'Material':'MDPE','Height':'1000mm','Weight':'5.5 kg','Base':'Rubber','Reflective':'2-band RA2'},
+  'pu-flexible-post-sirim':{'Material':'Polyurethane (PU)','Height':'750mm','Base':'Rubber','Certification':'SIRIM Approved','Reflective':'Yes','Recovery':'Self-righting after impact'},
+  'convex-mirror-600-round':{'Size':'600mm diameter','Material':'Polycarbonate','Shape':'Round','Vision Range':'Up to 8m','Mounting':'Wall / Post mount','UV Resistant':'Yes'},
+  'convex-mirror-800-round':{'Size':'800mm diameter','Material':'Polycarbonate','Shape':'Round','Vision Range':'Up to 12m','Mounting':'Wall / Post mount','UV Resistant':'Yes'},
+  'convex-mirror-1000-round':{'Size':'1000mm diameter','Material':'Polycarbonate','Shape':'Round','Vision Range':'Up to 18m','Mounting':'Wall / Post mount'},
+  'solar-blinker-double':{'Power':'Solar','Light':'Amber LED','Flash Rate':'60 fpm','Battery':'3.2V LiFePO4','IP Rating':'IP65','Visibility':'500m'},
+  'solar-warning-light':{'Power':'Solar','Light':'Amber LED','IP Rating':'IP65','Visibility':'500m','Operating Temp':'-20°C to 60°C'},
+  'solar-pvms-trailer':{'Display':'Full-colour LED matrix','Power':'Solar + Battery backup','Control':'Remote / 4G','Resolution':'Configurable','Trailer':'Road-towable','Standard':'JKR / LLM Approved'},
+  'vms-standard':{'Display':'Amber LED matrix','Power':'Mains / Generator','Characters':'3-line display','Visibility':'300m','Housing':'Aluminium weatherproof'},
+  'rpm-standard':{'Material':'Aluminium','Type':'Raised Pavement Marker','Reflector':'Prismatic Cat\'s Eye','Standard':'JKR Approved','Colour':'White / Yellow / Red'},
+  'rpm-ceramic':{'Material':'Glass / Ceramic','Type':'Raised Pavement Marker','Reflector':'Glass prismatic','Standard':'JKR Approved'},
+  'hi-vis-vest-class-2':{'Standard':'EN ISO 20471 Class 2','Material':'100% Polyester mesh','Reflective Tape':'50mm SOLAS grade','Sizes':'S / M / L / XL / XXL','Colour':'Orange / Yellow','Washing':'Machine washable'},
+};
+
+var CAT_SPECS = {
+  'Barriers & Hoardings': {'Material':'High-grade polymer / Concrete / Steel','Standard':'JKR / MS EN Compliant','Usage':'Traffic channelisation & site safety'},
+  'Cones & Posts': {'Material':'PE / PVC / PU','Reflective Band':'Class RA1 / RA2','Standard':'JKR Approved','Height':'450mm – 1000mm'},
+  'Lights & Blinkers': {'Power':'Solar / Battery / Mains','Light Type':'LED Amber','IP Rating':'IP65','Visibility':'300m – 500m'},
+  'Road Studs & Accessories': {'Standard':'JKR Approved','Material':'Aluminium / Ceramic / Plastic','Type':'Raised Pavement Marker (RPM)'},
+  'Convex Mirrors & Safety': {'Material':'Polycarbonate / Stainless Steel','Standard':'UV resistant','Mounting':'Wall / Post'},
+  'PPE & Safety': {'Standard':'EN ISO 20471','Material':'Hi-Visibility fabric','Reflective':'SOLAS grade tape'},
+  'VMS / Solar PVMS': {'Standard':'JKR / LLM Compliant','Power':'Solar + Battery','Display':'LED Matrix'},
+  'Signage': {'Standard':'REAM / JKR / LLM','Material':'Aluminium / High-reflective sheeting','Reflectivity':'Class RA1 / RA2 / RA3'},
+};
+
+function gb(){return JSON.parse(localStorage.getItem('st_quote')||'[]');}
+function sb(b){localStorage.setItem('st_quote',JSON.stringify(b));}
+
+var params = new URLSearchParams(location.search);
+var slug = params.get('slug')||'';
+var name = params.get('name')||'Product';
+var cat  = params.get('cat')||'Products';
+var img  = params.get('img')||'';
+
+document.title = name + ' — Setia Trafik Sdn Bhd';
+document.getElementById('prodName').textContent = name;
+document.getElementById('catBadge').textContent = cat;
+document.getElementById('bcName').textContent = name;
+document.getElementById('prodSlug').textContent = 'SKU: ' + slug.toUpperCase();
+function showImgFallback(){
+  var pi=document.getElementById('prodImg'); if(pi) pi.style.display='none';
+  var fb=document.getElementById('imgFallback'); if(fb) fb.style.display='flex';
+}
+if(img){
+  var pi=document.getElementById('prodImg');
+  pi.style.display='block';
+  document.getElementById('imgFallback').style.display='none';
+  pi.src = img;
+}
+
+// Cat link
+var catPage = CAT_PAGES[cat] || 'products.html';
+document.getElementById('catLink').href = catPage;
+document.getElementById('catLink').textContent = cat;
+document.getElementById('backLink').href = catPage;
+document.getElementById('backLink').querySelector('svg').nextSibling.textContent = ' Back to ' + cat;
+
+// Specs
+var specs = SPECS[slug] || CAT_SPECS[cat] || {'Standard':'JKR / REAM Compliant','Material':'As per specification'};
+var tbl = document.getElementById('specsTable');
+Object.entries(specs).forEach(function(kv){
+  var tr = tbl.insertRow();
+  tr.innerHTML = '<td>'+kv[0]+'</td><td>'+kv[1]+'</td>';
+});
+
+// WA links
+var waText = 'Hi Setia Trafik, I would like more information and a quotation for:\n\n' + name + '\n\nPlease advise on pricing and availability. Thank you.';
+var waHref = 'https://api.whatsapp.com/send?phone=' + WA + '&text=' + encodeURIComponent(waText);
+document.getElementById('waBtn').href = waHref;
+var wb2 = document.getElementById('waBtn2'); if(wb2) wb2.href = waHref;
+
+// Cart badge
+var basket = gb();
+var inCart = basket.some(function(x){return x.slug===slug;});
+var cb = document.getElementById('cartBadge');
+if(basket.length > 0 && cb){cb.textContent=basket.length;cb.style.display='inline-flex';}
+if(inCart){
+  var ab = document.getElementById('addBtn');
+  ab.textContent = '\u2713 Added to Quote';
+  ab.classList.add('btn-added');
+}
+
+function addToQuote(){
+  var b = gb();
+  var ex = b.find(function(x){return x.slug===slug;});
+  if(!ex) b.push({name:name, cat:cat, img:img, slug:slug, qty:1});
+  sb(b);
+  var ab = document.getElementById('addBtn');
+  ab.textContent = '\u2713 Added to Quote';
+  ab.classList.add('btn-added');
+  if(cb){cb.textContent=b.length;cb.style.display='inline-flex';}
+}
+
+// ─── RELATED PRODUCT SUGGESTIONS ───
+(function(){
+  var all = window.ST_PRODUCTS || [];
+  if(!all.length) return;
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  var same = shuffle(all.filter(function(p){return p.cat===cat && p.slug!==slug;}));
+  var picks = same.slice(0,4);
+  if(picks.length < 4){
+    var others = shuffle(all.filter(function(p){return p.cat!==cat && p.slug!==slug;}));
+    picks = picks.concat(others.slice(0, 4-picks.length));
+  }
+  if(!picks.length) return;
+  var sec = document.getElementById('related');
+  document.getElementById('related-sub').textContent = same.length ? ('More from ' + cat) : 'You might also be interested in';
+  document.getElementById('related-grid').innerHTML = picks.map(function(p,i){
+    var link = 'product-detail.html?slug='+encodeURIComponent(p.slug)+'&name='+encodeURIComponent(p.name)+'&cat='+encodeURIComponent(p.cat)+'&img='+encodeURIComponent(p.img);
+    var watxt = encodeURIComponent("Hi Setia Trafik, I'm interested in: "+p.name+"\n\nPlease advise pricing and availability. Thank you.");
+    return '<div class="rel-card" style="animation-delay:'+(i*0.08)+'s">'+
+      '<a href="'+link+'" class="rel-img"><img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<span style=&quot;color:#9aa3af;font-size:11px&quot;>No image</span>\'"></a>'+
+      '<div class="rel-body">'+
+        '<a href="'+link+'" style="text-decoration:none"><div class="rel-cat">'+esc(p.cat)+'</div><div class="rel-name">'+esc(p.name)+'</div></a>'+
+        '<a class="rel-wa" href="https://wa.me/'+WA+'?text='+watxt+'" target="_blank" rel="noopener">WhatsApp</a>'+
+      '</div></div>';
+  }).join('');
+  sec.style.display='';
+})();
+</script>
+
+
+<!-- ═══════════ FLOATING CONTACT + QUOTE CART (st-cta) ═══════════ -->
+<style>
+#st-cta{position:fixed;right:24px;bottom:24px;z-index:1600;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:'Inter',sans-serif}
+.st-cta-btn{position:relative;display:flex;align-items:center;justify-content:center;height:56px;width:56px;border:none;border-radius:50px;cursor:pointer;text-decoration:none;box-shadow:0 6px 22px rgba(0,0,0,.22);overflow:hidden;transition:width .35s ease,padding .35s ease}
+.st-cta-btn svg{flex-shrink:0}
+.st-cta-label{white-space:nowrap;color:#fff;font-weight:700;font-size:14px;max-width:0;opacity:0;transition:.35s}
+.st-cta-btn:hover{width:auto;padding:0 20px 0 16px}
+.st-cta-btn:hover svg{margin-right:10px}
+.st-cta-btn:hover .st-cta-label{max-width:200px;opacity:1}
+.st-cta-wa{background:#25D366;animation:stPulse 2.4s infinite}
+.st-cta-call{background:#1a3a6e}
+.st-cta-cart{background:#0a1628}
+.st-cta-badge{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;background:#ef4444;color:#fff;border-radius:10px;font-size:11px;font-weight:800;display:none;align-items:center;justify-content:center}
+@keyframes stPulse{0%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 13px rgba(37,211,102,0)}100%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,0)}}
+#st-cart-panel{position:fixed;right:24px;bottom:96px;z-index:1599;width:330px;max-width:calc(100vw - 32px);background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.25);overflow:hidden;display:flex;flex-direction:column;max-height:70vh;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transform-origin:bottom right;transition:.28s;font-family:'Inter',sans-serif}
+#st-cart-panel.open{transform:none;opacity:1;pointer-events:all}
+.st-cart-head{background:#0a1628;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.st-cart-head .st-cart-x{margin-left:auto;background:rgba(255,255,255,.18);border:none;color:#fff;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1}
+.st-cart-body{flex:1;overflow-y:auto;padding:12px 14px;background:#f7f8fa}
+.st-cart-empty{text-align:center;color:#9aa3af;font-size:13px;padding:26px 10px;line-height:1.6}
+.st-cart-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #eef0f3;border-radius:10px;padding:9px 11px;margin-bottom:8px}
+.st-cart-name{flex:1;font-size:12.5px;font-weight:600;color:#2d3748;line-height:1.35}
+.st-cart-q{display:flex;align-items:center;gap:7px}
+.st-cart-q button{width:24px;height:24px;border:1px solid #d6dbe3;background:#fff;border-radius:6px;cursor:pointer;font-weight:700;color:#1a3a6e;line-height:1}
+.st-cart-q span{font-size:13px;font-weight:700;min-width:16px;text-align:center}
+.st-cart-foot{padding:12px 14px;border-top:1px solid #eef0f3;background:#fff}
+.st-cart-send{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:#fff;border:none;border-radius:10px;padding:13px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit}
+.st-cart-send:hover{background:#1ea352}
+.st-cart-clear{display:block;width:100%;text-align:center;margin-top:8px;background:none;border:none;color:#9aa3af;font-size:12px;cursor:pointer;text-decoration:underline}
+@media(max-width:768px){#st-cta{right:16px;bottom:16px}#st-cart-panel{right:16px;bottom:88px}}
+</style>
+<div id="st-cart-panel">
+  <div class="st-cart-head">&#128722; Your Quote Cart <button class="st-cart-x" onclick="stCartToggle(false)" aria-label="Close">&times;</button></div>
+  <div class="st-cart-body" id="st-cart-body"></div>
+  <div class="st-cart-foot">
+    <button class="st-cart-send" onclick="stCartSend()"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Send Quote on WhatsApp</button>
+    <button class="st-cart-clear" onclick="stCartClear()">Clear cart</button>
+  </div>
+</div>
+<div id="st-cta">
+  <button class="st-cta-btn st-cta-cart" onclick="stCartToggle()" aria-label="Quote Cart">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span class="st-cta-label">Quote Cart</span>
+    <span class="st-cta-badge" id="st-cart-badge">0</span>
+  </button>
+  <a class="st-cta-btn st-cta-call" href="tel:+60162244163" aria-label="Call Setia Trafik">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78A16 16 0 0 0 15.22 16.1l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.2z"/></svg>
+    <span class="st-cta-label">Call Us</span>
+  </a>
+  <a class="st-cta-btn st-cta-wa" href="https://wa.me/60162244163?text=Hi%20Setia%20Trafik%2C%20I%27d%20like%20to%20enquire%20about%20your%20products%20and%20services." target="_blank" rel="noopener" aria-label="WhatsApp Setia Trafik">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="st-cta-label">WhatsApp</span>
+  </a>
+</div>
+<script>
+(function(){
+  var WA='60162244163';
+  function gb(){try{return JSON.parse(localStorage.getItem('st_quote')||'[]')}catch(e){return[]}}
+  function sb(b){localStorage.setItem('st_quote',JSON.stringify(b))}
+  function count(b){return b.reduce(function(s,i){return s+(i.qty||1)},0)}
+  function render(){
+    var b=gb(),body=document.getElementById('st-cart-body'),badge=document.getElementById('st-cart-badge'),n=count(b);
+    if(badge){if(n>0){badge.textContent=n;badge.style.display='flex';}else badge.style.display='none';}
+    if(!body)return;
+    if(!b.length){body.innerHTML='<div class="st-cart-empty">No items yet.<br>Browse products and tap &ldquo;Add to Quote&rdquo;.</div>';return;}
+    body.innerHTML=b.map(function(it,idx){
+      var nm=String(it.name||'Item').replace(/</g,'&lt;');
+      return '<div class="st-cart-row"><div class="st-cart-name">'+nm+'</div>'+
+        '<div class="st-cart-q"><button onclick="stCartQty('+idx+',-1)">&minus;</button>'+
+        '<span>'+(it.qty||1)+'</span>'+
+        '<button onclick="stCartQty('+idx+',1)">+</button></div></div>';
+    }).join('');
+  }
+  window.stCartQty=function(idx,d){var b=gb();if(!b[idx])return;b[idx].qty=(b[idx].qty||1)+d;if(b[idx].qty<1)b.splice(idx,1);sb(b);render();};
+  window.stCartClear=function(){sb([]);render();};
+  window.stCartToggle=function(force){var p=document.getElementById('st-cart-panel');var open=(force===undefined)?!p.classList.contains('open'):force;if(open)render();p.classList.toggle('open',open);};
+  window.stCartSend=function(){var b=gb();if(!b.length){alert('Your quote cart is empty. Add products first.');return;}var lines=b.map(function(i){return '\u2022 '+(i.name||'Item')+' (Qty: '+(i.qty||1)+')';}).join('\n');var msg='Hi Setia Trafik,\n\nI would like to request a quote for the following items:\n\n'+lines+'\n\nPlease advise on pricing and availability. Thank you.';window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');};
+  render();
+  var last=JSON.stringify(gb());
+  setInterval(function(){var c=JSON.stringify(gb());if(c!==last){last=c;render();}},800);
+  window.addEventListener('storage',render);
+})();
+</script>
+
+<script src="i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Files that should NOT be uploaded to Vercel (they stay on your desktop, just not deployed)
+.smbdelete*
+test.txt
+test2.txt
+.DS_Store
+*.HEIC
+muhibah-catalog/index-watermarked.html

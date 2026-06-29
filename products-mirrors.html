@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Convex Mirrors & Safety — Setia Trafik Sdn Bhd</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/><style>
+:root{--blue:#1a3a6e;--navy:#0a1628;--gray-100:#f7f8fa;--gray-200:#eef0f3;--gray-400:#9aa3af;--gray-600:#5a6474;--gray-800:#2d3748;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#fff;color:var(--gray-800);line-height:1.6}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);box-shadow:0 2px 12px rgba(26,58,110,.08)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:70px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.nav-links a{color:#5a6474;text-decoration:none;font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:#f0f5ff}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px}
+@media(max-width:900px){.nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:white;flex-direction:column;padding:16px;border-bottom:1px solid var(--gray-200);box-shadow:0 4px 12px rgba(0,0,0,.1)}nav.open .nav-links{display:flex}.nav-burger{display:flex}}
+.page-hero{background:linear-gradient(135deg,var(--navy) 0%,#0f2548 100%);color:white;padding:100px 32px 60px;margin-top:70px}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px}
+.breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
+.page-hero h1{font-size:clamp(24px,4vw,44px);font-weight:900;margin-bottom:8px}
+.page-hero p{color:#a8c0e0;font-size:15px}
+.search-bar{background:white;border-bottom:1px solid var(--gray-200);padding:14px 32px;position:sticky;top:70px;z-index:100;box-shadow:0 2px 8px rgba(26,58,110,.06)}
+.search-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.search-wrap{position:relative;flex:1;max-width:480px}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray-400)}
+.search-wrap input{width:100%;padding:10px 14px 10px 40px;border:2px solid var(--gray-200);border-radius:9px;font-size:14px;font-family:inherit;outline:none;background:var(--gray-100);transition:.2s}
+.search-wrap input:focus{border-color:var(--blue);background:white}
+#searchHint{font-size:12px;color:var(--gray-400)}
+.catalog{max-width:1280px;margin:0 auto;padding:40px 32px 140px}
+.cat-section{margin-bottom:48px}
+.cat-section h2{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--gray-200)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.card{position:relative;background:white;border:1.5px solid var(--gray-200);border-radius:14px;overflow:hidden;transition:all .25s;box-shadow:0 2px 6px rgba(0,0,0,.05);cursor:pointer}
+.card:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,58,110,.12)}
+.card.hidden{display:none}
+.card-link{position:absolute;inset:0;z-index:1;border-radius:14px}
+.card-img{height:160px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--gray-200)}
+.card-img img{width:100%;height:100%;object-fit:contain;padding:12px;transition:.3s}
+.card:hover .card-img img{transform:scale(1.04)}
+.card-body{padding:14px}
+.card-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.4;min-height:36px}
+.card-sku{font-size:11px;color:var(--gray-400);margin-bottom:10px}
+.card-btns{position:relative;z-index:2;display:flex;gap:6px}
+.btn-detail{flex:1;background:var(--navy);color:white;border:none;padding:8px 0;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;transition:.2s;display:block;position:relative;z-index:2}
+.btn-detail:hover{background:var(--blue)}
+.btn-quote{background:var(--gray-100);border:1.5px solid var(--gray-200);color:var(--navy);padding:8px 10px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:.2s;white-space:nowrap;position:relative;z-index:2}
+.btn-quote:hover{background:#e8eef8;border-color:var(--blue)}
+.btn-quote.added{background:#d1fae5;border-color:#059669;color:#059669}
+.fab{position:fixed;bottom:28px;right:28px;z-index:999;display:none;flex-direction:column;align-items:flex-end;gap:10px}
+.fab-btn{background:var(--blue);color:white;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(26,58,110,.3);display:flex;align-items:center;gap:8px;text-decoration:none;transition:.2s}
+.fab-btn:hover{transform:translateY(-2px)}
+.fab-wa{background:#25D366}.fab-wa:hover{background:#1ea352!important}
+.fab-count{background:#e53e3e;color:white;border-radius:50%;width:20px;height:20px;font-size:11px;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+footer{background:var(--navy);color:rgba(255,255,255,.7);padding:40px 32px;text-align:center;font-size:13px}
+footer a{color:rgba(255,255,255,.7);text-decoration:none}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}.catalog{padding:24px 16px 140px}.card-img{height:120px}.fab{right:16px;bottom:20px}}
+</style>  <!-- launch-meta -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="canonical" href="https://setiatrafik.com/products-mirrors.html">
+  <meta name="description" content="Acrylic and polycarbonate convex safety mirrors for roads, car parks and blind corners. Setia Trafik Malaysia.">
+  <!-- Open Graph / social share preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Setia Trafik">
+  <meta property="og:title" content="Convex Mirrors & Safety — Setia Trafik Sdn Bhd">
+  <meta property="og:description" content="Acrylic and polycarbonate convex safety mirrors for roads, car parks and blind corners. Setia Trafik Malaysia.">
+  <meta property="og:url" content="https://setiatrafik.com/products-mirrors.html">
+  <meta property="og:image" content="https://setiatrafik.com/favicon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Convex Mirrors & Safety — Setia Trafik Sdn Bhd">
+  <meta name="twitter:description" content="Acrylic and polycarbonate convex safety mirrors for roads, car parks and blind corners. Setia Trafik Malaysia.">
+  <meta name="twitter:image" content="https://setiatrafik.com/favicon.png">
+  <!-- Google Analytics (GA4) — replace G-FD0B3GG3EW with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FD0B3GG3EW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FD0B3GG3EW');</script>
+</head><body><nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><img src="https://setiatrafik.com/wp-content/uploads/2018/03/cropped-logo2-5.png" alt="Setia Trafik" style="height:48px;object-fit:contain" onerror="this.style.display='none'"/><span class="logo-name" style="margin-left:10px;font-weight:800;font-size:18px;color:#0a1628;line-height:1.1;letter-spacing:-.2px">Setia <span style="color:#1a3a6e">Trafik</span></span></a>
+    <button class="nav-burger" onclick="this.closest('nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="services.html">What We Do</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="who.html">Who Are We</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="news.html">News</a>
+      <a href="quote.html" style="position:relative;padding:8px 14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span id="cartBadge" style="position:absolute;top:-4px;right:-4px;background:#e53e3e;color:white;border-radius:50%;width:16px;height:16px;font-size:10px;font-weight:700;display:none;align-items:center;justify-content:center">0</span></a>
+      <a href="quote.html" style="background:#1a3a6e;color:white;padding:9px 20px;border-radius:8px;font-weight:600">Get a Quote</a>
+    </div>
+  </div>
+</nav><div class="page-hero"><div class="breadcrumb"><a href="products.html">Products</a> / Convex Mirrors & Safety</div><h1>Convex Mirrors & Safety</h1><p>7 products · Acrylic convex mirrors & safety accessories</p></div><div class="search-bar"><div class="search-inner"><div class="search-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="si" placeholder="Search..." autocomplete="off"/></div><span id="searchHint"></span></div></div><div class="catalog"><div class="cat-section"><h2>Convex Mirrors</h2><div class="grid"><div class="card" data-name="convex mirror 600mm (round)" data-sku="convex-mirror-600-round cm-600r"><a href="product-detail.html?slug=convex-mirror-600-round&name=Convex Mirror 600mm (Round)&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-600-fcb03e.jpg" class="card-link" aria-label="Convex Mirror 600mm (Round)"></a><div class="card-img"><img src="muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-600-fcb03e.jpg" alt="Convex Mirror 600mm (Round)" loading="lazy" onerror="this.style.display='none'"/></div><div class="card-body"><div class="card-name">Convex Mirror 600mm (Round)</div><div class="card-sku">CM-600R</div><div class="card-btns"><a class="btn-detail" href="product-detail.html?slug=convex-mirror-600-round&name=Convex Mirror 600mm (Round)&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-600-fcb03e.jpg">View Details</a><button class="btn-quote" id="qbtn-convex-mirror-600-round" onclick="addQ('Convex Mirror 600mm (Round)','Convex Mirrors & Safety','muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-600-fcb03e.jpg','convex-mirror-600-round')">+ Quote</button></div></div></div>
+<div class="card" data-name="convex mirror 800mm (round)" data-sku="convex-mirror-800-round cm-800r"><a href="product-detail.html?slug=convex-mirror-800-round&name=Convex Mirror 800mm (Round)&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-800-5b35e6.jpg" class="card-link" aria-label="Convex Mirror 800mm (Round)"></a><div class="card-img"><img src="muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-800-5b35e6.jpg" alt="Convex Mirror 800mm (Round)" loading="lazy" onerror="this.style.display='none'"/></div><div class="card-body"><div class="card-name">Convex Mirror 800mm (Round)</div><div class="card-sku">CM-800R</div><div class="card-btns"><a class="btn-detail" href="product-detail.html?slug=convex-mirror-800-round&name=Convex Mirror 800mm (Round)&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-800-5b35e6.jpg">View Details</a><button class="btn-quote" id="qbtn-convex-mirror-800-round" onclick="addQ('Convex Mirror 800mm (Round)','Convex Mirrors & Safety','muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-800-5b35e6.jpg','convex-mirror-800-round')">+ Quote</button></div></div></div>
+<div class="card" data-name="convex mirror d-shape 800mm" data-sku="convex-mirror-d-800 cm-d800"><a href="product-detail.html?slug=convex-mirror-d-800&name=Convex Mirror D-Shape 800mm&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-800-5b35e6.jpg" class="card-link" aria-label="Convex Mirror D-Shape 800mm"></a><div class="card-img"><img src="muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-800-5b35e6.jpg" alt="Convex Mirror D-Shape 800mm" loading="lazy" onerror="this.style.display='none'"/></div><div class="card-body"><div class="card-name">Convex Mirror D-Shape 800mm</div><div class="card-sku">CM-D800</div><div class="card-btns"><a class="btn-detail" href="product-detail.html?slug=convex-mirror-d-800&name=Convex Mirror D-Shape 800mm&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-800-5b35e6.jpg">View Details</a><button class="btn-quote" id="qbtn-convex-mirror-d-800" onclick="addQ('Convex Mirror D-Shape 800mm','Convex Mirrors & Safety','muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-800-5b35e6.jpg','convex-mirror-d-800')">+ Quote</button></div></div></div>
+<div class="card" data-name="convex mirror 1000mm (round)" data-sku="convex-mirror-1000-round cm-1000r"><a href="product-detail.html?slug=convex-mirror-1000-round&name=Convex Mirror 1000mm (Round)&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-1000-b4d2dd.jpg" class="card-link" aria-label="Convex Mirror 1000mm (Round)"></a><div class="card-img"><img src="muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-1000-b4d2dd.jpg" alt="Convex Mirror 1000mm (Round)" loading="lazy" onerror="this.style.display='none'"/></div><div class="card-body"><div class="card-name">Convex Mirror 1000mm (Round)</div><div class="card-sku">CM-1000R</div><div class="card-btns"><a class="btn-detail" href="product-detail.html?slug=convex-mirror-1000-round&name=Convex Mirror 1000mm (Round)&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-1000-b4d2dd.jpg">View Details</a><button class="btn-quote" id="qbtn-convex-mirror-1000-round" onclick="addQ('Convex Mirror 1000mm (Round)','Convex Mirrors & Safety','muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-polycarbonate-1000-b4d2dd.jpg','convex-mirror-1000-round')">+ Quote</button></div></div></div>
+</div></div><div class="cat-section"><h2>Other Safety Equipment</h2><div class="grid"><div class="card" data-name="safety cone with reflective sleeve" data-sku="safety-cone-reflective-sleeve scrs-01"><a href="product-detail.html?slug=safety-cone-reflective-sleeve&name=Safety Cone with Reflective Sleeve&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-stainless-steel-600-56c6a2.jpg" class="card-link" aria-label="Safety Cone with Reflective Sleeve"></a><div class="card-img"><img src="muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-stainless-steel-600-56c6a2.jpg" alt="Safety Cone with Reflective Sleeve" loading="lazy" onerror="this.style.display='none'"/></div><div class="card-body"><div class="card-name">Safety Cone with Reflective Sleeve</div><div class="card-sku">SCRS-01</div><div class="card-btns"><a class="btn-detail" href="product-detail.html?slug=safety-cone-reflective-sleeve&name=Safety Cone with Reflective Sleeve&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-stainless-steel-600-56c6a2.jpg">View Details</a><button class="btn-quote" id="qbtn-safety-cone-reflective-sleeve" onclick="addQ('Safety Cone with Reflective Sleeve','Convex Mirrors & Safety','muhibah-catalog/images-watermarked/convex-mirrors/convex-mirror-stainless-steel-600-56c6a2.jpg','safety-cone-reflective-sleeve')">+ Quote</button></div></div></div>
+<div class="card" data-name="rubber kerb ramp" data-sku="rubber-kerb-ramp rkr-01"><a href="product-detail.html?slug=rubber-kerb-ramp&name=Rubber Kerb Ramp&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/road-studs-accessories/road-hump-rubber-47bc04.jpg" class="card-link" aria-label="Rubber Kerb Ramp"></a><div class="card-img"><img src="muhibah-catalog/images-watermarked/road-studs-accessories/road-hump-rubber-47bc04.jpg" alt="Rubber Kerb Ramp" loading="lazy" onerror="this.style.display='none'"/></div><div class="card-body"><div class="card-name">Rubber Kerb Ramp</div><div class="card-sku">RKR-01</div><div class="card-btns"><a class="btn-detail" href="product-detail.html?slug=rubber-kerb-ramp&name=Rubber Kerb Ramp&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/road-studs-accessories/road-hump-rubber-47bc04.jpg">View Details</a><button class="btn-quote" id="qbtn-rubber-kerb-ramp" onclick="addQ('Rubber Kerb Ramp','Convex Mirrors & Safety','muhibah-catalog/images-watermarked/road-studs-accessories/road-hump-rubber-47bc04.jpg','rubber-kerb-ramp')">+ Quote</button></div></div></div>
+<div class="card" data-name="barrier / warning tape" data-sku="barrier-warning-tape bwt-01"><a href="product-detail.html?slug=barrier-warning-tape&name=Barrier / Warning Tape&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/road-studs-accessories/string-delineator-orange-hip-f1331c.jpg" class="card-link" aria-label="Barrier / Warning Tape"></a><div class="card-img"><img src="muhibah-catalog/images-watermarked/road-studs-accessories/string-delineator-orange-hip-f1331c.jpg" alt="Barrier / Warning Tape" loading="lazy" onerror="this.style.display='none'"/></div><div class="card-body"><div class="card-name">Barrier / Warning Tape</div><div class="card-sku">BWT-01</div><div class="card-btns"><a class="btn-detail" href="product-detail.html?slug=barrier-warning-tape&name=Barrier / Warning Tape&cat=Convex Mirrors %26 Safety&img=muhibah-catalog/images-watermarked/road-studs-accessories/string-delineator-orange-hip-f1331c.jpg">View Details</a><button class="btn-quote" id="qbtn-barrier-warning-tape" onclick="addQ('Barrier / Warning Tape','Convex Mirrors & Safety','muhibah-catalog/images-watermarked/road-studs-accessories/string-delineator-orange-hip-f1331c.jpg','barrier-warning-tape')">+ Quote</button></div></div></div>
+</div></div></div><div class="fab" id="fab">
+  <a class="fab-btn fab-wa" id="fabWA" href="#" target="_blank">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Now
+  </a>
+  <a class="fab-btn" href="quote.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Basket <span class="fab-count" id="fabCount">0</span>
+  </a>
+</div>
+<script>
+var WA='60162244163';
+function gb(){return JSON.parse(localStorage.getItem('st_quote')||'[]');}
+function sb(b){localStorage.setItem('st_quote',JSON.stringify(b));}
+function addQ(name,cat,img,slug){
+  var b=gb(),ex=b.find(function(x){return x.slug===slug;});
+  if(!ex)b.push({name:name,cat:cat,img:img,slug:slug,qty:1});
+  sb(b);upd();
+  var btn=document.getElementById('qbtn-'+slug);
+  if(btn){btn.textContent='\u2713 Added';btn.classList.add('added');}
+}
+function upd(){
+  var b=gb(),n=b.length,fab=document.getElementById('fab');
+  var fc=document.getElementById('fabCount'),cb=document.getElementById('cartBadge');
+  if(n>0){
+    fab.style.display='flex';if(fc)fc.textContent=n;
+    if(cb){cb.textContent=n;cb.style.display='inline-flex';}
+    var t='Hi Setia Trafik, I would like a quotation for:\n\n';
+    b.forEach(function(it,i){t+=(i+1)+'. '+it.name+' x '+it.qty+'\n';});
+    t+='\nPlease advise on pricing and availability. Thank you.';
+    var wa=document.getElementById('fabWA');if(wa)wa.href='https://api.whatsapp.com/send?phone='+WA+'&text='+encodeURIComponent(t);
+  }else{fab.style.display='none';if(cb)cb.style.display='none';}
+}
+function doSearch(q){
+  q=q.toLowerCase().trim();
+  var cards=document.querySelectorAll('.card'),secs=document.querySelectorAll('.cat-section'),tot=0;
+  cards.forEach(function(c){var m=!q||(c.dataset.name||'').includes(q)||(c.dataset.sku||'').includes(q);c.classList.toggle('hidden',!m);if(m)tot++;});
+  secs.forEach(function(s){s.style.display=s.querySelectorAll('.card:not(.hidden)').length?'':'none';});
+  var h=document.getElementById('searchHint');if(h)h.textContent=q?tot+' result'+(tot!==1?'s':''):'';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  upd();
+  var b=gb(),inp=document.getElementById('si');
+  b.forEach(function(x){var btn=document.getElementById('qbtn-'+x.slug);if(btn){btn.textContent='\u2713 Added';btn.classList.add('added');}});
+  if(inp){var q=new URLSearchParams(location.search).get('q')||'';if(q){inp.value=q;doSearch(q);}inp.addEventListener('input',function(){doSearch(this.value);});}
+});
+</script><footer><p>&copy; 2025 Setia Trafik Sdn Bhd &nbsp;&middot;&nbsp; <a href="index.html">Home</a> &nbsp;&middot;&nbsp; <a href="products.html">Products</a> &nbsp;&middot;&nbsp; <a href="quote.html">Quote Basket</a> &nbsp;&middot;&nbsp; <a href="tel:+60162244163">+60 16-224 4163</a></p></footer>
+
+<!-- ═══════════ FLOATING CONTACT + QUOTE CART (st-cta) ═══════════ -->
+<style>
+#st-cta{position:fixed;right:24px;bottom:24px;z-index:1600;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:'Inter',sans-serif}
+.st-cta-btn{position:relative;display:flex;align-items:center;justify-content:center;height:56px;width:56px;border:none;border-radius:50px;cursor:pointer;text-decoration:none;box-shadow:0 6px 22px rgba(0,0,0,.22);overflow:hidden;transition:width .35s ease,padding .35s ease}
+.st-cta-btn svg{flex-shrink:0}
+.st-cta-label{white-space:nowrap;color:#fff;font-weight:700;font-size:14px;max-width:0;opacity:0;transition:.35s}
+.st-cta-btn:hover{width:auto;padding:0 20px 0 16px}
+.st-cta-btn:hover svg{margin-right:10px}
+.st-cta-btn:hover .st-cta-label{max-width:200px;opacity:1}
+.st-cta-wa{background:#25D366;animation:stPulse 2.4s infinite}
+.st-cta-call{background:#1a3a6e}
+.st-cta-cart{background:#0a1628}
+.st-cta-badge{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;background:#ef4444;color:#fff;border-radius:10px;font-size:11px;font-weight:800;display:none;align-items:center;justify-content:center}
+@keyframes stPulse{0%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 13px rgba(37,211,102,0)}100%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,0)}}
+#st-cart-panel{position:fixed;right:24px;bottom:96px;z-index:1599;width:330px;max-width:calc(100vw - 32px);background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.25);overflow:hidden;display:flex;flex-direction:column;max-height:70vh;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transform-origin:bottom right;transition:.28s;font-family:'Inter',sans-serif}
+#st-cart-panel.open{transform:none;opacity:1;pointer-events:all}
+.st-cart-head{background:#0a1628;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.st-cart-head .st-cart-x{margin-left:auto;background:rgba(255,255,255,.18);border:none;color:#fff;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1}
+.st-cart-body{flex:1;overflow-y:auto;padding:12px 14px;background:#f7f8fa}
+.st-cart-empty{text-align:center;color:#9aa3af;font-size:13px;padding:26px 10px;line-height:1.6}
+.st-cart-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #eef0f3;border-radius:10px;padding:9px 11px;margin-bottom:8px}
+.st-cart-name{flex:1;font-size:12.5px;font-weight:600;color:#2d3748;line-height:1.35}
+.st-cart-q{display:flex;align-items:center;gap:7px}
+.st-cart-q button{width:24px;height:24px;border:1px solid #d6dbe3;background:#fff;border-radius:6px;cursor:pointer;font-weight:700;color:#1a3a6e;line-height:1}
+.st-cart-q span{font-size:13px;font-weight:700;min-width:16px;text-align:center}
+.st-cart-foot{padding:12px 14px;border-top:1px solid #eef0f3;background:#fff}
+.st-cart-send{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:#fff;border:none;border-radius:10px;padding:13px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit}
+.st-cart-send:hover{background:#1ea352}
+.st-cart-clear{display:block;width:100%;text-align:center;margin-top:8px;background:none;border:none;color:#9aa3af;font-size:12px;cursor:pointer;text-decoration:underline}
+@media(max-width:768px){#st-cta{right:16px;bottom:16px}#st-cart-panel{right:16px;bottom:88px}}
+</style>
+<div id="st-cart-panel">
+  <div class="st-cart-head">&#128722; Your Quote Cart <button class="st-cart-x" onclick="stCartToggle(false)" aria-label="Close">&times;</button></div>
+  <div class="st-cart-body" id="st-cart-body"></div>
+  <div class="st-cart-foot">
+    <button class="st-cart-send" onclick="stCartSend()"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Send Quote on WhatsApp</button>
+    <button class="st-cart-clear" onclick="stCartClear()">Clear cart</button>
+  </div>
+</div>
+<div id="st-cta">
+  <button class="st-cta-btn st-cta-cart" onclick="stCartToggle()" aria-label="Quote Cart">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span class="st-cta-label">Quote Cart</span>
+    <span class="st-cta-badge" id="st-cart-badge">0</span>
+  </button>
+  <a class="st-cta-btn st-cta-call" href="tel:+60162244163" aria-label="Call Setia Trafik">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78A16 16 0 0 0 15.22 16.1l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.2z"/></svg>
+    <span class="st-cta-label">Call Us</span>
+  </a>
+  <a class="st-cta-btn st-cta-wa" href="https://wa.me/60162244163?text=Hi%20Setia%20Trafik%2C%20I%27d%20like%20to%20enquire%20about%20your%20products%20and%20services." target="_blank" rel="noopener" aria-label="WhatsApp Setia Trafik">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="st-cta-label">WhatsApp</span>
+  </a>
+</div>
+<script>
+(function(){
+  var WA='60162244163';
+  function gb(){try{return JSON.parse(localStorage.getItem('st_quote')||'[]')}catch(e){return[]}}
+  function sb(b){localStorage.setItem('st_quote',JSON.stringify(b))}
+  function count(b){return b.reduce(function(s,i){return s+(i.qty||1)},0)}
+  function render(){
+    var b=gb(),body=document.getElementById('st-cart-body'),badge=document.getElementById('st-cart-badge'),n=count(b);
+    if(badge){if(n>0){badge.textContent=n;badge.style.display='flex';}else badge.style.display='none';}
+    if(!body)return;
+    if(!b.length){body.innerHTML='<div class="st-cart-empty">No items yet.<br>Browse products and tap &ldquo;Add to Quote&rdquo;.</div>';return;}
+    body.innerHTML=b.map(function(it,idx){
+      var nm=String(it.name||'Item').replace(/</g,'&lt;');
+      return '<div class="st-cart-row"><div class="st-cart-name">'+nm+'</div>'+
+        '<div class="st-cart-q"><button onclick="stCartQty('+idx+',-1)">&minus;</button>'+
+        '<span>'+(it.qty||1)+'</span>'+
+        '<button onclick="stCartQty('+idx+',1)">+</button></div></div>';
+    }).join('');
+  }
+  window.stCartQty=function(idx,d){var b=gb();if(!b[idx])return;b[idx].qty=(b[idx].qty||1)+d;if(b[idx].qty<1)b.splice(idx,1);sb(b);render();};
+  window.stCartClear=function(){sb([]);render();};
+  window.stCartToggle=function(force){var p=document.getElementById('st-cart-panel');var open=(force===undefined)?!p.classList.contains('open'):force;if(open)render();p.classList.toggle('open',open);};
+  window.stCartSend=function(){var b=gb();if(!b.length){alert('Your quote cart is empty. Add products first.');return;}var lines=b.map(function(i){return '\u2022 '+(i.name||'Item')+' (Qty: '+(i.qty||1)+')';}).join('\n');var msg='Hi Setia Trafik,\n\nI would like to request a quote for the following items:\n\n'+lines+'\n\nPlease advise on pricing and availability. Thank you.';window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');};
+  render();
+  var last=JSON.stringify(gb());
+  setInterval(function(){var c=JSON.stringify(gb());if(c!==last){last=c;render();}},800);
+  window.addEventListener('storage',render);
+})();
+</script>
+
+<script src="i18n.js"></script>
+</body></html>

@@ -1,0 +1,18 @@
+# OS / junk
+.DS_Store
+.smbdelete*
+._*
+
+# test scratch files
+test.txt
+test2.txt
+
+# unused / non-web media
+*.HEIC
+
+# tooling
+.vercel
+node_modules/
+
+# duplicate internal file
+muhibah-catalog/index-watermarked.html

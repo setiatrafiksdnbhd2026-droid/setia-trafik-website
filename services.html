@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Services &mdash; Setia Trafik Sdn Bhd</title>
+  <meta name="description" content="Traffic management services by Setia Trafik &mdash; TMP design, JKR/DBKL liaison, road closures, work-zone setup and 24/7 emergency traffic control across Klang Valley, Malaysia."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blue: #1a3a6e;
+      --blue-dark: #0f2548;
+      --blue-mid: #2a4d8a;
+      --blue-light: #e8eef8;
+      --blue-xlight: #f0f5ff;
+      --navy: #0a1628;
+      --white: #ffffff;
+      --gray-100: #f7f8fa;
+      --gray-200: #eef0f3;
+      --gray-400: #9aa3af;
+      --gray-600: #5a6474;
+      --gray-800: #2d3748;
+      --green: #22c55e;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 4px 24px rgba(26,58,110,0.10);
+      --shadow-md: 0 8px 40px rgba(26,58,110,0.16);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray-800); line-height: 1.6; }
+
+    /* ─── NAV ─────────────────────────────────────── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      box-shadow: 0 2px 12px rgba(26,58,110,0.08);
+      transition: all 0.3s ease;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 70px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 12px; text-decoration: none;
+    }
+    .logo-img { height: 48px; width: auto; object-fit: contain; }
+    .logo-text { color: var(--navy); font-weight: 700; font-size: 18px; line-height: 1.2; }
+    .logo-text span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: var(--gray-600); text-decoration: none;
+      font-size: 13.5px; font-weight: 500; padding: 8px 14px;
+      border-radius: 8px; transition: all 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); background: var(--blue-xlight); }
+    .nav-links a.active { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue) !important; color: white !important;
+      padding: 9px 20px !important; border-radius: 8px !important;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+
+    /* ─── CERT STRIP ──────────────────────────────── */
+    #cert-strip {
+      background: var(--blue);
+      padding: 10px 32px;
+      margin-top: 70px;
+    }
+    .cert-strip-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .cert-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: white; font-size: 11.5px; font-weight: 700;
+      padding: 5px 14px; border-radius: 6px; letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .cert-label {
+      color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 500;
+    }
+
+    /* ─── HERO ────────────────────────────────────── */
+    #hero {
+      background: var(--navy);
+      padding: 100px 32px 120px;
+      position: relative; overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center;
+    }
+    /* Background video */
+    .hero-video-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      overflow: hidden; z-index: 0; pointer-events: none;
+    }
+    .hero-video-bg video {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 100vw; height: 56.25vw;   /* 16:9 */
+      min-height: 100%; min-width: 177.78vh;
+      transform: translate(-50%, -50%);
+      object-fit: cover; pointer-events: none;
+    }
+    /* Dark overlay so text stays readable */
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(10,22,40,0.80) 0%, rgba(26,58,110,0.55) 100%);
+      z-index: 1;
+    }
+    /* Fade bottom into white */
+    .hero-fade-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
+      background: linear-gradient(to bottom, transparent, var(--white));
+      z-index: 2;
+    }
+    .hero-inner {
+      max-width: 1280px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; z-index: 3;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3);
+      color: #a8c8ff; font-size: 12px; font-weight: 600;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+    .hero-tag::before { content: '●'; font-size: 8px; color: #7ab0f5; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero-h1 {
+      font-size: 58px; font-weight: 900; color: white;
+      line-height: 1.08; margin-bottom: 20px; letter-spacing: -2px;
+    }
+    .hero-h1 span { color: #7ab0f5; }
+    .hero-tagline {
+      font-size: 18px; color: rgba(255,255,255,0.75);
+      margin-bottom: 36px; line-height: 1.6; max-width: 460px;
+    }
+    .hero-stats {
+      display: flex; gap: 24px; margin-bottom: 40px; flex-wrap: wrap;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.10);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius); padding: 18px 24px;
+      cursor: pointer; transition: all 0.25s; text-decoration: none;
+      display: block; backdrop-filter: blur(8px);
+    }
+    .hero-stat:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+    .hero-stat-num { font-size: 28px; font-weight: 800; color: #7ab0f5; line-height: 1; }
+    .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 4px; font-weight: 500; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue); color: white;
+      padding: 14px 28px; border-radius: 10px;
+      font-weight: 700; font-size: 15px; text-decoration: none;
+      border: none; cursor: pointer; transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,58,110,0.5); }
+    .btn-outline {
+      background: rgba(255,255,255,0.1); color: white;
+      padding: 14px 28px; border-radius: 10px;
+      font-weight: 600; font-size: 15px; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      backdrop-filter: blur(8px);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.6); }
+
+    /* Hero right side */
+    .hero-visual { display: flex; flex-direction: column; gap: 16px; }
+    .hero-card {
+      background: white; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg); padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .hero-card-title { color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .hero-cert-list { display: flex; flex-direction: column; gap: 8px; }
+    .hero-cert-item {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--gray-800); font-size: 13px;
+    }
+    .check-icon { color: var(--green); font-size: 14px; }
+    .coverage-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .coverage-tag {
+      background: var(--blue-xlight); color: var(--blue);
+      font-size: 11.5px; padding: 4px 10px; border-radius: 6px; font-weight: 600;
+      border: 1px solid rgba(26,58,110,0.15);
+    }
+
+    /* ─── SECTION COMMON ──────────────────────────── */
+    .section { padding: 80px 32px; }
+    .section-alt { background: var(--gray-100); }
+    .section-dark { background: var(--blue-xlight); }
+    .container { max-width: 1280px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 38px; font-weight: 800; color: var(--navy);
+      line-height: 1.15; margin-bottom: 16px; letter-spacing: -1px;
+    }
+    .section-dark .section-title { color: var(--navy); }
+    .section-sub {
+      font-size: 16px; color: var(--gray-600); max-width: 600px; line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .section-header { margin-bottom: 48px; }
+    .divider {
+      width: 48px; height: 4px; background: var(--blue);
+      border-radius: 4px; margin-top: 16px;
+    }
+
+    /* ─── LOCATION BANNER ─────────────────────────── */
+    #location {
+      background: var(--white); border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);
+      padding: 40px 32px;
+    }
+    .location-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .location-info { display: flex; align-items: center; gap: 16px; }
+    .location-icon {
+      width: 52px; height: 52px; background: var(--blue);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .location-text h3 { color: var(--navy); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .location-text p { color: var(--gray-600); font-size: 14px; }
+    .location-details { display: flex; gap: 32px; flex-wrap: wrap; }
+    .location-detail { text-align: center; }
+    .location-detail-num { color: var(--blue); font-size: 22px; font-weight: 800; }
+    .location-detail-label { color: var(--gray-600); font-size: 12px; margin-top: 2px; }
+
+    /* ─── VIDEO ───────────────────────────────────── */
+    #video { background: var(--blue); padding: 70px 32px; }
+    .video-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .video-inner .section-label { color: rgba(255,255,255,0.7); }
+    .video-inner h2 { font-size: 36px; font-weight: 800; color: white; margin-bottom: 14px; letter-spacing: -1px; }
+    .video-inner p { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 36px; }
+    .video-embed {
+      position: relative; padding-bottom: 56.25%; height: 0;
+      border-radius: 16px; overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .video-embed iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
+    .video-note { color: rgba(255,255,255,0.4); font-size: 12px; margin-top: 16px; }
+
+    /* ─── SERVICES ────────────────────────────────── */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .service-card {
+      background: white; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: all 0.3s; cursor: pointer;
+      text-decoration: none; color: inherit;
+      box-shadow: var(--shadow);
+    }
+    .service-card:hover { border-color: var(--blue); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .service-card.featured { grid-column: span 3; display: grid; grid-template-columns: 1fr 1fr; }
+    .service-card-visual {
+      height: 200px; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; position: relative; overflow: hidden;
+    }
+    .service-card.featured .service-card-visual { height: 100%; min-height: 260px; }
+    .service-card-visual::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+      background: linear-gradient(to top, rgba(26,58,110,0.3), transparent);
+    }
+    .service-card-body { padding: 28px; }
+    .service-card-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 10px;
+    }
+    .service-card h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+    .service-card p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 16px; }
+    .service-features { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .service-feature { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--gray-600); }
+    .service-feature::before { content: '→'; color: var(--blue); font-weight: 700; margin-top: 1px; flex-shrink: 0; }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--blue); font-weight: 600; font-size: 13.5px; text-decoration: none;
+    }
+    .service-link:hover { gap: 10px; }
+    .tm-details { margin-top: 16px; }
+    .tm-details-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 12px; }
+    .tm-detail-box {
+      background: var(--blue-xlight); border: 1px solid var(--blue-light);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .tm-detail-box h5 { font-size: 12px; font-weight: 700; color: var(--blue); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .tm-detail-box ul { list-style: none; }
+    .tm-detail-box ul li { font-size: 12.5px; color: var(--gray-600); padding: 2px 0; }
+    .tm-detail-box ul li::before { content: '• '; color: var(--blue); }
+
+    /* ─── NEWS ────────────────────────────────────── */
+    .news-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .news-card {
+      background: white; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg); overflow: hidden; transition: all 0.3s;
+      box-shadow: var(--shadow);
+    }
+    .news-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .news-img {
+      height: 160px; background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+      display: flex; align-items: center; justify-content: center; font-size: 40px;
+    }
+    .news-body { padding: 20px; }
+    .news-date { font-size: 11px; color: var(--gray-400); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .news-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
+    .news-card p { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+    .news-read { display: inline-flex; align-items: center; gap: 6px; color: var(--blue); font-size: 12.5px; font-weight: 600; text-decoration: none; margin-top: 12px; }
+
+    /* ─── HISTORY ─────────────────────────────────── */
+    .history-timeline { position: relative; }
+    .history-timeline::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: var(--blue-light); transform: translateX(-50%);
+    }
+    .history-item {
+      display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; margin-bottom: 48px;
+      align-items: start;
+    }
+    .history-item:nth-child(odd) .history-content { grid-column: 1; text-align: right; padding-right: 40px; }
+    .history-item:nth-child(odd) .history-empty { grid-column: 3; }
+    .history-item:nth-child(even) .history-empty { grid-column: 1; text-align: right; }
+    .history-item:nth-child(even) .history-content { grid-column: 3; padding-left: 40px; }
+    .history-dot {
+      grid-column: 2; width: 60px; display: flex; align-items: center; justify-content: center;
+      position: relative; padding-top: 16px;
+    }
+    .history-dot-inner {
+      width: 18px; height: 18px; background: var(--blue);
+      border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--blue);
+    }
+    .history-year { font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 6px; }
+    .history-content h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .history-content p { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; }
+
+    /* ─── WHO ARE WE ──────────────────────────────── */
+    .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .who-left h2 { font-size: 38px; font-weight: 800; color: var(--navy); line-height: 1.15; margin-bottom: 20px; letter-spacing: -1px; }
+    .who-left p { color: var(--gray-600); font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
+    .who-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .who-highlight {
+      background: white; border: 1.5px solid var(--blue-light);
+      border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .who-highlight-icon { font-size: 24px; margin-bottom: 10px; }
+    .who-highlight h5 { color: var(--navy); font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .who-highlight p { color: var(--gray-600); font-size: 13px; line-height: 1.6; }
+    .client-logos {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px;
+    }
+    .client-logo {
+      background: white; border: 1.5px solid var(--blue-light);
+      border-radius: 10px; padding: 16px; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--blue); text-align: center;
+      min-height: 60px; box-shadow: var(--shadow);
+    }
+    .why-list { display: flex; flex-direction: column; gap: 14px; }
+    .why-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: white; border: 1.5px solid var(--blue-light);
+      border-radius: var(--radius); padding: 16px 20px;
+      box-shadow: var(--shadow);
+    }
+    .why-num {
+      width: 32px; height: 32px; background: var(--blue);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: white; flex-shrink: 0;
+    }
+    .why-item h5 { color: var(--navy); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .why-item p { color: var(--gray-600); font-size: 13px; line-height: 1.5; }
+
+    /* ─── COVERAGE ────────────────────────────────── */
+    .coverage-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .coverage-state {
+      background: white; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius); padding: 20px 16px; text-align: center;
+      transition: all 0.2s; box-shadow: var(--shadow);
+    }
+    .coverage-state:hover { border-color: var(--blue); background: var(--blue-xlight); }
+    .coverage-state-icon { font-size: 28px; margin-bottom: 8px; }
+    .coverage-state h5 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .coverage-state p { font-size: 12px; color: var(--gray-600); }
+    .coverage-state.active { border-color: var(--blue); background: var(--blue-xlight); }
+    .coverage-state.active h5 { color: var(--blue); }
+
+    /* ─── FAST QUOTE ──────────────────────────────── */
+    #quote { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%); padding: 60px 32px; }
+    .quote-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .quote-inner h2 { font-size: 40px; font-weight: 800; color: white; margin-bottom: 14px; letter-spacing: -1px; }
+    .quote-inner p { font-size: 17px; color: rgba(255,255,255,0.85); margin-bottom: 36px; }
+    .quote-form {
+      display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 12px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 16px; padding: 16px;
+    }
+    .quote-form input, .quote-form select {
+      padding: 12px 16px; border-radius: 10px; border: none;
+      font-size: 14px; font-family: inherit; outline: none;
+      background: white; color: var(--navy);
+    }
+    .quote-form select { cursor: pointer; }
+    .quote-submit {
+      background: var(--navy); color: white;
+      border: none; border-radius: 10px; padding: 12px 24px;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      font-family: inherit; transition: all 0.2s; white-space: nowrap;
+    }
+    .quote-submit:hover { background: #1a3355; }
+    .quote-info {
+      display: flex; align-items: center; justify-content: center; gap: 32px;
+      margin-top: 28px; flex-wrap: wrap;
+    }
+    .quote-info-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 500; }
+
+    /* ─── PRODUCT TABS ────────────────────────────── */
+    .prod-tab {
+      background: white; border: 1.5px solid var(--gray-200);
+      color: var(--gray-600); font-size: 13px; font-weight: 500;
+      padding: 7px 16px; border-radius: 20px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .prod-tab:hover { border-color: var(--blue); color: var(--blue); }
+    .prod-tab.active { background: var(--blue); border-color: var(--blue); color: white; font-weight: 600; }
+
+    /* ─── PRODUCTS ────────────────────────────────── */
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .product-card {
+      background: white; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg); overflow: hidden; transition: all 0.3s;
+      box-shadow: var(--shadow);
+    }
+    .product-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .product-img {
+      height: 180px; background: linear-gradient(135deg, var(--blue-xlight), var(--blue-light));
+      display: flex; align-items: center; justify-content: center; font-size: 56px;
+      position: relative;
+    }
+    .product-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--blue); color: white;
+      font-size: 10px; font-weight: 700; padding: 4px 10px;
+      border-radius: 100px; letter-spacing: 0.5px;
+    }
+    .product-body { padding: 18px; }
+    .product-cat { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--blue); text-transform: uppercase; margin-bottom: 6px; }
+    .product-body h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.3; }
+    .product-body p { font-size: 12.5px; color: var(--gray-600); line-height: 1.5; margin-bottom: 14px; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .product-btn {
+      background: var(--blue); color: white;
+      border: none; border-radius: 8px; padding: 7px 14px;
+      font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+      transition: all 0.2s;
+    }
+    .product-btn:hover { background: var(--blue-dark); }
+
+    /* ─── AI SUGGESTIONS ──────────────────────────── */
+    #ai-suggestions { background: var(--gray-100); padding: 50px 32px; }
+    .ai-inner {
+      max-width: 900px; margin: 0 auto;
+      background: white; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg); padding: 36px;
+      box-shadow: var(--shadow);
+    }
+    .ai-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+    .ai-icon {
+      width: 48px; height: 48px; background: var(--blue);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .ai-header h3 { font-size: 20px; font-weight: 700; color: var(--navy); }
+    .ai-header p { font-size: 13px; color: var(--gray-600); }
+    .ai-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .ai-chip {
+      background: var(--gray-100); border: 1.5px solid var(--gray-200);
+      color: var(--gray-800); font-size: 13px; padding: 8px 16px;
+      border-radius: 100px; cursor: pointer; transition: all 0.2s; font-weight: 500;
+    }
+    .ai-chip:hover, .ai-chip.active {
+      background: var(--blue-xlight); border-color: var(--blue); color: var(--blue);
+    }
+    .ai-result {
+      background: var(--blue-xlight); border-radius: var(--radius); padding: 20px 24px;
+      border-left: 4px solid var(--blue);
+    }
+    .ai-result-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+    .ai-result p { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+    .ai-result-links { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    .ai-result-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--blue); color: white;
+      font-size: 13px; font-weight: 600; padding: 8px 16px;
+      border-radius: 8px; text-decoration: none; transition: all 0.2s;
+    }
+    .ai-result-link:hover { background: var(--blue-dark); }
+    .ai-result-link.outline {
+      background: transparent; color: var(--blue); border: 1.5px solid var(--blue);
+    }
+    .ai-result-link.outline:hover { background: var(--blue-xlight); }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    #footer { background: var(--navy); padding: 60px 32px 0; }
+    .footer-grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-logo-icon {
+      width: 44px; height: 44px; background: var(--blue);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px; color: white; letter-spacing: -1px;
+      display: inline-flex; margin-bottom: 4px;
+    }
+    .footer-logo-text { color: white; font-weight: 700; font-size: 18px; }
+    .footer-logo-text span { color: #7ab0f5; }
+    .footer-brand > a { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 16px; }
+    .footer-contact { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .footer-contact a {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.6); font-size: 13.5px; text-decoration: none; transition: color 0.2s;
+    }
+    .footer-contact a:hover { color: #7ab0f5; }
+    .footer-contact-icon { font-size: 15px; width: 20px; text-align: center; }
+    .footer-cert-strip { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .footer-cert-badge {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.65); font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 6px; letter-spacing: 0.5px;
+    }
+    .footer-col h5 { color: white; font-size: 13px; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #7ab0f5; }
+    .footer-bottom {
+      max-width: 1280px; margin: 0 auto;
+      padding: 20px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 12px; }
+
+    /* ─── MODAL ───────────────────────────────────── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(10,22,40,0.5);
+      z-index: 2000; display: none; align-items: center; justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: white; border-radius: var(--radius-lg);
+      padding: 40px; max-width: 560px; width: 90%; max-height: 80vh;
+      overflow-y: auto; position: relative;
+      box-shadow: 0 20px 60px rgba(26,58,110,0.25);
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; font-size: 22px; cursor: pointer;
+      color: var(--gray-400); line-height: 1;
+    }
+    .modal h2 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .modal .modal-sub { color: var(--gray-600); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+    .modal-section { margin-bottom: 20px; }
+    .modal-section h4 { font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px; }
+    .modal-section p { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+    .modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .modal-section ul li { font-size: 14px; color: var(--gray-600); }
+    .modal-section ul li::before { content: '• '; color: var(--blue); }
+
+    /* ─── SCROLL ANIMATIONS ───────────────────────── */
+    .fade-in { opacity: 1; transform: translateY(24px); transition: all 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .service-card.featured { grid-column: span 2; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .who-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .hero-h1 { font-size: 38px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .coverage-grid { grid-template-columns: repeat(2, 1fr); }
+      .quote-form { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .history-timeline::before { left: 12px; }
+      .history-item { grid-template-columns: 24px 1fr; }
+      .history-item:nth-child(odd) .history-content,
+      .history-item:nth-child(even) .history-content { grid-column: 2; text-align: left; padding: 0 0 0 16px; }
+      .history-dot { grid-column: 1; width: 24px; }
+      .history-empty { display: none; }
+    }
+
+    /* ─── PRODUCT MODAL ──────────────────────────── */
+    .prod-modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 20px;
+    }
+    .prod-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .prod-modal {
+      background: white; border-radius: 16px; position: relative;
+      max-width: 660px; width: 100%; max-height: 88vh; overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+      transform: translateY(24px) scale(0.97); transition: transform 0.3s;
+    }
+    .prod-modal-overlay.open .prod-modal { transform: translateY(0) scale(1); }
+    .prod-modal-close {
+      position: absolute; top: 12px; right: 12px; z-index: 10;
+      background: rgba(0,0,0,0.45); color: white; border: none;
+      border-radius: 50%; width: 34px; height: 34px; font-size: 18px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .prod-modal-close:hover { background: rgba(0,0,0,0.7); }
+    .prod-modal-img {
+      width: 100%; height: 230px; background: #f8faff; padding: 24px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 16px 16px 0 0; overflow: hidden;
+    }
+    .prod-modal-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .prod-modal-body { padding: 22px 26px 26px; }
+    .prod-modal-cat { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .prod-modal-title { font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+    .prod-modal-desc { color: var(--gray-600); font-size: 13.5px; line-height: 1.7; margin-bottom: 18px; }
+    .prod-modal-specs { background: var(--gray-100); border-radius: 10px; padding: 14px; margin-bottom: 20px; }
+    .prod-modal-specs h6 { font-size: 11px; font-weight: 700; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .prod-modal-specs table { width: 100%; border-collapse: collapse; }
+    .prod-modal-specs td { padding: 7px 8px; font-size: 13px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+    .prod-modal-specs tr:last-child td { border-bottom: none; }
+    .prod-modal-specs td:first-child { font-weight: 600; color: var(--gray-800); width: 130px; }
+    .prod-modal-specs td:last-child { color: var(--gray-600); }
+    .prod-modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-add-quote {
+      flex: 1; min-width: 130px; background: var(--blue); color: white;
+      border: none; border-radius: 8px; padding: 12px 16px;
+      font-size: 13.5px; font-weight: 700; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-add-quote:hover { background: var(--blue-dark); }
+    .btn-add-quote.added { background: #22c55e; }
+    .btn-wa-enquire {
+      flex: 1; min-width: 130px; background: #25D366; color: white;
+      border: none; border-radius: 8px; padding: 12px 16px;
+      font-size: 13.5px; font-weight: 700; cursor: pointer; text-decoration: none;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background 0.2s;
+    }
+    .btn-wa-enquire:hover { background: #1ebe5d; }
+
+    /* ─── QUOTE CART FAB ─────────────────────────── */
+    #qcart-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 1500;
+      background: var(--blue); color: white; border: none; border-radius: 50px;
+      padding: 13px 20px; font-size: 13.5px; font-weight: 700;
+      cursor: pointer; box-shadow: 0 8px 32px rgba(26,58,110,0.4);
+      display: flex; align-items: center; gap: 10px;
+      transform: translateY(100px); opacity: 0; transition: all 0.35s;
+    }
+    #qcart-fab.show { transform: translateY(0); opacity: 1; }
+    #qcart-fab:hover { background: var(--blue-dark); }
+    #qcart-count {
+      background: #ef4444; color: white; border-radius: 50%;
+      width: 22px; height: 22px; font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #qcart-panel {
+      position: fixed; bottom: 92px; right: 28px; z-index: 1499;
+      background: white; border-radius: 16px;
+      box-shadow: 0 16px 60px rgba(26,58,110,0.22);
+      width: 340px; max-height: 460px; display: flex; flex-direction: column;
+      transform: scale(0.95) translateY(12px); opacity: 0; pointer-events: none;
+      transition: all 0.3s; transform-origin: bottom right;
+    }
+    #qcart-panel.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+    .qcart-head {
+      padding: 14px 18px 10px; border-bottom: 1px solid var(--gray-200);
+      display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+    }
+    .qcart-head h4 { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .qcart-clear { font-size: 12px; color: var(--gray-400); cursor: pointer; background: none; border: none; text-decoration: underline; }
+    .qcart-body { flex: 1; overflow-y: auto; padding: 10px 12px; }
+    .qcart-empty { text-align: center; color: var(--gray-400); font-size: 13px; padding: 28px 12px; }
+    .qcart-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 10px; background: var(--gray-100); border-radius: 8px; margin-bottom: 7px;
+    }
+    .qcart-item-name { flex: 1; font-size: 12.5px; font-weight: 500; color: var(--gray-800); line-height: 1.3; }
+    .qcart-qty-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .qcart-qty-btn {
+      background: white; border: 1px solid var(--gray-200); border-radius: 4px;
+      width: 22px; height: 22px; font-size: 15px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; color: var(--gray-600); line-height: 1;
+    }
+    .qcart-qty { font-size: 13px; font-weight: 600; color: var(--blue); min-width: 18px; text-align: center; }
+    .qcart-foot { padding: 12px 16px; border-top: 1px solid var(--gray-200); flex-shrink: 0; }
+    .qcart-send {
+      width: 100%; background: #25D366; color: white; border: none; border-radius: 8px;
+      padding: 11px; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: background 0.2s;
+    }
+    .qcart-send:hover { background: #1ebe5d; }
+
+    /* ─── PRODUCT CARD ACTIONS ────────────────────── */
+    .pc-actions { display: flex; gap: 7px; margin-top: 12px; }
+    .pc-btn-detail {
+      flex: 1; background: transparent; color: var(--blue);
+      border: 1.5px solid var(--blue); border-radius: 7px;
+      padding: 8px 10px; font-size: 12.5px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .pc-btn-detail:hover { background: var(--blue-xlight, #e8eef8); }
+    .pc-btn-add {
+      background: var(--blue); color: white; border: 1.5px solid var(--blue); border-radius: 7px;
+      padding: 8px 12px; font-size: 12.5px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .pc-btn-add:hover { background: var(--blue-dark); }
+    .pc-btn-add.added { background: #22c55e; border-color: #22c55e; }
+  
+    .nav-burger { display:none; background:none; border:none; cursor:pointer; flex-direction:column; gap:5px; padding:4px; }
+    .nav-burger span { display:block; width:22px; height:2px; background:var(--gray-600); border-radius:2px; transition:all 0.3s; }
+    @media(max-width:768px){
+      .nav-burger { display:flex; }
+      .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:white; flex-direction:column; padding:12px 0; box-shadow:0 8px 24px rgba(0,0,0,0.1); z-index:100; }
+      nav.open .nav-links { display:flex; }
+      .nav-links a { padding:10px 24px; }
+    }
+  </style>
+  <!-- launch-meta -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="canonical" href="https://setiatrafik.com/services.html">
+  <!-- Open Graph / social share preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Setia Trafik">
+  <meta property="og:title" content="Services &mdash; Setia Trafik Sdn Bhd">
+  <meta property="og:description" content="Traffic management services by Setia Trafik &mdash; TMP design, JKR/DBKL liaison, road closures, work-zone setup and 24/7 emergency traffic control across Klang Valley, Malaysia.">
+  <meta property="og:url" content="https://setiatrafik.com/services.html">
+  <meta property="og:image" content="https://setiatrafik.com/favicon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Services &mdash; Setia Trafik Sdn Bhd">
+  <meta name="twitter:description" content="Traffic management services by Setia Trafik &mdash; TMP design, JKR/DBKL liaison, road closures, work-zone setup and 24/7 emergency traffic control across Klang Valley, Malaysia.">
+  <meta name="twitter:image" content="https://setiatrafik.com/favicon.png">
+  <!-- Google Analytics (GA4) — replace G-FD0B3GG3EW with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FD0B3GG3EW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FD0B3GG3EW');</script>
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="https://setiatrafik.com/wp-content/uploads/2018/03/cropped-logo2-5.png"
+           alt="Setia Trafik" class="logo-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="logo-text" style="display:block;">Setia <span>Trafik</span></div>
+    </a>
+    <button class="nav-burger" onclick="this.closest('nav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="services.html">What We Do</a>
+      <a href="products.html">Products</a>
+      <a href="who.html">Who Are We</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="news.html">News &amp; Projects</a>
+      <a href="quote.html" title="Quote Cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      </a>
+      <a href="quote.html" class="nav-cta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<section style="background:linear-gradient(135deg,var(--navy) 0%,#0f2548 100%);color:white;padding:110px 0 70px;margin-top:72px;">
+  <div class="container fade-in" style="text-align:center;">
+    <div class="section-label" style="color:#7eb3f5;margin-bottom:12px;">Traffic Management</div>
+    <h1 style="font-size:clamp(28px,5vw,52px);font-weight:900;margin-bottom:16px;">Our Services</h1>
+    <p style="color:#a8c0e0;font-size:16px;max-width:620px;margin:0 auto 28px;">End-to-end traffic management &mdash; CIDB G5-registered, Bumiputera-status, 24/7 operations across Malaysia.</p>
+    <a href="quote.html" style="background:var(--blue);color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;display:inline-block;">Get a Free Quote &rarr;</a>
+  </div>
+</section>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Complete Traffic Management Solutions</h2>
+      <div class="divider"></div>
+      <p class="section-sub">From TMP design to full on-site deployment — we handle every aspect of traffic control so your project stays safe and on schedule.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card featured fade-in">
+        <div class="service-card-visual">
+          <img src="P8041034-copy.jpg" alt="Setia Trafik Traffic Management" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-tag">Core Service</div>
+          <h3>Traffic Management — Pengurusan Trafik</h3>
+          <p>When your project involves a live road, construction interruption, or any work zone impacting traffic — Setia Trafik is the specialist you call. We handle the entire Traffic Management scope end-to-end so you can focus on construction, the utility installation, or the rail works.</p>
+          <div class="tm-details">
+            <div class="tm-details-grid">
+              <div class="tm-detail-box">
+                <h5>TMP Design</h5>
+                <ul>
+                  <li>Plan drafting &amp; submission</li>
+                  <li>Regulatory liaison (JKR/DBKL)</li>
+                  <li>Compliance documentation</li>
+                </ul>
+              </div>
+              <div class="tm-detail-box">
+                <h5>Certified Team</h5>
+                <ul>
+                  <li>Traffic Manager</li>
+                  <li>TMO &amp; Supervisor</li>
+                  <li>Flagman &amp; Traffic Controller</li>
+                  <li>TMDT Driver</li>
+                </ul>
+              </div>
+              <div class="tm-detail-box">
+                <h5>Owned Fleet</h5>
+                <ul>
+                  <li>TMDT Lorry &amp; ERT Vehicle</li>
+                  <li>Shadow Vehicle</li>
+                  <li>Water Tanker &amp; Road Sweeper</li>
+                  <li>Manager 4×4</li>
+                </ul>
+              </div>
+              <div class="tm-detail-box">
+                <h5>Equipment Supply</h5>
+                <ul>
+                  <li>DBKL/JKR signage</li>
+                  <li>Lightweight barriers &amp; hoarding</li>
+                  <li>Solar-powered devices</li>
+                  <li>Road marking materials</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <br />
+          <a href="#" class="service-link">Full Traffic Management Details →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-card-visual">
+          <img src="https://images.pexels.com/photos/28962063/pexels-photo-28962063.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Traffic Management Equipment and Materials" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-tag">Equipment</div>
+          <h3>TM Equipment &amp; Materials</h3>
+          <p>Supply and rental of certified traffic management equipment — from cones and barriers to electronic warning devices. All DBKL and JKR approved.</p>
+          <div class="service-features">
+            <div class="service-feature">Temporary traffic signs &amp; signals</div>
+            <div class="service-feature">Variable message signs (VMS)</div>
+            <div class="service-feature">Solar-powered arrow boards</div>
+            <div class="service-feature">Water-filled barrier rental</div>
+          </div>
+          <a href="products.html" class="service-link">View Equipment Catalog →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-card-visual">
+          <img src="https://images.pexels.com/photos/12081659/pexels-photo-12081659.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Traffic Equipment Catalog" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-tag">Catalog</div>
+          <h3>Traffic Equipment Catalog</h3>
+          <p>Browse our complete catalog of traffic control products — cones, delineators, bollards, road studs, reflective sheeting and more. Competitive pricing on bulk orders.</p>
+          <div class="service-features">
+            <div class="service-feature">Full product specs &amp; datasheets</div>
+            <div class="service-feature">Bulk purchase discounts</div>
+            <div class="service-feature">Delivery across Malaysia</div>
+          </div>
+          <a href="products.html" class="service-link">Browse Catalog →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-card-visual">
+          <img src="1.jpg" alt="Road Barrier Systems" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-tag">Safety</div>
+          <h3>Road Barrier Systems</h3>
+          <p>Supply, delivery and installation of temporary and permanent road barrier systems — Jersey barriers, water-filled barriers, Armco crash barriers and more.</p>
+          <div class="service-features">
+            <div class="service-feature">Jersey &amp; water-filled barriers</div>
+            <div class="service-feature">Armco crash barriers</div>
+            <div class="service-feature">Installation &amp; removal service</div>
+          </div>
+          <a href="#" class="service-link">Barrier Solutions →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-card-visual">
+          <img src="5.jpg" alt="Construction Traffic Control" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-tag">Construction</div>
+          <h3>Construction Traffic Control</h3>
+          <p>Dedicated traffic management for construction sites — highway widening, utility works, bridge construction and building projects. CIDB Grade G5 registered contractor.</p>
+          <div class="service-features">
+            <div class="service-feature">Highway &amp; expressway projects</div>
+            <div class="service-feature">Utility &amp; drainage works</div>
+            <div class="service-feature">Building &amp; infrastructure projects</div>
+          </div>
+          <a href="quote.html" class="service-link">Request for This Project →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ AI SUGGESTIONS ═══════════ -->
+<section id="ai-suggestions">
+  <div class="container">
+    <div class="ai-inner fade-in">
+      <div class="ai-header">
+        <div class="ai-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+        <div>
+          <h3>What Are You Looking For?</h3>
+          <p>Tell us about your project and we'll point you to exactly what you need.</p>
+        </div>
+      </div>
+      <div class="ai-chips">
+        <div class="ai-chip active" onclick="showSuggestion('highway')">Highway / Expressway Works</div>
+        <div class="ai-chip" onclick="showSuggestion('utility')">Utility / Drainage Works</div>
+        <div class="ai-chip" onclick="showSuggestion('building')">Building Construction</div>
+        <div class="ai-chip" onclick="showSuggestion('event')">Event / Road Closure</div>
+        <div class="ai-chip" onclick="showSuggestion('equipment')">Just Equipment / Rental</div>
+        <div class="ai-chip" onclick="showSuggestion('emergency')">Emergency / Urgent</div>
+      </div>
+      <div class="ai-result" id="ai-result">
+        <div class="ai-result-label">Recommended for You</div>
+        <p id="ai-result-text">For highway and expressway works, you'll need a full Traffic Management Plan (TMP) submitted to JKR before any works begin. Our in-house TMP designers handle all drawings and regulatory liaison — then our CIDB G5-registered team deploys with owned TMDT lorries, ERT vehicles, shadow vehicles and all required DBKL/JKR signage. We've handled dozens of major highway projects across Malaysia.</p>
+        <div class="ai-result-links">
+          <a href="#services" class="ai-result-link">View Traffic Management →</a>
+          <a href="quote.html" class="ai-result-link outline">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" style="display:flex;align-items:center;text-decoration:none;margin-bottom:16px;">
+        <img src="https://setiatrafik.com/wp-content/uploads/2018/03/cropped-logo2-5.png"
+             alt="Setia Trafik" style="height:52px;width:auto;filter:brightness(0) invert(1);"
+             onerror="this.style.display='none';" />
+      </a>
+      <p style="color:rgba(255,255,255,0.55);font-size:13.5px;line-height:1.7;max-width:280px;">
+        Malaysia's specialist traffic management &amp; road safety partner. CIDB Grade G5 (Active), MOF Registered, Bumiputera status, PKK/STB &amp; SPKK certified. Nationwide coverage since 2015.
+      </p>
+      <div class="footer-contact">
+        <a href="mailto:admin@setiatrafik.com"><span class="footer-contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span> admin@setiatrafik.com</a>
+        <a href="tel:+60162244163"><span class="footer-contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78A16 16 0 0 0 15.22 16.1l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.2z"/></svg></span> +60 16-224 4163</a>
+        <a href="https://wa.me/60162244163"><span class="footer-contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> WhatsApp Us</a>
+        <a href="index.html#location"><span class="footer-contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span> Bandar Baru Bangi, Selangor (HQ)</a>
+      </div>
+      <div class="footer-cert-strip">
+        <span class="footer-cert-badge">CIDB G5</span>
+        <span class="footer-cert-badge">MOF</span>
+        <span class="footer-cert-badge">Bumiputera</span>
+        <span class="footer-cert-badge">PKK/STB</span>
+        <span class="footer-cert-badge">SPKK</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Traffic Management</a></li>
+        <li><a href="#services">TM Equipment &amp; Materials</a></li>
+        <li><a href="#services">Traffic Equipment Catalog</a></li>
+        <li><a href="#services">Road Barrier Systems</a></li>
+        <li><a href="#services">Construction TM</a></li>
+        <li><a href="#services">TMP Design &amp; Submission</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="who.html">Who Are We</a></li>
+        <li><a href="who.html">Our History</a></li>
+        <li><a href="news.html">Latest News</a></li>
+        <li><a href="coverage.html">Coverage Areas</a></li>
+        <li><a href="#" onclick="openModal('certs'); return false;">Certifications</a></li>
+        <li><a href="quote.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Products</h5>
+      <ul>
+        <li><a href="products.html">Traffic Cones</a></li>
+        <li><a href="products.html">Road Barriers</a></li>
+        <li><a href="products.html">Solar Arrow Boards</a></li>
+        <li><a href="products.html">Variable Message Signs</a></li>
+        <li><a href="products.html">Road Markings</a></li>
+        <li><a href="products.html">Signage &amp; Road Studs</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2015–2026 Setia Trafik Sdn. Bhd. All Rights Reserved.</p>
+    <p style="color:rgba(255,255,255,0.25);"><a href="certificates/ssm.pdf" target="_blank" rel="noopener" onclick="openCert('certificates/ssm.pdf','SSM — Suruhanjaya Syarikat Malaysia');return false;" style="color:rgba(255,255,255,0.55);text-decoration:underline;cursor:pointer">SSM: 1125991-D</a> &nbsp;·&nbsp; <a href="certificates/cidb-g5.pdf" target="_blank" rel="noopener" onclick="openCert('certificates/cidb-g5.pdf','CIDB Grade G5 — Perakuan Pendaftaran');return false;" style="color:rgba(255,255,255,0.55);text-decoration:underline;cursor:pointer">CIDB: 0120170110-WP183722 (G5)</a> &nbsp;·&nbsp; <a href="certificates/mof.pdf" target="_blank" rel="noopener" onclick="openCert('certificates/mof.pdf','MOF — Sijil Akuan Pendaftaran Syarikat');return false;" style="color:rgba(255,255,255,0.55);text-decoration:underline;cursor:pointer">MOF: 357-02248200</a></p>
+  </div>
+</footer>
+
+<!-- ═══════════ MODALS ═══════════ -->
+<div class="modal-overlay" id="modal-about" onclick="closeModal('about')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('about')">✕</button>
+    <h2>Our Story</h2>
+    <p class="modal-sub">Setia Trafik was established in 2015 with a clear mission: to raise the standard of traffic management in Malaysia.</p>
+    <div class="modal-section">
+      <h4>Founded 2015</h4>
+      <p>Started as a small team of certified traffic managers in Kuala Lumpur, handling utility and drainage works around the Klang Valley. Our founding principle was simple — hire only certified people, own our equipment, and never cut corners on safety.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Growth Milestones</h4>
+      <ul>
+        <li>2015 — Company founded, first JKR contract awarded</li>
+        <li>2017 — CIDB Grade G5 registered, first highway expressway project</li>
+        <li>2019 — MOF registration obtained, fleet expanded to 15 vehicles</li>
+        <li>2021 — East Malaysia operations launched (Sabah &amp; Sarawak)</li>
+        <li>2024 — PKK/STB &amp; SPKK certifications, Bumiputera status recognised</li>
+        <li>2026 — 500+ projects, 50+ personnel, nationwide coverage</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>Our Vision</h4>
+      <p>To be Malaysia's most trusted and comprehensive traffic management company — where every project is safer because we were there.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-certs" onclick="closeModal('certs')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('certs')">✕</button>
+    <h2>Certifications &amp; Accreditations</h2>
+    <p class="modal-sub">Setia Trafik holds all required Malaysian certifications for traffic management and government contracting.</p>
+    <div style="margin:2px 0 18px;"><div style="font-size:12px;font-weight:700;color:#5a6474;margin-bottom:8px;">📄 View official certificates (PDF):</div><div style="display:flex;flex-wrap:wrap;gap:8px;"><button type="button" onclick="openCert('certificates/cidb-g5.pdf','CIDB Grade G5 — Perakuan Pendaftaran')" style="background:#e8eef8;color:#1a3a6e;border:1px solid #c3dcf5;border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit">CIDB G5</button><button type="button" onclick="openCert('certificates/mof.pdf','MOF — Sijil Akuan Pendaftaran Syarikat')" style="background:#e8eef8;color:#1a3a6e;border:1px solid #c3dcf5;border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit">MOF</button><button type="button" onclick="openCert('certificates/mof-bumiputera.pdf','MOF — Sijil Akuan Pendaftaran Bumiputera')" style="background:#e8eef8;color:#1a3a6e;border:1px solid #c3dcf5;border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit">MOF Bumiputera</button><button type="button" onclick="openCert('certificates/stb-pkk.pdf','PKK — Sijil Taraf Bumiputera')" style="background:#e8eef8;color:#1a3a6e;border:1px solid #c3dcf5;border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit">PKK / STB</button><button type="button" onclick="openCert('certificates/spkk.pdf','SPKK — Sijil Perolehan Kerja Kerajaan')" style="background:#e8eef8;color:#1a3a6e;border:1px solid #c3dcf5;border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit">SPKK</button><button type="button" onclick="openCert('certificates/ssm.pdf','SSM — Suruhanjaya Syarikat Malaysia')" style="background:#e8eef8;color:#1a3a6e;border:1px solid #c3dcf5;border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit">SSM</button></div></div>
+    <div class="modal-section">
+      <h4>CIDB — Lembaga Pembangunan Industri Pembinaan Malaysia</h4>
+      <ul>
+        <li>Grade G5 — Active STATUS (valid 21/03/2024 – 18/05/2027)</li>
+        <li>Reg. No: 0120170110-WP183722 (registered since 10/01/2017)</li>
+        <li>Category B (B04) · Category CE (CE01, CE21) · Category ME (M15)</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>Kementerian Kewangan Malaysia — MOF</h4>
+      <ul>
+        <li>Sijil Akuan Pendaftaran Syarikat — No. K66225977404005447 (valid until 27/10/2027)</li>
+        <li>Sijil Akuan Pendaftaran Syarikat Bumiputera — MOF-recognised Bumiputera company</li>
+        <li>MOF Ref: 357-02248200</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>PKK / STB / SPKK</h4>
+      <ul>
+        <li>Sijil Taraf Bumiputera (STB) — Pusat Khidmat Kontraktor (valid until 18/05/2027)</li>
+        <li>Sijil Perolehan Kerja Kerajaan (SPKK) — CIDB (valid until 18/05/2027)</li>
+        <li>Authorised officer: Hajar Maryam Binti Mohamed Hashim (Director)</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>What This Means For You</h4>
+      <p>When you engage Setia Trafik, you're working with a fully certified, Bumiputera-status contractor that meets all regulatory requirements for traffic management in Malaysia. Our certifications mean faster approvals, Bumiputera procurement eligibility, and a safer site.</p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+  // ─── PRODUCT DATABASE ───────────────────────────────────────────────────────
+  const BASE_IMG = 'https://www.muhibahholdings.com/img/uploads/';
+  const WAPHONE = '60162244163';
+
+  function imgSrc(img) {
+    if (!img) return '';
+    if (img.startsWith('http')) return img;
+    return BASE_IMG + img;
+  }
+
+  const PRODUCTS = [
+    // ── BARRIERS & HOARDINGS ────────────────────────────────────────────────
+    {id:'b1',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Plastic Barrier (Standard)',
+     img:'Untitled-1_20260422160012_05a940.jpg',
+     desc:'Standard plastic road barrier, 7 kg. Water-fillable for added stability on work zones and lane closures. UV-stabilized and stackable.',
+     specs:[['Weight','7 kg'],['Dimensions','800H × 1000L × 500W mm'],['Material','PE Plastic'],['Colour','Red / White'],['Features','Water-fillable, Stackable, Interlocking, UV Stabilized']]},
+    {id:'b2',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Plastic Hoarding 7kg',
+     img:'Untitled-5_20260422161131_056f4d.jpg',
+     desc:'Modular plastic site hoarding, 7 kg. Quick-assembly perimeter fencing for construction and road works.',
+     specs:[['Weight','7 kg'],['Type','Hoarding Panel'],['Features','Modular, Interlocking']]},
+    {id:'b3',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Precast Concrete Barrier 2M × 450mm',
+     img:'c.barrier_200x450_20260423045959_d55998.jpg',
+     desc:'NJB-profile precast concrete barrier. Grade 25 Ready Mix, JKR-spec for permanent and semi-permanent installations.',
+     specs:[['Length','2000 mm'],['Height','450 mm'],['Grade','Grade 25 Ready Mix'],['Profile','NJB (New Jersey Barrier)']]},
+    {id:'b4',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Precast Concrete Barrier 2M × 600mm',
+     img:'c.barrier_2000x600_20260424061401_43bff1.jpg',
+     desc:'Heavy-duty NJB concrete barrier, 2000 kg. Suitable for highway median separation and high-impact zones.',
+     specs:[['Length','2000 mm'],['Height','600 mm'],['Weight','2000 kg'],['Profile','NJB (New Jersey Barrier)']]},
+    {id:'b5',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Steel Barrier',
+     img:'steel_barrier_20260423040608_54079f.jpg',
+     desc:'Galvanised steel road barrier, 3.8 kg. Lightweight and durable for urban and expressway work zones.',
+     specs:[['Weight','3.8 kg'],['Material','Galvanised Steel']]},
+    {id:'b6',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Stainless Steel Barrier',
+     img:'stainless_steel_barrier_20260423040720_82755c.jpg',
+     desc:'Stainless steel road barrier with high durability and corrosion resistance for long-term deployments.',
+     specs:[['Weight','6 kg'],['Material','Stainless Steel']]},
+    {id:'b7',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Plastic Road Barrier 8kg',
+     img:'plastic_barrier_8kg_20260423040919_46e206.jpg',
+     desc:'Heavy-duty plastic road barrier, 8 kg. Water-fillable, ideal for lane closures and TMP deployment.',
+     specs:[['Weight','8 kg'],['Material','HDPE Plastic'],['Features','Water-fillable']]},
+    {id:'b8',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Precast Concrete Barrier 450mm',
+     img:'concrete_barrier_20260423045214_fec7e6.jpg',
+     desc:'Standard NJB precast concrete barrier, 450mm height. JKR-approved for road median and lane separation.',
+     specs:[['Height','450 mm'],['Profile','NJB'],['Application','Road median, lane separation']]},
+    {id:'b9',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Precast Concrete Barrier w/Interlock 450mm',
+     img:'interlocking_20260424093224_d5b1f2.jpg',
+     desc:'Interlocking NJB precast concrete barrier, 450mm. Pin-and-socket interlock system for lateral stability.',
+     specs:[['Height','450 mm'],['Feature','Interlock pin-and-socket system'],['Profile','NJB']]},
+    {id:'b10',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Precast Concrete Barrier w/Interlock 500mm',
+     img:'',
+     desc:'Interlocking NJB precast concrete barrier, 500mm. Heavy-duty with interlock feature for enhanced stability.',
+     specs:[['Height','500 mm'],['Feature','Interlock pin-and-socket system'],['Profile','NJB']]},
+    {id:'b11',cat:'barriers',catLabel:'Barriers & Hoardings',name:'Precast Concrete Barrier 500mm',
+     img:'',
+     desc:'NJB precast concrete barrier, 500mm height. Suitable for elevated road sections and higher-impact zones.',
+     specs:[['Height','500 mm'],['Profile','NJB']]},
+
+    // ── CONES & POSTS ───────────────────────────────────────────────────────
+    {id:'c1',cat:'cones',catLabel:'Cones & Posts',name:'PE Cone Rubber Base 750mm',
+     img:'pe_cone_rubber_base_20260423065449_ebb3ad.jpg',
+     desc:'Polyethylene traffic cone with rubber base (385×385mm). JKR-approved for highway and urban road works.',
+     specs:[['Height','750 mm'],['Base','385 × 385 mm'],['Material','PE + Rubber'],['Standard','JKR / REAM']]},
+    {id:'c2',cat:'cones',catLabel:'Cones & Posts',name:'PE Cone 750mm',
+     img:'pe_cone_20260423065923_acfb3c.jpg',
+     desc:'Standard PE traffic cone, 750mm, 2.8 kg. Lightweight with retroreflective sleeve for day and night visibility.',
+     specs:[['Height','750 mm'],['Weight','2.8 kg'],['Material','PE']]},
+    {id:'c3',cat:'cones',catLabel:'Cones & Posts',name:'PVC Cone 3.2kg Rubber Base 750mm',
+     img:'pvc_cone_3.2_20260423070211_e9ff14.jpg',
+     desc:'PVC traffic cone with rubber base, 3.2 kg. REAM-compliant retroreflective sleeve for day and night visibility.',
+     specs:[['Height','750 mm'],['Weight','3.2 kg'],['Material','PVC + Rubber base'],['Standard','REAM']]},
+    {id:'c4',cat:'cones',catLabel:'Cones & Posts',name:'PVC Cone 5kg Rubber Base 750mm',
+     img:'pvc_cone_5_20260427010202_cfe2c0.jpg',
+     desc:'Heavy PVC traffic cone with rubber base, 5 kg. For high-wind and high-traffic work zones.',
+     specs:[['Height','750 mm'],['Weight','5 kg'],['Material','PVC + Rubber base']]},
+    {id:'c5',cat:'cones',catLabel:'Cones & Posts',name:'Super Cone MDPE Rubber Base 1000mm',
+     img:'mdpe_supercone_20260423083052_7fc982.jpg',
+     desc:'Medium-density PE super cone with rubber base, 1000mm, 5.5 kg. For expressway and highway deployments.',
+     specs:[['Height','1000 mm'],['Weight','5.5 kg'],['Material','MDPE + Rubber base']]},
+    {id:'c6',cat:'cones',catLabel:'Cones & Posts',name:'Super Cone HDPE Rubber Base 1000mm',
+     img:'hdpe_super_cone_20260423071330_1266c0.jpg',
+     desc:'High-density PE super cone with rubber base, 1000mm. Heavy-duty for major highway and expressway use.',
+     specs:[['Height','1000 mm'],['Weight','5.5 kg'],['Material','HDPE + Rubber base']]},
+    {id:'c7',cat:'cones',catLabel:'Cones & Posts',name:'Triangle Cone 660mm',
+     img:'triangle_cone_20260423083612_c5987e.jpg',
+     desc:'Triangular traffic cone, 660mm, 3.6 kg. Distinctive shape for enhanced visibility at work zones.',
+     specs:[['Height','660 mm'],['Weight','3.6 kg'],['Shape','Triangle']]},
+    {id:'c8',cat:'cones',catLabel:'Cones & Posts',name:'PE Reflective Post 1170mm',
+     img:'pe_reflective_post_20260423074553_bc235b.jpg',
+     desc:'Flexible PE delineator post, 1170mm, post 1.2 kg + base 2 kg. Class 1 retroreflective for lane edge marking.',
+     specs:[['Height','1170 mm'],['Post weight','1.2 kg'],['Base weight','2 kg'],['Material','PE']]},
+    {id:'c9',cat:'cones',catLabel:'Cones & Posts',name:'PVC Reflective Post 750mm',
+     img:'pvc_flexible_post_20260423083320_a69e27.jpg',
+     desc:'Flexible PVC reflective post, 750mm, 1.5 kg. Spring-back design for high-traffic areas.',
+     specs:[['Height','750 mm'],['Weight','1.5 kg'],['Material','PVC Flexible']]},
+    {id:'c10',cat:'cones',catLabel:'Cones & Posts',name:'PU Flexible Post SIRIM Certified',
+     img:'pu_felxibar_post_sirim_20260423090658_8a1c55.jpg',
+     desc:'SIRIM-certified PU flexible post with retroreflective sheeting. Certified for Malaysian road works.',
+     specs:[['Material','Polyurethane (PU)'],['Certification','SIRIM'],['Feature','Flexible spring-back']]},
+    {id:'c11',cat:'cones',catLabel:'Cones & Posts',name:'PU Flexible Post 750mm',
+     img:'pu_felxibar_post_750_20260423090037_d46760.jpg',
+     desc:'Polyurethane flexible delineator post, 1.3 kg. Impact-resistant with retroreflective tape for lane marking.',
+     specs:[['Weight','1.3 kg'],['Material','Polyurethane (PU)'],['Feature','Flexible spring-back']]},
+    {id:'c12',cat:'cones',catLabel:'Cones & Posts',name:'Block Flexible Post (TPU + Rubber Base)',
+     img:'block_flexible_post_20260423083829_b6122e.jpg',
+     desc:'TPU flexible post on heavy rubber block base. Stable and highly visible for lane closures.',
+     specs:[['Post weight','1.35 kg'],['Base weight','10.5 kg'],['Material','TPU post + Rubber base']]},
+    {id:'c13',cat:'cones',catLabel:'Cones & Posts',name:'PU Flexible Post 450mm',
+     img:'pu_felxibar_post_450_20260423085216_0f471e.jpg',
+     desc:'Short PU flexible delineator post, 450mm. For kerb guidance and car park delineation.',
+     specs:[['Height','450 mm'],['Weight','0.6 kg'],['Material','Polyurethane (PU)']]},
+
+    // ── LIGHTS & BLINKERS ───────────────────────────────────────────────────
+    {id:'l1',cat:'lights',catLabel:'Lights & Blinkers',name:'Baton Light MKH',
+     img:'Untitled-7_20260422161308_7a75b6.jpg',
+     desc:'MKH-brand 6-LED baton light. For flagmen and traffic controllers at work zones. Rechargeable with dual-end visibility.',
+     specs:[['LEDs','6'],['Brand','MKH'],['Use','Flagman / Traffic Controller']]},
+    {id:'l2',cat:'lights',catLabel:'Lights & Blinkers',name:'Baton Light Standard',
+     img:'Untitled-1_20260422161358_27448d.jpg',
+     desc:'Standard LED baton light, 285 g. Lightweight design for traffic management officers and road workers.',
+     specs:[['Weight','285 g'],['Type','LED Baton']]},
+    {id:'l3',cat:'lights',catLabel:'Lights & Blinkers',name:'Battery Operated Blinker (Amber)',
+     img:'battery_operated_blinker_20260424083235_3f64e0.jpg',
+     desc:'0.4W solar-charged amber blinker with battery backup. Consistent flash even in low-sunlight conditions.',
+     specs:[['Power','0.4W Solar'],['Colour','Amber'],['Operation','Auto dusk-to-dawn']]},
+    {id:'l4',cat:'lights',catLabel:'Lights & Blinkers',name:'Battery Operated Blinker (Blue)',
+     img:'blu_blinker_20260424090709_30cc41.jpg',
+     desc:'Solar/battery operated blue blinker. For police barriers and designated blue-light areas.',
+     specs:[['Power','0.4W Solar'],['Colour','Blue'],['Operation','Auto dusk-to-dawn']]},
+    {id:'l5',cat:'lights',catLabel:'Lights & Blinkers',name:'Solar Blinker Double Sided',
+     img:'Untitled-9_20260422161745_2acd77.jpg',
+     desc:'Double-sided solar blinker with Ni-MH battery backup. Visible from both directions for maximum coverage.',
+     specs:[['Battery','Ni-MH 1.2V 1500mAh'],['Feature','Double-sided visibility'],['Power','Solar']]},
+    {id:'l6',cat:'lights',catLabel:'Lights & Blinkers',name:'Solar Warning Light (Amber)',
+     img:'solar_warning_light-amber_20260424081857_5014be.jpg',
+     desc:'Solar-powered amber warning light, DC6V PCB. Auto on/off at dusk. For barriers, cones and road work signs.',
+     specs:[['Power','DC6V Solar PCB'],['Colour','Amber'],['Type','Warning / Beacon']]},
+    {id:'l7',cat:'lights',catLabel:'Lights & Blinkers',name:'Solar Warning Light (Blue)',
+     img:'solar_warning_light-blue_20260424081114_e3b34c.jpg',
+     desc:'Solar-powered blue warning light with PCB control board. For police and emergency use.',
+     specs:[['Power','DC6V Solar PCB'],['Colour','Blue'],['Type','Warning / Beacon']]},
+    {id:'l8',cat:'lights',catLabel:'Lights & Blinkers',name:'Solar Delineator Light',
+     img:'solar_delineator_light_20260424090004_9a8b18.jpg',
+     desc:'Auto-sensing solar delineator light, 300–900 lux threshold. Mounts on posts for night-time lane marking.',
+     specs:[['Activation','Auto 300–900 lux'],['Power','Solar'],['Type','Delineator']]},
+    {id:'l9',cat:'lights',catLabel:'Lights & Blinkers',name:'Rechargeable Torch Light',
+     img:'rechargeable_torch_light_20260424085827_81f9b0.jpg',
+     desc:'High-output rechargeable torch light, 500 lm, for road workers and flagmen. USB rechargeable.',
+     specs:[['Output','500 lm'],['Type','Rechargeable Torch'],['Use','Flagman / Site worker']]},
+    {id:'l10',cat:'lights',catLabel:'Lights & Blinkers',name:'Mobile LED Light Tower LV400',
+     img:'Flood_light_20260423103939_ee9713.jpeg',
+     desc:'Mobile LED light tower on trailer. 4 × 100W LED panels for site and road zone illumination.',
+     specs:[['LEDs','4 × 100W'],['Type','Mobile Light Tower'],['Mount','Trailer']]},
+    {id:'l11',cat:'lights',catLabel:'Lights & Blinkers',name:'Arrow Board for Lorry (Roof Mounted)',
+     img:'arrow_for_lorry_20260424092208_956f35.jpg',
+     desc:'Roof-mounted LED arrow board for shadow/chase lorries. Multiple display modes for traffic direction.',
+     specs:[['Mount','Roof-mounted'],['Modes','Multiple'],['Type','Arrow Board']]},
+    {id:'l12',cat:'lights',catLabel:'Lights & Blinkers',name:'Flashing Arrow Board (Orange)',
+     img:'Untitled-2_20260422161429_6c6473.jpg',
+     desc:'Orange LED flashing arrow board. 78 LEDs (13 lenses × 6 LED) for directional guidance at road works.',
+     specs:[['LEDs','78 (13 × 6)'],['Colour','Orange'],['Type','Flashing Arrow Board']]},
+    {id:'l13',cat:'lights',catLabel:'Lights & Blinkers',name:'Flashing Arrow Board (Yellow)',
+     img:'Untitled-1_20260422161453_182f7c.jpg',
+     desc:'Yellow LED flashing arrow board. Highly visible up to 800m for highway and expressway deployments.',
+     specs:[['Visibility','800 m'],['Colour','Yellow'],['Type','Flashing Arrow Board']]},
+    {id:'l14',cat:'lights',catLabel:'Lights & Blinkers',name:'LED Arrow Sign Light',
+     img:'led_arrow__20260424092521_6d57c3.jpg',
+     desc:'LED arrow sign light using Epistar LEDs. Compact and energy-efficient for work zone guidance.',
+     specs:[['LED','Epistar'],['Type','Arrow Sign Light']]},
+    {id:'l15',cat:'lights',catLabel:'Lights & Blinkers',name:'Flood Light (Mains)',
+     img:'flood_light_20260424092810_6bf3b8.jpg',
+     desc:'High-output LED flood light for work-zones and construction sites. Robust weatherproof casing.',
+     specs:[['Type','LED Flood Light'],['Application','Work-zone, construction']]},
+    {id:'l16',cat:'lights',catLabel:'Lights & Blinkers',name:'Solar Flood Light',
+     img:'solar_flood_light_20260424093108_23937b.jpg',
+     desc:'Self-powered solar LED flood light for remote or off-grid sites. No electrical connection required.',
+     specs:[['Power','Solar'],['Type','Solar LED Flood Light'],['Application','Remote / off-grid sites']]},
+    {id:'l17',cat:'lights',catLabel:'Lights & Blinkers',name:'Solar Chevron Panel',
+     img:'',
+     desc:'Solar-powered chevron panel. 9V 12W solar system for permanent and temporary chevron lighting.',
+     specs:[['Size','720 × 1520 mm'],['Solar','9V 12W'],['Type','Solar Chevron Panel']]},
+    {id:'l18',cat:'lights',catLabel:'Lights & Blinkers',name:'TL249 Portable Traffic Light',
+     img:'',
+     desc:'Portable battery-operated TL249 traffic control light for temporary sites. Red/green control.',
+     specs:[['Model','TL249'],['Power','Battery operated'],['Type','Portable Traffic Light']]},
+
+    // ── ROAD STUDS & ACCESSORIES ────────────────────────────────────────────
+    {id:'s1',cat:'studs',catLabel:'Road Studs & Accessories',name:'Aluminium Road Stud (MKH)',
+     img:'9_20260423064004_bb6cde.jpg',
+     desc:'Cast aluminium road stud (reflective cat\'s eye) with retroreflective lens. MKH brand, JKR-standard.',
+     specs:[['Weight','335 g'],['Material','Cast Aluminium'],['Brand','MKH'],['Standard','JKR']]},
+    {id:'s2',cat:'studs',catLabel:'Road Studs & Accessories',name:'Plastic Road Stud (K-Lite)',
+     img:'road_stude_klite_20260423093258_6019b4.jpg',
+     desc:'Lightweight plastic road stud. K-Lite brand, ideal for urban roads and work zones.',
+     specs:[['Weight','0.35 kg'],['Brand','K-Lite'],['Material','Plastic']]},
+    {id:'s3',cat:'studs',catLabel:'Road Studs & Accessories',name:'Heat-Resistant Road Stud (3M)',
+     img:'road_stude_3m_20260423093354_9c68b5.jpg',
+     desc:'3M heat-resistant road stud rated -2.5°C to +62.7°C. Suitable for tropical Malaysian highways.',
+     specs:[['Brand','3M'],['Temp range','-2.5°C to +62.7°C'],['Application','Highway asphalt overlays']]},
+    {id:'s4',cat:'studs',catLabel:'Road Studs & Accessories',name:'Glass Road Stud',
+     img:'road_stud_glass_20260424063207_8ee4fe.jpg',
+     desc:'Glass-bead road stud with retroreflective microbead lens. JKR-standard for federal and rural road lane lines.',
+     specs:[['Weight','0.55 kg'],['Material','Glass bead'],['Standard','JKR']]},
+    {id:'s5',cat:'studs',catLabel:'Road Studs & Accessories',name:'Three Pavement Marker',
+     img:'three_pavement_marker_20260423092756_33b053.jpg',
+     desc:'Triple pavement marker strip for lane-separation on carriageways. High visibility retroreflective.',
+     specs:[['Type','Triple pavement marker'],['Application','Lane separation']]},
+    {id:'s6',cat:'studs',catLabel:'Road Studs & Accessories',name:'Lane Block (TPU Post + Rubber Base)',
+     img:'lane_blok_20260424085440_3360b3.jpg',
+     desc:'TPU flexible post on rubber block base. Highly visible lane block for channelling traffic at work zones.',
+     specs:[['Post weight','1.35 kg'],['Base weight','10.5 kg'],['Material','TPU + Rubber']]},
+    {id:'s7',cat:'studs',catLabel:'Road Studs & Accessories',name:'Road Hump (Rubber)',
+     img:'road_hump_20260424073913_4d19d6.jpg',
+     desc:'Modular rubber road hump for speed control. Bolt-down installation on asphalt or concrete.',
+     specs:[['Weight','4.5 kg/pc'],['Material','Rubber'],['Application','Speed control']]},
+    {id:'s8',cat:'studs',catLabel:'Road Studs & Accessories',name:'Expandable Cone Bar',
+     img:'expendable_cone_bar_20260424074042_62f9cd.jpg',
+     desc:'Expandable bar connecting traffic cones for lane delineation. Adjustable length, 35/40mm diameter.',
+     specs:[['Diameter','35 / 40 mm'],['Type','Expandable Cone Bar']]},
+    {id:'s9',cat:'studs',catLabel:'Road Studs & Accessories',name:'Corner Protection (V-Shape)',
+     img:'corner_protection_v_shape_20260424075038_85bd5d.jpg',
+     desc:'V-shaped column corner protection with 4 retroreflective stickers. Protects pillars on site.',
+     specs:[['Stickers','4 reflective stickers'],['Shape','V Shape']]},
+    {id:'s10',cat:'studs',catLabel:'Road Studs & Accessories',name:'Corner Protection (Round Shape)',
+     img:'corner_protection_round_shape_20260424075801_bd6cc1.jpg',
+     desc:'Round column corner protection, 800mm height. High-visibility for car parks and construction sites.',
+     specs:[['Height','800 mm'],['Shape','Round']]},
+    {id:'s11',cat:'studs',catLabel:'Road Studs & Accessories',name:'Reflective Plate 115×50mm',
+     img:'reflective_plate_20260423092954_f31a4c.jpg',
+     desc:'White High Intensity Prismatic (HIP) reflective plate. For road furniture, barriers and delineators.',
+     specs:[['Size','115 × 50 mm'],['Material','HIP Reflective sheeting'],['Colour','White']]},
+    {id:'s12',cat:'studs',catLabel:'Road Studs & Accessories',name:'Reflective Flag 24×24 inch',
+     img:'reflective_flag_20260423091524_48a6c0.jpg',
+     desc:'Single-layer reflective flag, 24×24 inch. For temporary road marking and hazard delineation.',
+     specs:[['Size','24 × 24 inch'],['Layer','Single'],['Type','Reflective Flag']]},
+    {id:'s13',cat:'studs',catLabel:'Road Studs & Accessories',name:'String Delineator (Orange HIP)',
+     img:'string_delineator-orange_20260423092615_836a48.jpg',
+     desc:'Orange High Intensity Prismatic string delineator. Sold per 50m roll for lane delineation.',
+     specs:[['Colour','Orange HIP'],['Length','50 m / roll'],['Type','String Delineator']]},
+    {id:'s14',cat:'studs',catLabel:'Road Studs & Accessories',name:'String Delineator (Yellow)',
+     img:'string_delineator-yellow_20260423092455_58408f.jpg',
+     desc:'Yellow string delineator. Sold per 50m roll for kerb-side and lane boundary marking.',
+     specs:[['Colour','Yellow'],['Length','50 m / roll'],['Type','String Delineator']]},
+
+    // ── VMS SOLAR / PVMS ────────────────────────────────────────────────────
+    {id:'v1',cat:'vms',catLabel:'VMS Solar / PVMS',name:'VMS / PVMS Solar Powered (Full Size)',
+     img:'pvms_20260423072029_1bca1b.jpg',
+     desc:'Full-size solar-powered Variable Message Sign. LED matrix display, wireless remote management.',
+     specs:[['Display','1920 × 1120 mm'],['Power','Solar'],['Control','Wireless remote']]},
+    {id:'v2',cat:'vms',catLabel:'VMS Solar / PVMS',name:'Solar Portable VMS Trailer',
+     img:'vms_20260424061921_c5e57f.jpg',
+     desc:'Compact portable solar VMS trailer. Easy tow-behind deployment for temporary traffic messaging.',
+     specs:[['Display','1600 × 800 mm'],['Power','Solar'],['Type','Portable trailer-mounted']]},
+    {id:'v3',cat:'vms',catLabel:'VMS Solar / PVMS',name:'Outdoor Portable Variable Message Sign',
+     img:'',
+     desc:'Outdoor portable variable message sign (VMS). For temporary highway messaging and information display.',
+     specs:[['Type','Portable VMS'],['Application','Highway, work zone messaging']]},
+
+    // ── SOLAR PRODUCTS ──────────────────────────────────────────────────────
+    {id:'sol1',cat:'vms',catLabel:'Solar Products',name:'Solar Flashing Arrow (Yellow)',
+     img:'solar-flashing-arrow-cover-9bc9.jpg',
+     desc:'Solar-powered yellow flashing arrow board for traffic guidance at work zones.',
+     specs:[['Power','Solar'],['Colour','Yellow'],['Type','Solar Flashing Arrow']]},
+    {id:'sol2',cat:'vms',catLabel:'Solar Products',name:'Solar Flashing Arrow (Orange)',
+     img:'solar-flashing-arrow-orange-cover-d01c.jpg',
+     desc:'Solar-powered orange flashing arrow for traffic management at road works.',
+     specs:[['Power','Solar'],['Colour','Orange'],['Type','Solar Flashing Arrow']]},
+    {id:'sol3',cat:'vms',catLabel:'Solar Products',name:'Solar Flashing Guide Board Light',
+     img:'solar-flashing-guide-board-light-cover-351b.jpg',
+     desc:'Solar-powered flashing guide board light for lane guidance at curves and intersections.',
+     specs:[['Power','Solar'],['Type','Guide Board Light']]},
+    {id:'sol4',cat:'vms',catLabel:'Solar Products',name:'Chevron Light',
+     img:'chevron-light-cover-02a2.jpg',
+     desc:'Solar chevron light for roadside delineation at curves, bends and danger areas.',
+     specs:[['Power','Solar'],['Type','Chevron Light']]},
+    {id:'sol5',cat:'vms',catLabel:'Solar Products',name:'Solar LED Road Stud',
+     img:'solar-led-road-stud-cover-5ce3.jpg',
+     desc:"Active solar LED road stud (cat's eye) for high-visibility lane delineation on highways at night.",
+     specs:[['Power','Solar'],['Type','Active LED Road Stud'],['Application','Highway lane delineation']]},
+    {id:'sol6',cat:'vms',catLabel:'Solar Products',name:'Solar Chevron Panel',
+     img:'solar-chevron-panel-cover-13d7.jpg',
+     desc:'Large solar chevron panel for directional guidance on expressway bends and curves.',
+     specs:[['Power','Solar'],['Type','Solar Chevron Panel']]},
+    {id:'sol7',cat:'vms',catLabel:'Solar Products',name:'Solar Chevron',
+     img:'solar-chevron-cover-c44a.jpg',
+     desc:'Compact solar chevron for delineation at road bends and hazard areas.',
+     specs:[['Power','Solar'],['Type','Solar Chevron']]},
+    {id:'sol8',cat:'vms',catLabel:'Solar Products',name:'Solar Warning / Amber Light',
+     img:'solar-warning-light-amber-light-cover-b60e.jpg',
+     desc:'Solar-powered amber warning beacon for road works and hazard areas.',
+     specs:[['Power','Solar'],['Colour','Amber'],['Type','Warning Light']]},
+
+    // ── CONVEX MIRRORS ──────────────────────────────────────────────────────
+    {id:'m1',cat:'mirrors',catLabel:'Convex Mirrors',name:'Convex Mirror Polycarbonate 600mm',
+     img:'convex_mirror_20260423043519_ffbf65.jpg',
+     desc:'Polycarbonate convex safety mirror, 600mm diameter. For car parks, intersections and blind spots.',
+     specs:[['Diameter','600 mm'],['Material','Polycarbonate'],['Application','Car parks, blind spots']]},
+    {id:'m2',cat:'mirrors',catLabel:'Convex Mirrors',name:'Convex Mirror Polycarbonate 800mm',
+     img:'convex_mirror_20260423043545_3385e4.jpg',
+     desc:'Polycarbonate convex safety mirror, 800mm diameter. Wider field of view for busy intersections.',
+     specs:[['Diameter','800 mm'],['Material','Polycarbonate']]},
+    {id:'m3',cat:'mirrors',catLabel:'Convex Mirrors',name:'Convex Mirror Polycarbonate 1000mm',
+     img:'convex_mirror_20260423043558_fa0034.jpg',
+     desc:'Large polycarbonate convex mirror, 1000mm. Maximum field of view for large intersections and loading bays.',
+     specs:[['Diameter','1000 mm'],['Material','Polycarbonate']]},
+    {id:'m4',cat:'mirrors',catLabel:'Convex Mirrors',name:'Convex Mirror Stainless Steel 600mm',
+     img:'convex_mirror-stainless_steel_20260423043822_b91004.jpg',
+     desc:'Stainless steel convex mirror, 600mm, 7.95 kg. Corrosion-resistant for outdoor and coastal environments.',
+     specs:[['Diameter','600 mm'],['Weight','7.95 kg'],['Material','Stainless Steel']]},
+
+    // ── SIGNAGE ─────────────────────────────────────────────────────────────
+    {id:'sg1',cat:'signage',catLabel:'Temporary Signage — JKR',name:'JKR Temporary Signboard',
+     img:'jkr-temp-signboard_thumb_20260424160532_cf2d9a.jpg',
+     desc:'JKR-spec temporary signboard. Avery Dennison retroreflective sheeting. A-shape stand-alone or pole-mounted.',
+     specs:[['Size','914 × 1219 mm'],['Reflective','Avery Dennison'],['Mount','A-Shape or Pole'],['Standard','JKR']]},
+    {id:'sg2',cat:'signage',catLabel:'Temporary Signage — Highway',name:'Highway / LLM Temporary Signboard',
+     img:'llm-highway-temp-signboard_thumb_20260424160533_558615.jpg',
+     desc:'LLM/highway-spec temporary signboard. Avery Dennison retroreflective sheeting. A-shape or pole-mounted.',
+     specs:[['Size','1220 × 1220 mm'],['Reflective','Avery Dennison'],['Mount','A-Shape or Pole'],['Standard','LLM / Highway']]},
+    {id:'sg3',cat:'signage',catLabel:'Signage — REAM Standard',name:'Advance Warning Sign',
+     img:'advance_warning_20260428030901_d9c1c3.jpg',
+     desc:'REAM-standard advance warning sign. Placed upstream to warn motorists of construction areas.',
+     specs:[['Standard','REAM'],['Use','Construction advance warning']]},
+    {id:'sg4',cat:'signage',catLabel:'Signage — REAM Standard',name:'Road Works Sign',
+     img:'road_work_20260427020517_78572d.jpg',
+     desc:'REAM-standard road works approach sign for any works on the road.',
+     specs:[['Standard','REAM'],['Use','Road works approach']]},
+    {id:'sg5',cat:'signage',catLabel:'Signage — REAM Standard',name:'Speed Limit Sign (REAM)',
+     img:'speed_limit_20260427042845_7fe829.jpg',
+     desc:'Speed limit approach sign warning motorists to maintain speed limit at construction zone.',
+     specs:[['Standard','REAM'],['Use','Speed limit at construction zones']]},
+    {id:'sg6',cat:'signage',catLabel:'Signage — REAM Standard',name:'Awas (Warning) Sign',
+     img:'awas_20260428032926_c048f1.jpg',
+     desc:'Awas (Warning) sign indicating danger ahead. REAM-standard for work zones.',
+     specs:[['Standard','REAM'],['Meaning','Danger ahead / Awas']]},
+    {id:'sg7',cat:'signage',catLabel:'Signage — REAM Standard',name:'Detour To Left',
+     img:'detour_to_the_left_20260427045032_a666bb.jpg',
+     desc:'Detour sign showing traffic to divert left. Used at horizontal alignment changes in construction sites.',
+     specs:[['Standard','REAM'],['Direction','Left']]},
+    {id:'sg8',cat:'signage',catLabel:'Signage — REAM Standard',name:'Detour To Right',
+     img:'detour_to_the_right_20260427045130_48d726.jpg',
+     desc:'Detour sign showing traffic to divert right. Used at horizontal alignment changes in construction sites.',
+     specs:[['Standard','REAM'],['Direction','Right']]},
+    {id:'sg9',cat:'signage',catLabel:'Signage — REAM Standard',name:'Lane Closed — Slow Lane',
+     img:'lane_closed__slow_lane_20260427043231_f31905.jpg',
+     desc:'Approach sign for works on the slow (left) lane. REAM-standard.',
+     specs:[['Standard','REAM'],['Application','Slow / left lane closure']]},
+    {id:'sg10',cat:'signage',catLabel:'Signage — REAM Standard',name:'Lane Closed — Fast Lane',
+     img:'lane_close__fast_lane_20260427043519_281889.jpg',
+     desc:'Approach sign for works on the fast (right) lane. REAM-standard.',
+     specs:[['Standard','REAM'],['Application','Fast / right lane closure']]},
+    {id:'sg11',cat:'signage',catLabel:'Signage — Highway Standard',name:'Keep Left Sign',
+     img:'keep_left_highway_20260428091805_09007e.jpg',
+     desc:'Highway-standard Keep Left delineation sign for medians and lane separation.',
+     specs:[['Standard','Highway / LLM'],['Type','Delineation']]},
+    {id:'sg12',cat:'signage',catLabel:'Signage — Highway Standard',name:'Keep Right Sign',
+     img:'keep_right_highway_20260429081331_fbd063.jpg',
+     desc:'Highway-standard Keep Right sign for lane guidance.',
+     specs:[['Standard','Highway / LLM'],['Type','Delineation']]},
+    {id:'sg13',cat:'signage',catLabel:'Signage — Highway Standard',name:'No Overtaking Sign',
+     img:'no_overtaking_20260429020536_54769e.jpg',
+     desc:'Highway-standard no overtaking sign for expressways and dual carriageways.',
+     specs:[['Standard','Highway / LLM'],['Type','Prohibition']]},
+    {id:'sg14',cat:'signage',catLabel:'Signage — Highway Standard',name:'Speed Limit 80km/h (Highway)',
+     img:'80_km-j_highway_20260429063921_686c07.jpg',
+     desc:'Highway-standard speed limit sign — 80 km/h restriction for work zones on expressways.',
+     specs:[['Standard','Highway / LLM'],['Speed','80 km/h']]},
+    {id:'sg15',cat:'signage',catLabel:'Signage — Highway Standard',name:'Speed Limit 60km/h (Highway)',
+     img:'60_km-j_highway_20260429064031_f6363e.jpg',
+     desc:'Highway-standard speed limit sign — 60 km/h restriction for work zones.',
+     specs:[['Standard','Highway / LLM'],['Speed','60 km/h']]},
+    {id:'sg16',cat:'signage',catLabel:'Signage — JKR Standard',name:'Stop At Intersection',
+     img:'stop-at-intersection-cover-560b.jpg',
+     desc:'JKR-standard stop sign. Used where driver shall stop before entering a priority or major road.',
+     specs:[['Standard','JKR ATJ 2A/85'],['Type','Regulatory']]},
+    {id:'sg17',cat:'signage',catLabel:'Signage — JKR Standard',name:'No U-Turn',
+     img:'no-u-turn-cover-e955.jpg',
+     desc:'JKR-standard no U-turn prohibition sign.',
+     specs:[['Standard','JKR ATJ 2A/85'],['Type','Prohibition']]},
+    {id:'sg18',cat:'signage',catLabel:'Signage — JKR Standard',name:'No Entry For Any Vehicle',
+     img:'no-entry-for-any-vehicle-cover-3eef.jpg',
+     desc:'JKR-standard no entry sign for all vehicles.',
+     specs:[['Standard','JKR ATJ 2A/85'],['Type','Prohibition']]},
+    {id:'sg19',cat:'signage',catLabel:'Signage — JKR Standard',name:'Speed Limit Sign (JKR)',
+     img:'speed-limit-cover-20a0.jpg',
+     desc:'JKR-standard speed limit regulatory sign for permanent road installations.',
+     specs:[['Standard','JKR ATJ 2A/85'],['Type','Regulatory']]},
+    {id:'sg20',cat:'signage',catLabel:'Signage — JKR Standard',name:'No Entry — Exceed Specified Weight',
+     img:'no-entry-for-vehicle-exceed-specified-weight-cover-0166.jpg',
+     desc:'JKR-standard no entry for vehicles exceeding specified weight.',
+     specs:[['Standard','JKR ATJ 2A/85'],['Type','Prohibition']]},
+
+    // ── PPE & SAFETY ────────────────────────────────────────────────────────
+    {id:'pp1',cat:'ppe',catLabel:'Personal PPE',name:'Corporate Work Uniform',
+     img:'3_20260423064652_ef0810.jpg',
+     desc:'Custom corporate work uniform with reflective trim and embroidery. For road workers and TMOs.',
+     specs:[['Type','Corporate Work Uniform'],['Features','Reflective trim, Custom embroidery']]},
+    {id:'pp2',cat:'ppe',catLabel:'PPE & Safety Equipment',name:'Paddle Sign 350mm',
+     img:'paddle_20260423043945_378036.jpg',
+     desc:'Circular paddle sign, 350mm diameter. Stop/Go or custom road safety messaging for flagmen.',
+     specs:[['Diameter','350 mm'],['Type','Flagman Paddle Sign']]},
+    {id:'pp3',cat:'ppe',catLabel:'PPE & Safety Equipment',name:'Flagman Robot (Single Arm)',
+     img:'flagman_robot_20260423044102_ff2dff.jpg',
+     desc:'Single-arm automated flagman robot, 35 kg. Reduces need for human traffic controllers at simpler junctions.',
+     specs:[['Weight','35 kg'],['Arms','Single arm'],['Type','Automated Flagman']]},
+    {id:'pp4',cat:'ppe',catLabel:'PPE & Safety Equipment',name:'Car Wheel Clamp',
+     img:'',
+     desc:'Heavy-duty car wheel clamp for vehicle immobilisation in car parks and restricted zones.',
+     specs:[['Type','Wheel Clamp'],['Application','Car parks, restricted zones']]},
+  ];
+
+  // ─── RENDER PRODUCTS ────────────────────────────────────────────────────────
+  let fadeObserver;
+
+  function renderProducts(cat) {
+    const grid = document.getElementById('products-grid');
+    const items = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
+    grid.innerHTML = items.map(p => {
+      const src = imgSrc(p.img);
+      const imgHtml = src
+        ? `<img src="${src}" alt="${p.name}" style="width:100%;height:100%;object-fit:contain;" onerror="this.parentNode.style.background='linear-gradient(135deg,#e8eef8,#c8d8f0)';this.remove();" />`
+        : '';
+      return `
+        <div class="product-card fade-in" data-cat="${p.cat}" data-id="${p.id}">
+          <div class="product-img" style="background:#f8faff;padding:8px;">
+            ${imgHtml}
+            <div class="product-badge">Available</div>
+          </div>
+          <div class="product-body">
+            <div class="product-cat">${p.catLabel}</div>
+            <h4>${p.name}</h4>
+            <p>${p.desc}</p>
+            <div class="pc-actions">
+              <button class="pc-btn-detail" onclick="openProdModal('${p.id}')">View Details</button>
+              <button class="pc-btn-add" id="padd-${p.id}" onclick="addToCart('${p.id}', this)">＋ Quote</button>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+    grid.querySelectorAll('.fade-in').forEach(el => {
+      if (fadeObserver) fadeObserver.observe(el);
+    });
+  }
+
+  // ─── CATEGORY FILTER ────────────────────────────────────────────────────────
+  function filterProducts(cat) {
+    document.querySelectorAll('.prod-tab').forEach(t => t.classList.remove('active'));
+    const el = document.getElementById('tab-' + cat);
+    if (el) el.classList.add('active');
+    renderProducts(cat);
+  }
+
+  // ─── PRODUCT MODAL ──────────────────────────────────────────────────────────
+  let currentModalId = null;
+
+  function openProdModal(id) {
+    const p = PRODUCTS.find(x => x.id === id);
+    if (!p) return;
+    currentModalId = id;
+    const overlay = document.getElementById('prod-modal');
+    const imgEl = document.getElementById('modal-img');
+    const imgWrap = document.getElementById('modal-img-wrap');
+    const src = imgSrc(p.img);
+    if (src) {
+      imgEl.src = src;
+      imgEl.alt = p.name;
+      imgEl.style.display = '';
+      imgWrap.style.background = '#f8faff';
+    } else {
+      imgEl.style.display = 'none';
+      imgWrap.style.background = 'linear-gradient(135deg,#e8eef8,#c8d8f0)';
+    }
+    document.getElementById('modal-cat').textContent = p.catLabel;
+    document.getElementById('modal-title').textContent = p.name;
+    document.getElementById('modal-desc').textContent = p.desc;
+    const specsWrap = document.getElementById('modal-specs-wrap');
+    if (p.specs && p.specs.length) {
+      specsWrap.style.display = '';
+      document.getElementById('modal-specs-table').innerHTML =
+        p.specs.map(([k,v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+    } else {
+      specsWrap.style.display = 'none';
+    }
+    const waText = encodeURIComponent(`Hi Setia Trafik, I'd like to enquire about: ${p.name}`);
+    document.getElementById('modal-wa-btn').href = `https://wa.me/${WAPHONE}?text=${waText}`;
+    const inCart = cart.some(c => c.id === id);
+    const addBtn = document.getElementById('modal-add-btn');
+    addBtn.textContent = inCart ? '✓ Added to Quote' : '＋ Add to Quote';
+    addBtn.className = 'btn-add-quote' + (inCart ? ' added' : '');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProdModal() {
+    document.getElementById('prod-modal').classList.remove('open');
+    document.body.style.overflow = '';
+    currentModalId = null;
+  }
+
+  function addToCartFromModal() {
+    if (currentModalId) {
+      addToCart(currentModalId, document.getElementById('modal-add-btn'), true);
+    }
+  }
+
+  // ─── QUOTE CART ─────────────────────────────────────────────────────────────
+  let cart = [];
+  let cartOpen = false;
+
+  function addToCart(id, btn, fromModal) {
+    const p = PRODUCTS.find(x => x.id === id);
+    if (!p) return;
+    const existing = cart.find(c => c.id === id);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ id, name: p.name, qty: 1 });
+    }
+    if(document.getElementById('qcart-body')) renderCart();
+    if (btn) {
+      btn.textContent = '✓ Added';
+      btn.classList.add('added');
+      if (!fromModal) {
+        setTimeout(() => { btn.textContent = '＋ Quote'; btn.classList.remove('added'); }, 2000);
+      }
+    }
+    const cardBtn = document.getElementById('padd-' + id);
+    if (cardBtn && cardBtn !== btn) {
+      cardBtn.textContent = '✓ Added';
+      cardBtn.classList.add('added');
+      setTimeout(() => { cardBtn.textContent = '＋ Quote'; cardBtn.classList.remove('added'); }, 2000);
+    }
+    if (currentModalId === id) {
+      const mb = document.getElementById('modal-add-btn');
+      if (mb) { mb.textContent = '✓ Added to Quote'; mb.classList.add('added'); }
+    }
+  }
+
+  function changeQty(id, delta) {
+    const item = cart.find(c => c.id === id);
+    if (!item) return;
+    item.qty = Math.max(0, item.qty + delta);
+    if (item.qty === 0) cart = cart.filter(c => c.id !== id);
+    if(document.getElementById('qcart-body')) renderCart();
+  }
+
+  function clearCart() {
+    cart = [];
+    if(document.getElementById('qcart-body')) renderCart();
+  }
+
+  function renderCart() {
+    const body = document.getElementById('qcart-body');
+    const count = document.getElementById('qcart-count');
+    const fab = document.getElementById('qcart-fab');
+    const total = cart.reduce((s, c) => s + c.qty, 0);
+    count.textContent = total;
+    if (total > 0) fab.classList.add('show'); else fab.classList.remove('show');
+    if (cart.length === 0) {
+      body.innerHTML = '<div class="qcart-empty">No items yet — browse products and click "＋ Quote".</div>';
+    } else {
+      body.innerHTML = cart.map(c => `
+        <div class="qcart-item">
+          <div class="qcart-item-name">${c.name}</div>
+          <div class="qcart-qty-wrap">
+            <button class="qcart-qty-btn" onclick="changeQty('${c.id}',-1)">−</button>
+            <span class="qcart-qty">${c.qty}</span>
+            <button class="qcart-qty-btn" onclick="changeQty('${c.id}',1)">+</button>
+          </div>
+        </div>`).join('');
+    }
+  }
+
+  function toggleCart() {
+    const panel = document.getElementById('qcart-panel');
+    cartOpen = !cartOpen;
+    panel.classList.toggle('open', cartOpen);
+  }
+
+  function sendCartToWhatsApp() {
+    if (cart.length === 0) { alert('Your quote cart is empty.'); return; }
+    const lines = cart.map(c => `• ${c.name} (Qty: ${c.qty})`).join('\n');
+    const msg = encodeURIComponent(
+      `Hi Setia Trafik,\n\nI would like to request a quote for the following:\n\n${lines}\n\nPlease advise on pricing and availability. Thank you.`
+    );
+    window.open(`https://wa.me/${WAPHONE}?text=${msg}`, '_blank');
+  }
+
+  // ─── SCROLL ANIMATIONS ──────────────────────────────────────────────────────
+  fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+  // Fallback: ensure elements become visible even if observer fails
+  setTimeout(() => { document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible')); }, 300);
+
+  // ─── INIT ────────────────────────────────────────────────────────────────────
+  if(document.getElementById('products-grid')) renderProducts('all');
+  if(document.getElementById('qcart-body')) renderCart();
+
+  // ─── KEYBOARD + OUTSIDE CLICK ───────────────────────────────────────────────
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeProdModal();
+      document.getElementById('qcart-panel').classList.remove('open');
+      cartOpen = false;
+    }
+  });
+  document.addEventListener('click', (e) => {
+    const fab = document.getElementById('qcart-fab');
+    const panel = document.getElementById('qcart-panel');
+    if (cartOpen && panel && fab && !panel.contains(e.target) && !fab.contains(e.target)) {
+      panel.classList.remove('open'); cartOpen = false;
+    }
+  });
+
+  // ─── CERT MODALS ─────────────────────────────────────────────────────────────
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ─── AI SUGGESTIONS ──────────────────────────────────────────────────────────
+  const suggestions = {
+    highway: { text: "For highway and expressway works, you'll need a full Traffic Management Plan (TMP) submitted to JKR before any works begin. Our in-house TMP designers handle all drawings and regulatory liaison — then our CIDB G5-registered team deploys with owned TMDT lorries, ERT vehicles, shadow vehicles and all required DBKL/JKR signage.", links: [{ text: 'View Traffic Management →', href: '#services' }, { text: 'Get a Quote', href: '#quote', outline: true }] },
+    utility: { text: "Utility and drainage works typically need a TMP for lane closures, plus DBKL/JKR signage, traffic cones, barriers, and a certified Flagman or Traffic Controller on site. We handle short-duration works through to multi-month pipeline projects. Our team can mobilise within 24 hours for most KV and Selangor locations.", links: [{ text: 'View Services →', href: '#services' }, { text: 'Fast Quote', href: '#quote', outline: true }] },
+    building: { text: "Building and construction sites require both a site perimeter setup (hoarding, barriers) and traffic management for nearby roads if works affect traffic flow. We supply interlocking hoarding, water-filled barriers, and provide the required Traffic Controllers for road sections near your site.", links: [{ text: 'Construction TM →', href: '#services' }, { text: 'Barrier Products', href: '#products', outline: true }] },
+    event: { text: "Events and temporary road closures require a Traffic Management Plan approved by the relevant authority (DBKL, MBPJ, MPK etc.). We handle the full process — TMP application, approval, signage placement, traffic control officers and debarricading after the event. Suitable for marathons, festivals, road shows and VIP convoys.", links: [{ text: 'Contact Us →', href: '#quote' }, { text: 'View Services', href: '#services', outline: true }] },
+    equipment: { text: "Looking to purchase or rent equipment only? We stock and supply traffic cones, water-filled barriers, arrow boards, VMS trailers, temporary signs, road studs, hoarding panels and more. All items are DBKL/JKR approved. Delivery available across Peninsular Malaysia.", links: [{ text: 'Browse Products →', href: '#products' }, { text: 'Request Quotation', href: '#quote', outline: true }] },
+    emergency: { text: "For urgent or emergency traffic management — incident scene management, emergency utility works, or last-minute project mobilisation — call or WhatsApp us directly. We operate 24/7 with a dedicated emergency response team and can mobilise within 4–6 hours anywhere in Klang Valley.", links: [{ text: 'Call Now', href: 'tel:+60162244163' }, { text: 'WhatsApp', href: 'https://wa.me/60162244163', outline: true }] }
+  };
+  function showSuggestion(type) {
+    document.querySelectorAll('.ai-chip').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    const s = suggestions[type];
+    document.getElementById('ai-result-text').textContent = s.text;
+    document.querySelector('.ai-result-links').innerHTML = s.links.map(l =>
+      `<a href="${l.href}" class="ai-result-link${l.outline ? ' outline' : ''}">${l.text}</a>`
+    ).join('');
+  }
+
+  // ─── QUOTE FORM ──────────────────────────────────────────────────────────────
+  const _qsBtn = document.querySelector('.quote-submit'); if(_qsBtn) _qsBtn.addEventListener('click', () => {
+    const inputs = document.querySelectorAll('.quote-form input, .quote-form select');
+    let valid = true;
+    inputs.forEach(i => { if (!i.value) valid = false; });
+    if (!valid) { alert('Please fill in all fields to get your quote.'); return; }
+    const btn = document.querySelector('.quote-submit');
+    btn.textContent = '✓ Sent!'; btn.style.background = '#22c55e';
+    setTimeout(() => { btn.textContent = 'Send →'; btn.style.background = ''; inputs.forEach(i => i.value = ''); }, 3000);
+  });
+
+  // ─── NAV ACTIVE HIGHLIGHT ────────────────────────────────────────────────────
+  const navSections = document.querySelectorAll('section[id], div[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    navSections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+
+const suggestions = {
+  highway:{text:"For highway works, you'll need a TMP submitted to JKR/LLM. Our team handles all drawings, approvals and deployment with owned TMDT lorries and ERT vehicles.",links:[{text:'Get a Quote',href:'quote.html'},{text:'View Products',href:'products.html',outline:true}]},
+  utility:{text:"Utility and drainage works need a TMP for lane closures plus DBKL/JKR signage, cones, barriers and a certified Flagman. We mobilise within 24 hours.",links:[{text:'Get a Quote',href:'quote.html'},{text:'View Products',href:'products.html',outline:true}]},
+  building:{text:"Construction sites require site perimeter setup (hoarding, barriers) and traffic management for nearby roads. We supply everything and provide Traffic Controllers.",links:[{text:'Get a Quote',href:'quote.html'},{text:'Products',href:'products.html',outline:true}]},
+  event:{text:"Events and road closures require a TMP approved by DBKL/MBPJ/MPK etc. We handle application, approval, signage, controllers and debarricading.",links:[{text:'Get a Quote',href:'quote.html'},{text:'Browse Products',href:'products.html',outline:true}]},
+  equipment:{text:"We stock traffic cones, barriers, arrow boards, VMS trailers, temporary signs, road studs and more. All DBKL/JKR approved. Delivery across Peninsular Malaysia.",links:[{text:'Browse Products',href:'products.html'},{text:'Get a Quote',href:'quote.html',outline:true}]},
+  emergency:{text:"For emergency traffic management, call or WhatsApp directly. We operate 24/7 and can mobilise within 4-6 hours anywhere in Klang Valley.",links:[{text:'Call Now',href:'tel:+60162244163'},{text:'WhatsApp',href:'https://wa.me/60162244163',outline:true}]}
+};
+function showSuggestion(type){
+  document.querySelectorAll('.ai-chip').forEach(c=>c.classList.remove('active'));
+  event.target.classList.add('active');
+  const s=suggestions[type];
+  document.getElementById('ai-result-text').textContent=s.text;
+  document.querySelector('.ai-result-links').innerHTML=s.links.map(l=>'<a href="'+l.href+'" class="ai-result-link'+(l.outline?' outline':'')+'">' +l.text+'</a>').join('');
+}
+</script>
+
+
+<!-- ═══════════ FLOATING CONTACT + QUOTE CART (st-cta) ═══════════ -->
+<style>
+#st-cta{position:fixed;right:24px;bottom:24px;z-index:1600;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:'Inter',sans-serif}
+.st-cta-btn{position:relative;display:flex;align-items:center;justify-content:center;height:56px;width:56px;border:none;border-radius:50px;cursor:pointer;text-decoration:none;box-shadow:0 6px 22px rgba(0,0,0,.22);overflow:hidden;transition:width .35s ease,padding .35s ease}
+.st-cta-btn svg{flex-shrink:0}
+.st-cta-label{white-space:nowrap;color:#fff;font-weight:700;font-size:14px;max-width:0;opacity:0;transition:.35s}
+.st-cta-btn:hover{width:auto;padding:0 20px 0 16px}
+.st-cta-btn:hover svg{margin-right:10px}
+.st-cta-btn:hover .st-cta-label{max-width:200px;opacity:1}
+.st-cta-wa{background:#25D366;animation:stPulse 2.4s infinite}
+.st-cta-call{background:#1a3a6e}
+.st-cta-cart{background:#0a1628}
+.st-cta-badge{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;background:#ef4444;color:#fff;border-radius:10px;font-size:11px;font-weight:800;display:none;align-items:center;justify-content:center}
+@keyframes stPulse{0%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 13px rgba(37,211,102,0)}100%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,0)}}
+#st-cart-panel{position:fixed;right:24px;bottom:96px;z-index:1599;width:330px;max-width:calc(100vw - 32px);background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.25);overflow:hidden;display:flex;flex-direction:column;max-height:70vh;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transform-origin:bottom right;transition:.28s;font-family:'Inter',sans-serif}
+#st-cart-panel.open{transform:none;opacity:1;pointer-events:all}
+.st-cart-head{background:#0a1628;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.st-cart-head .st-cart-x{margin-left:auto;background:rgba(255,255,255,.18);border:none;color:#fff;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1}
+.st-cart-body{flex:1;overflow-y:auto;padding:12px 14px;background:#f7f8fa}
+.st-cart-empty{text-align:center;color:#9aa3af;font-size:13px;padding:26px 10px;line-height:1.6}
+.st-cart-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #eef0f3;border-radius:10px;padding:9px 11px;margin-bottom:8px}
+.st-cart-name{flex:1;font-size:12.5px;font-weight:600;color:#2d3748;line-height:1.35}
+.st-cart-q{display:flex;align-items:center;gap:7px}
+.st-cart-q button{width:24px;height:24px;border:1px solid #d6dbe3;background:#fff;border-radius:6px;cursor:pointer;font-weight:700;color:#1a3a6e;line-height:1}
+.st-cart-q span{font-size:13px;font-weight:700;min-width:16px;text-align:center}
+.st-cart-foot{padding:12px 14px;border-top:1px solid #eef0f3;background:#fff}
+.st-cart-send{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:#fff;border:none;border-radius:10px;padding:13px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit}
+.st-cart-send:hover{background:#1ea352}
+.st-cart-clear{display:block;width:100%;text-align:center;margin-top:8px;background:none;border:none;color:#9aa3af;font-size:12px;cursor:pointer;text-decoration:underline}
+@media(max-width:768px){#st-cta{right:16px;bottom:16px}#st-cart-panel{right:16px;bottom:88px}}
+</style>
+<div id="st-cart-panel">
+  <div class="st-cart-head">&#128722; Your Quote Cart <button class="st-cart-x" onclick="stCartToggle(false)" aria-label="Close">&times;</button></div>
+  <div class="st-cart-body" id="st-cart-body"></div>
+  <div class="st-cart-foot">
+    <button class="st-cart-send" onclick="stCartSend()"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Send Quote on WhatsApp</button>
+    <button class="st-cart-clear" onclick="stCartClear()">Clear cart</button>
+  </div>
+</div>
+<div id="st-cta">
+  <button class="st-cta-btn st-cta-cart" onclick="stCartToggle()" aria-label="Quote Cart">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span class="st-cta-label">Quote Cart</span>
+    <span class="st-cta-badge" id="st-cart-badge">0</span>
+  </button>
+  <a class="st-cta-btn st-cta-call" href="tel:+60162244163" aria-label="Call Setia Trafik">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78A16 16 0 0 0 15.22 16.1l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.2z"/></svg>
+    <span class="st-cta-label">Call Us</span>
+  </a>
+  <a class="st-cta-btn st-cta-wa" href="https://wa.me/60162244163?text=Hi%20Setia%20Trafik%2C%20I%27d%20like%20to%20enquire%20about%20your%20products%20and%20services." target="_blank" rel="noopener" aria-label="WhatsApp Setia Trafik">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="st-cta-label">WhatsApp</span>
+  </a>
+</div>
+<script>
+(function(){
+  var WA='60162244163';
+  function gb(){try{return JSON.parse(localStorage.getItem('st_quote')||'[]')}catch(e){return[]}}
+  function sb(b){localStorage.setItem('st_quote',JSON.stringify(b))}
+  function count(b){return b.reduce(function(s,i){return s+(i.qty||1)},0)}
+  function render(){
+    var b=gb(),body=document.getElementById('st-cart-body'),badge=document.getElementById('st-cart-badge'),n=count(b);
+    if(badge){if(n>0){badge.textContent=n;badge.style.display='flex';}else badge.style.display='none';}
+    if(!body)return;
+    if(!b.length){body.innerHTML='<div class="st-cart-empty">No items yet.<br>Browse products and tap &ldquo;Add to Quote&rdquo;.</div>';return;}
+    body.innerHTML=b.map(function(it,idx){
+      var nm=String(it.name||'Item').replace(/</g,'&lt;');
+      return '<div class="st-cart-row"><div class="st-cart-name">'+nm+'</div>'+
+        '<div class="st-cart-q"><button onclick="stCartQty('+idx+',-1)">&minus;</button>'+
+        '<span>'+(it.qty||1)+'</span>'+
+        '<button onclick="stCartQty('+idx+',1)">+</button></div></div>';
+    }).join('');
+  }
+  window.stCartQty=function(idx,d){var b=gb();if(!b[idx])return;b[idx].qty=(b[idx].qty||1)+d;if(b[idx].qty<1)b.splice(idx,1);sb(b);render();};
+  window.stCartClear=function(){sb([]);render();};
+  window.stCartToggle=function(force){var p=document.getElementById('st-cart-panel');var open=(force===undefined)?!p.classList.contains('open'):force;if(open)render();p.classList.toggle('open',open);};
+  window.stCartSend=function(){var b=gb();if(!b.length){alert('Your quote cart is empty. Add products first.');return;}var lines=b.map(function(i){return '\u2022 '+(i.name||'Item')+' (Qty: '+(i.qty||1)+')';}).join('\n');var msg='Hi Setia Trafik,\n\nI would like to request a quote for the following items:\n\n'+lines+'\n\nPlease advise on pricing and availability. Thank you.';window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');};
+  render();
+  var last=JSON.stringify(gb());
+  setInterval(function(){var c=JSON.stringify(gb());if(c!==last){last=c;render();}},800);
+  window.addEventListener('storage',render);
+})();
+</script>
+
+
+<!-- ═══════════ CERTIFICATE VIEWER ═══════════ -->
+<style>
+#cert-viewer{position:fixed;inset:0;z-index:3000;background:rgba(10,22,40,.78);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px}
+#cert-viewer.open{display:flex}
+.cert-viewer-box{background:#fff;border-radius:14px;width:min(920px,100%);height:min(90vh,1000px);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.cert-viewer-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;background:#0a1628;color:#fff;flex-shrink:0}
+.cert-viewer-head span{font-weight:700;font-size:14px;line-height:1.3}
+.cert-viewer-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.cv-btn{background:#25D366;color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.cv-btn:hover{background:#1ea352}
+.cv-x{background:rgba(255,255,255,.2);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:18px;line-height:1}
+#cert-viewer-frame{flex:1;width:100%;border:none;background:#525659}
+@media(max-width:768px){#cert-viewer{padding:0}.cert-viewer-box{border-radius:0;height:100vh;width:100vw}.cert-viewer-head span{font-size:12.5px}}
+</style>
+<div id="cert-viewer" onclick="if(event.target===this)closeCert()">
+  <div class="cert-viewer-box">
+    <div class="cert-viewer-head">
+      <span id="cert-viewer-title">Certificate</span>
+      <div class="cert-viewer-actions">
+        <a id="cert-viewer-open" href="#" target="_blank" rel="noopener" class="cv-btn">Open / Download &nearr;</a>
+        <button class="cv-x" onclick="closeCert()" aria-label="Close">&times;</button>
+      </div>
+    </div>
+    <iframe id="cert-viewer-frame" title="Certificate document"></iframe>
+  </div>
+</div>
+<script>
+function openCert(file,title){
+  document.getElementById('cert-viewer-title').textContent=title||'Certificate';
+  document.getElementById('cert-viewer-frame').src=file;
+  document.getElementById('cert-viewer-open').href=file;
+  document.getElementById('cert-viewer').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCert(){
+  document.getElementById('cert-viewer').classList.remove('open');
+  document.getElementById('cert-viewer-frame').src='';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCert();});
+</script>
+
+<script src="i18n.js"></script>
+</body>
+</html>

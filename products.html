@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Products — Setia Trafik Sdn Bhd</title>
+  <meta name="description" content="Full traffic management product catalog — cones, barriers, signage, lights, road studs and more. DBKL/JKR approved."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1a3a6e;--blue-dark:#0f2548;--blue-mid:#2a4d8a;--blue-light:#e8eef8;--blue-xlight:#f0f5ff;--navy:#0a1628;--white:#fff;--gray-100:#f7f8fa;--gray-200:#eef0f3;--gray-400:#9aa3af;--gray-600:#5a6474;--gray-800:#2d3748;--radius:12px;--shadow:0 4px 24px rgba(26,58,110,.10);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--white);color:var(--gray-800);line-height:1.6}
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);box-shadow:0 2px 12px rgba(26,58,110,.08)}
+    .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:70px}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo-img{height:48px;width:auto;object-fit:contain}
+    .logo-text{color:var(--navy);font-weight:700;font-size:18px}
+    .logo-text span{color:var(--blue)}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-links a{color:var(--gray-600);text-decoration:none;font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s}
+    .nav-links a:hover{color:var(--blue);background:var(--blue-xlight)}
+    .nav-links a.active{color:var(--blue)}
+    .nav-cta{background:var(--blue)!important;color:white!important;padding:9px 20px!important;border-radius:8px!important;font-weight:600!important}
+    .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+    .nav-burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px}
+    @media(max-width:768px){.nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:white;flex-direction:column;padding:16px;border-bottom:1px solid var(--gray-200)}nav.open .nav-links{display:flex}.nav-burger{display:flex}}
+    .page-hero{background:linear-gradient(135deg,var(--navy) 0%,#0f2548 100%);color:white;padding:110px 32px 70px;margin-top:70px;text-align:center}
+    .section-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#7eb3f5;margin-bottom:10px}
+    .page-hero h1{font-size:clamp(28px,5vw,50px);font-weight:900;margin-bottom:12px}
+    .page-hero p{color:#a8c0e0;font-size:16px;max-width:580px;margin:0 auto}
+    .search-bar-wrap{background:white;border-bottom:1px solid var(--gray-200);padding:18px 32px;position:sticky;top:70px;z-index:100;box-shadow:0 2px 8px rgba(26,58,110,.06)}
+    .search-bar-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px}
+    .search-box{position:relative;flex:1;max-width:560px}
+    .search-box input{width:100%;padding:12px 16px 12px 44px;border:2px solid var(--gray-200);border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;outline:none;transition:.2s;background:var(--gray-100)}
+    .search-box input:focus{border-color:var(--blue);background:white;box-shadow:0 0 0 3px rgba(26,58,110,.08)}
+    .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray-400);pointer-events:none}
+    .search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:var(--gray-400);color:white;border:none;border-radius:50%;width:20px;height:20px;font-size:12px;cursor:pointer;display:none;align-items:center;justify-content:center}
+    .search-clear.visible{display:flex}
+    .search-hint{color:var(--gray-400);font-size:13px}
+    .catalog-wrap{max-width:1280px;margin:0 auto;padding:48px 32px 80px}
+    .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+    .cat-card{background:white;border:1.5px solid var(--gray-200);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .cat-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 8px 24px rgba(26,58,110,.15)}
+    .cat-card.hidden{display:none}
+    .cat-img-wrap{height:200px;overflow:hidden;background:var(--gray-100);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--gray-200)}
+    .cat-img-wrap img{width:100%;height:100%;object-fit:contain;padding:20px}
+    .cat-body{padding:22px 20px 20px;flex:1;display:flex;flex-direction:column}
+    .cat-label{font-size:10.5px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+    .cat-body h3{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:8px;line-height:1.3}
+    .cat-body p{font-size:13px;color:var(--gray-600);line-height:1.6;flex:1;margin-bottom:14px}
+    .cat-meta{display:flex;align-items:center;justify-content:space-between}
+    .cat-count{font-size:12px;font-weight:600;color:var(--gray-400);background:var(--gray-100);padding:3px 10px;border-radius:10px}
+    .cat-arrow{font-size:13px;font-weight:700;color:var(--blue)}
+    .no-results{text-align:center;padding:80px 20px;color:var(--gray-400)}
+    footer{background:var(--navy);color:rgba(255,255,255,.7);padding:40px 32px;text-align:center;font-size:13px}
+    footer a{color:rgba(255,255,255,.7);text-decoration:none}
+    footer a:hover{color:white}
+    @media(max-width:600px){.cat-grid{grid-template-columns:1fr}}
+  </style>
+  <!-- launch-meta -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="canonical" href="https://setiatrafik.com/products.html">
+  <!-- Open Graph / social share preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Setia Trafik">
+  <meta property="og:title" content="Products — Setia Trafik Sdn Bhd">
+  <meta property="og:description" content="Full traffic management product catalog — cones, barriers, signage, lights, road studs and more. DBKL/JKR approved.">
+  <meta property="og:url" content="https://setiatrafik.com/products.html">
+  <meta property="og:image" content="https://setiatrafik.com/favicon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Products — Setia Trafik Sdn Bhd">
+  <meta name="twitter:description" content="Full traffic management product catalog — cones, barriers, signage, lights, road studs and more. DBKL/JKR approved.">
+  <meta name="twitter:image" content="https://setiatrafik.com/favicon.png">
+  <!-- Google Analytics (GA4) — replace G-FD0B3GG3EW with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FD0B3GG3EW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FD0B3GG3EW');</script>
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="https://setiatrafik.com/wp-content/uploads/2018/03/cropped-logo2-5.png" alt="Setia Trafik" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="logo-text" style="display:block;">Setia <span>Trafik</span></div>
+    </a>
+    <button class="nav-burger" onclick="this.closest('nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="services.html">What We Do</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="who.html">Who Are We</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="news.html">News &amp; Projects</a>
+      <a href="quote.html" title="Quote Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></a>
+      <a href="quote.html" class="nav-cta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">Product Catalog</div>
+  <h1>Traffic Management Products</h1>
+  <p>207 products across 8 categories — all DBKL/JKR approved, Setia Trafik certified.</p>
+</div>
+
+<div class="search-bar-wrap">
+  <div class="search-bar-inner">
+    <div class="search-box">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search categories… e.g. cone, barrier, signage" autocomplete="off"/>
+      <button class="search-clear" id="clearBtn" onclick="clearSearch()">&#x2715;</button>
+    </div>
+    <span class="search-hint" id="searchHint">Click a category to browse products</span>
+  </div>
+</div>
+
+<div class="catalog-wrap">
+  <div class="cat-grid" id="catGrid">
+      <a href="products-barriers.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="barrier .jpeg" alt="Barriers & Hoardings" onerror="this.style.display='none'" />
+        </div>
+        <div class="cat-body">
+          <div class="cat-label">Browse Category</div>
+          <h3>Barriers & Hoardings</h3>
+          <p>Water-filled barriers, precast concrete barriers, Jersey barriers, site hoarding panels.</p>
+          <div class="cat-meta">
+            <span class="cat-count">11 products</span>
+            <span class="cat-arrow">View Products &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a href="products-cones.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="cone.png" alt="Cones & Posts" onerror="this.style.display='none'" />
+        </div>
+        <div class="cat-body">
+          <div class="cat-label">Browse Category</div>
+          <h3>Cones & Posts</h3>
+          <p>Traffic cones, delineator posts, flexible posts — all sizes, JKR/REAM compliant.</p>
+          <div class="cat-meta">
+            <span class="cat-count">13 products</span>
+            <span class="cat-arrow">View Products &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a href="products-lights.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="blinker.webp" alt="Lights & Blinkers" onerror="this.style.display='none'" />
+        </div>
+        <div class="cat-body">
+          <div class="cat-label">Browse Category</div>
+          <h3>Lights & Blinkers</h3>
+          <p>LED blinkers, flashing arrow boards, solar warning lights for night-time works.</p>
+          <div class="cat-meta">
+            <span class="cat-count">25 products</span>
+            <span class="cat-arrow">View Products &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a href="products-studs.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="Stud.webp" alt="Road Studs & Accessories" onerror="this.style.display='none'" />
+        </div>
+        <div class="cat-body">
+          <div class="cat-label">Browse Category</div>
+          <h3>Road Studs & Accessories</h3>
+          <p>Raised pavement markers, cat-eyes, solar road studs — for lane delineation.</p>
+          <div class="cat-meta">
+            <span class="cat-count">14 products</span>
+            <span class="cat-arrow">View Products &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a href="products-vms.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="wmremove-transformed (1).webp" alt="VMS / Solar PVMS" onerror="this.style.display='none'" />
+        </div>
+        <div class="cat-body">
+          <div class="cat-label">Browse Category</div>
+          <h3>VMS / Solar PVMS</h3>
+          <p>Variable message sign trailers, solar PVMS, arrow boards for lane closures.</p>
+          <div class="cat-meta">
+            <span class="cat-count">3 products</span>
+            <span class="cat-arrow">View Products &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a href="products-mirrors.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="convex.webp" alt="Convex Mirrors & Safety" onerror="this.style.display='none'" />
+        </div>
+        <div class="cat-body">
+          <div class="cat-label">Browse Category</div>
+          <h3>Convex Mirrors & Safety</h3>
+          <p>Round and D-shape convex mirrors for driveways, car parks and blind corners.</p>
+          <div class="cat-meta">
+            <span class="cat-count">7 products</span>
+            <span class="cat-arrow">View Products &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a href="products-signage.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="wmremove-transformed (2).webp" alt="Signage" onerror="this.style.display='none'" />
+        </div>
+        <div class="cat-body">
+          <div class="cat-label">Browse Category</div>
+          <h3>Signage</h3>
+          <p>Temporary traffic signs, JKR/REAM/highway standard signage — construction zone compliant.</p>
+          <div class="cat-meta">
+            <span class="cat-count">133 products</span>
+            <span class="cat-arrow">View Products &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a href="products-ppe.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="jacket.jpeg" alt="PPE & Safety" onerror="this.style.display='none'" />
+        </div>
+        <div class="cat-body">
+          <div class="cat-label">Browse Category</div>
+          <h3>PPE & Safety</h3>
+          <p>Safety vests, helmets, gloves, flagman equipment for road work crews.</p>
+          <div class="cat-meta">
+            <span class="cat-count">1 products</span>
+            <span class="cat-arrow">View Products &rarr;</span>
+          </div>
+        </div>
+      </a>
+  </div>
+  <div id="noResults" class="no-results" style="display:none"><h3>No categories found</h3><p>Try a different search term.</p></div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Setia Trafik Sdn Bhd &mdash; CIDB G5 &middot; MOF Registered &middot; Bumiputera Status &nbsp;|&nbsp; <a href="index.html">Home</a> &middot; <a href="services.html">Services</a> &middot; <a href="quote.html">Get a Quote</a></p>
+</footer>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const clearBtn    = document.getElementById('clearBtn');
+const searchHint  = document.getElementById('searchHint');
+const noResults   = document.getElementById('noResults');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  clearBtn.classList.toggle('visible', q.length > 0);
+  applySearch(q);
+});
+
+function clearSearch() {
+  searchInput.value = '';
+  clearBtn.classList.remove('visible');
+  applySearch('');
+  searchInput.focus();
+}
+
+function applySearch(q) {
+  const cards = document.querySelectorAll('.cat-card');
+  let count = 0;
+  cards.forEach(card => {
+    const title = card.querySelector('h3').textContent.toLowerCase();
+    const desc  = card.querySelector('p').textContent.toLowerCase();
+    const match = !q || title.includes(q) || desc.includes(q);
+    card.classList.toggle('hidden', !match);
+    if (match) count++;
+  });
+  searchHint.textContent = q ? count + ' categor' + (count !== 1 ? 'ies' : 'y') + ' found' : 'Click a category to browse products';
+  noResults.style.display = count === 0 ? 'block' : 'none';
+}
+</script>
+
+
+<!-- ═══════════ FLOATING CONTACT + QUOTE CART (st-cta) ═══════════ -->
+<style>
+#st-cta{position:fixed;right:24px;bottom:24px;z-index:1600;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:'Inter',sans-serif}
+.st-cta-btn{position:relative;display:flex;align-items:center;justify-content:center;height:56px;width:56px;border:none;border-radius:50px;cursor:pointer;text-decoration:none;box-shadow:0 6px 22px rgba(0,0,0,.22);overflow:hidden;transition:width .35s ease,padding .35s ease}
+.st-cta-btn svg{flex-shrink:0}
+.st-cta-label{white-space:nowrap;color:#fff;font-weight:700;font-size:14px;max-width:0;opacity:0;transition:.35s}
+.st-cta-btn:hover{width:auto;padding:0 20px 0 16px}
+.st-cta-btn:hover svg{margin-right:10px}
+.st-cta-btn:hover .st-cta-label{max-width:200px;opacity:1}
+.st-cta-wa{background:#25D366;animation:stPulse 2.4s infinite}
+.st-cta-call{background:#1a3a6e}
+.st-cta-cart{background:#0a1628}
+.st-cta-badge{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;background:#ef4444;color:#fff;border-radius:10px;font-size:11px;font-weight:800;display:none;align-items:center;justify-content:center}
+@keyframes stPulse{0%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 13px rgba(37,211,102,0)}100%{box-shadow:0 6px 22px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,0)}}
+#st-cart-panel{position:fixed;right:24px;bottom:96px;z-index:1599;width:330px;max-width:calc(100vw - 32px);background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.25);overflow:hidden;display:flex;flex-direction:column;max-height:70vh;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transform-origin:bottom right;transition:.28s;font-family:'Inter',sans-serif}
+#st-cart-panel.open{transform:none;opacity:1;pointer-events:all}
+.st-cart-head{background:#0a1628;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.st-cart-head .st-cart-x{margin-left:auto;background:rgba(255,255,255,.18);border:none;color:#fff;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1}
+.st-cart-body{flex:1;overflow-y:auto;padding:12px 14px;background:#f7f8fa}
+.st-cart-empty{text-align:center;color:#9aa3af;font-size:13px;padding:26px 10px;line-height:1.6}
+.st-cart-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #eef0f3;border-radius:10px;padding:9px 11px;margin-bottom:8px}
+.st-cart-name{flex:1;font-size:12.5px;font-weight:600;color:#2d3748;line-height:1.35}
+.st-cart-q{display:flex;align-items:center;gap:7px}
+.st-cart-q button{width:24px;height:24px;border:1px solid #d6dbe3;background:#fff;border-radius:6px;cursor:pointer;font-weight:700;color:#1a3a6e;line-height:1}
+.st-cart-q span{font-size:13px;font-weight:700;min-width:16px;text-align:center}
+.st-cart-foot{padding:12px 14px;border-top:1px solid #eef0f3;background:#fff}
+.st-cart-send{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:#fff;border:none;border-radius:10px;padding:13px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit}
+.st-cart-send:hover{background:#1ea352}
+.st-cart-clear{display:block;width:100%;text-align:center;margin-top:8px;background:none;border:none;color:#9aa3af;font-size:12px;cursor:pointer;text-decoration:underline}
+@media(max-width:768px){#st-cta{right:16px;bottom:16px}#st-cart-panel{right:16px;bottom:88px}}
+</style>
+<div id="st-cart-panel">
+  <div class="st-cart-head">&#128722; Your Quote Cart <button class="st-cart-x" onclick="stCartToggle(false)" aria-label="Close">&times;</button></div>
+  <div class="st-cart-body" id="st-cart-body"></div>
+  <div class="st-cart-foot">
+    <button class="st-cart-send" onclick="stCartSend()"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Send Quote on WhatsApp</button>
+    <button class="st-cart-clear" onclick="stCartClear()">Clear cart</button>
+  </div>
+</div>
+<div id="st-cta">
+  <button class="st-cta-btn st-cta-cart" onclick="stCartToggle()" aria-label="Quote Cart">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span class="st-cta-label">Quote Cart</span>
+    <span class="st-cta-badge" id="st-cart-badge">0</span>
+  </button>
+  <a class="st-cta-btn st-cta-call" href="tel:+60162244163" aria-label="Call Setia Trafik">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78A16 16 0 0 0 15.22 16.1l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.2z"/></svg>
+    <span class="st-cta-label">Call Us</span>
+  </a>
+  <a class="st-cta-btn st-cta-wa" href="https://wa.me/60162244163?text=Hi%20Setia%20Trafik%2C%20I%27d%20like%20to%20enquire%20about%20your%20products%20and%20services." target="_blank" rel="noopener" aria-label="WhatsApp Setia Trafik">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="st-cta-label">WhatsApp</span>
+  </a>
+</div>
+<script>
+(function(){
+  var WA='60162244163';
+  function gb(){try{return JSON.parse(localStorage.getItem('st_quote')||'[]')}catch(e){return[]}}
+  function sb(b){localStorage.setItem('st_quote',JSON.stringify(b))}
+  function count(b){return b.reduce(function(s,i){return s+(i.qty||1)},0)}
+  function render(){
+    var b=gb(),body=document.getElementById('st-cart-body'),badge=document.getElementById('st-cart-badge'),n=count(b);
+    if(badge){if(n>0){badge.textContent=n;badge.style.display='flex';}else badge.style.display='none';}
+    if(!body)return;
+    if(!b.length){body.innerHTML='<div class="st-cart-empty">No items yet.<br>Browse products and tap &ldquo;Add to Quote&rdquo;.</div>';return;}
+    body.innerHTML=b.map(function(it,idx){
+      var nm=String(it.name||'Item').replace(/</g,'&lt;');
+      return '<div class="st-cart-row"><div class="st-cart-name">'+nm+'</div>'+
+        '<div class="st-cart-q"><button onclick="stCartQty('+idx+',-1)">&minus;</button>'+
+        '<span>'+(it.qty||1)+'</span>'+
+        '<button onclick="stCartQty('+idx+',1)">+</button></div></div>';
+    }).join('');
+  }
+  window.stCartQty=function(idx,d){var b=gb();if(!b[idx])return;b[idx].qty=(b[idx].qty||1)+d;if(b[idx].qty<1)b.splice(idx,1);sb(b);render();};
+  window.stCartClear=function(){sb([]);render();};
+  window.stCartToggle=function(force){var p=document.getElementById('st-cart-panel');var open=(force===undefined)?!p.classList.contains('open'):force;if(open)render();p.classList.toggle('open',open);};
+  window.stCartSend=function(){var b=gb();if(!b.length){alert('Your quote cart is empty. Add products first.');return;}var lines=b.map(function(i){return '\u2022 '+(i.name||'Item')+' (Qty: '+(i.qty||1)+')';}).join('\n');var msg='Hi Setia Trafik,\n\nI would like to request a quote for the following items:\n\n'+lines+'\n\nPlease advise on pricing and availability. Thank you.';window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');};
+  render();
+  var last=JSON.stringify(gb());
+  setInterval(function(){var c=JSON.stringify(gb());if(c!==last){last=c;render();}},800);
+  window.addEventListener('storage',render);
+})();
+</script>
+
+<script src="i18n.js"></script>
+</body>
+</html>

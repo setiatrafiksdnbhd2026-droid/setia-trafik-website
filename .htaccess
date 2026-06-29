@@ -1,0 +1,30 @@
+# ───────────────────────────────────────────────────────────────
+# Setia Trafik — preserve the 7 important legacy URLs
+# Old WordPress ?page_id= links are 301-redirected to the new pages
+# so existing Google rankings / inbound links keep working.
+# ───────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # https://setiatrafik.com/            -> home (index.html) — no rule needed
+  # DirectoryIndex ensures "/" serves index.html
+  DirectoryIndex index.html
+
+  RewriteCond %{QUERY_STRING} (^|&)page_id=149(&|$) [NC]
+  RewriteRule ^/?$ /services.html?       [R=301,L]
+
+  RewriteCond %{QUERY_STRING} (^|&)page_id=163(&|$) [NC]
+  RewriteRule ^/?$ /products.html?       [R=301,L]
+
+  RewriteCond %{QUERY_STRING} (^|&)page_id=227(&|$) [NC]
+  RewriteRule ^/?$ /who.html?            [R=301,L]
+
+  RewriteCond %{QUERY_STRING} (^|&)page_id=281(&|$) [NC]
+  RewriteRule ^/?$ /coverage.html?       [R=301,L]
+
+  RewriteCond %{QUERY_STRING} (^|&)page_id=170(&|$) [NC]
+  RewriteRule ^/?$ /certifications.html? [R=301,L]
+
+  RewriteCond %{QUERY_STRING} (^|&)page_id=190(&|$) [NC]
+  RewriteRule ^/?$ /news.html?           [R=301,L]
+</IfModule>

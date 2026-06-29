@@ -1,0 +1,12 @@
+{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "149" }], "destination": "/services.html",       "permanent": true },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "163" }], "destination": "/products.html",       "permanent": true },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "227" }], "destination": "/who.html",            "permanent": true },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "281" }], "destination": "/coverage.html",       "permanent": true },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "170" }], "destination": "/certifications.html", "permanent": true },
+    { "source": "/", "has": [{ "type": "query", "key": "page_id", "value": "190" }], "destination": "/news.html",           "permanent": true }
+  ]
+}
