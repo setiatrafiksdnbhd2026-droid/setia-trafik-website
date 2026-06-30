@@ -1,0 +1,6 @@
+# Static HTML site — no build step. Serve files from the repo root.
+[build]
+  publish = "."
+  command = ""
+
+# Note: query-string rewrites for /?page_id=NNN live in the _redirects file.
