@@ -111,6 +111,7 @@
 
 <script>
   var WA = '60162244163';
+  function applyLang(){ try{ if(window.stSetLang) stSetLang(localStorage.getItem('st_lang')||'en'); }catch(e){} }
   function gb(){ try{ return JSON.parse(localStorage.getItem('st_quote')||'[]'); }catch(e){ return []; } }
   function sb(b){ try{ localStorage.setItem('st_quote', JSON.stringify(b)); }catch(e){} }
   function esc(t){ return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
@@ -130,6 +131,7 @@
           '<p>Browse our products and tap &ldquo;Add to Quote&rdquo; to build your list.</p>'+
           '<a class="btn-shop" href="/?page_id=163">Browse Products &rarr;</a>'+
         '</div></div>';
+      applyLang();
       return;
     }
 
@@ -169,6 +171,7 @@
           '</div>'+
         '</div>'+
       '</div>';
+    applyLang();
   }
 
   window.changeQty = function(idx, d){
@@ -203,5 +206,6 @@
 
   render();
 </script>
+<script src="i18n.js"></script>
 </body>
 </html>

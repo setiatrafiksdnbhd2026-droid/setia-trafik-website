@@ -34,7 +34,7 @@
 
     /* ---- Hero (home) ---- */
     "Malaysia's Specialist Traffic Management & Road Safety Partner": "Rakan Pakar Pengurusan Trafik & Keselamatan Jalan Raya Malaysia",
-    "We plan, staff, equip and run the work zone — Pengurusan Trafik for highway concessionaires, JKR projects, MRT/LRT rail works, G7 main contractors and local councils nationwide. One partner, full scope, zero headaches.": "Kami merancang, menyediakan tenaga kerja, melengkapi dan mengendalikan zon kerja — Pengurusan Trafik untuk konsesi lebuh raya, projek JKR, kerja rel MRT/LRT, kontraktor utama G7 dan majlis tempatan di seluruh negara. Satu rakan, skop penuh, tanpa masalah.",
+    "We plan, staff, equip and run the work zone — Pengurusan Trafik for highway concessionaires, JKR projects, MRT/LRT rail works, G5 main contractors and local councils nationwide. One partner, full scope, zero headaches.": "Kami merancang, menyediakan tenaga kerja, melengkapi dan mengendalikan zon kerja — Pengurusan Trafik untuk konsesi lebuh raya, projek JKR, kerja rel MRT/LRT, kontraktor utama G5 dan majlis tempatan di seluruh negara. Satu rakan, skop penuh, tanpa masalah.",
     "Years in Business": "Tahun Beroperasi", "CIDB Grade ↗ Certifications": "Gred CIDB ↗ Pensijilan",
     "States Covered": "Negeri Diliputi", "✓ Our Certifications": "✓ Pensijilan Kami",
     "Where We Operate": "Kawasan Operasi Kami", "+ more": "+ lagi",
@@ -97,7 +97,34 @@
     /* ---- Forms / quote ---- */
     "Request a Quote": "Minta Sebut Harga", "Send a Request": "Hantar Permohonan", "Send Request →": "Hantar Permohonan →",
     "Recommended for You": "Disyorkan Untuk Anda", "Client:": "Pelanggan:",
-    "You May Also Like": "Anda Mungkin Juga Suka"
+    "You May Also Like": "Anda Mungkin Juga Suka",
+
+    /* ---- Product listing pages — hero titles ---- */
+    "Lights & Blinkers": "Lampu & Penggera", "Cones & Posts": "Kon & Tiang",
+    "Convex Mirrors & Safety": "Cermin Cembung & Keselamatan", "PPE & Safety": "PPE & Keselamatan",
+    "Road Studs & Accessories": "Paku Jalan & Aksesori", "Signage": "Papan Tanda",
+    "VMS / Solar PVMS": "VMS / PVMS Solar",
+
+    /* ---- Product listing — hero descriptions ---- */
+    "25 products · Solar blinkers, LED lights & arrow boards": "25 produk · Penggera solar, lampu LED & papan anak panah",
+    "13 products · PE, PVC & PU flexible posts": "13 produk · Tiang fleksibel PE, PVC & PU",
+    "7 products · Acrylic convex mirrors & safety accessories": "7 produk · Cermin cembung akrilik & aksesori keselamatan",
+    "1 product · High-visibility safety vests": "1 produk · Vest keselamatan berkebolehlihatan tinggi",
+    "14 products · Cat eyes, solar studs & delineators": "14 produk · Mata kucing, paku solar & penanda lorong",
+    "131 signs · REAM, Highway/LLM & Standard": "131 papan tanda · REAM, Lebuhraya/LLM & Standard",
+    "3 products · Portable variable message sign systems": "3 produk · Sistem papan tanda mesej boleh ubah mudah alih",
+
+    /* ---- Product listing — category section headers ---- */
+    "Blinkers & Warning Lights": "Lampu Penggera & Amaran", "Solar Products": "Produk Solar",
+    "Convex Mirrors": "Cermin Cembung", "Other Safety Equipment": "Peralatan Keselamatan Lain",
+    "Standard Signage": "Papan Tanda Standard", "Highway / LLM Standard": "Standard Lebuhraya / LLM",
+    "REAM Standard": "Standard REAM", "Standard VMS": "VMS Standard", "Solar PVMS": "PVMS Solar",
+
+    /* ---- Quote cart page ---- */
+    "Your cart is empty": "Troli Anda Kosong",
+    "Browse our products and tap “Add to Quote” to build your list.": "Layari produk kami dan tekan “Tambah ke Sebut Harga” untuk membina senarai anda.",
+    "Browse Products →": "Layari Produk →", "Continue shopping": "Teruskan membeli-belah",
+    "Review your items below, adjust quantities, then send the whole list to us on WhatsApp for fast pricing & availability.": "Semak item anda di bawah, laraskan kuantiti, kemudian hantar keseluruhan senarai kepada kami melalui WhatsApp untuk harga & ketersediaan pantas."
   };
 
   /* Attribute translations (placeholder/title/aria-label/alt). */
