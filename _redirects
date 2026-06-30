@@ -1,0 +1,19 @@
+# Netlify rewrites — mirror of vercel.json (keeps /?page_id=NNN URLs)
+# Format: <from>  <query-condition>  <to>  <status 200 = rewrite, URL stays the same>
+
+/   page_id=149   /services.html         200
+/   page_id=163   /products.html         200
+/   page_id=227   /who.html              200
+/   page_id=281   /coverage.html         200
+/   page_id=170   /certifications.html   200
+/   page_id=190   /news.html             200
+/   page_id=300   /quote.html            200
+/   page_id=301   /products-cones.html   200
+/   page_id=302   /products-barriers.html 200
+/   page_id=303   /products-lights.html  200
+/   page_id=304   /products-mirrors.html 200
+/   page_id=305   /products-studs.html   200
+/   page_id=306   /products-signage.html 200
+/   page_id=307   /products-vms.html     200
+/   page_id=308   /products-ppe.html     200
+/   page_id=309   /cart.html             200
