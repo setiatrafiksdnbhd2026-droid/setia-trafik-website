@@ -1,3 +1,7 @@
+# Force the default *.netlify.app subdomain to the real domain
+# so "netlify" never shows in the address bar (301 = permanent redirect)
+https://setia-trafik.netlify.app/*  https://setiatrafik.com/:splat  301!
+
 # Netlify rewrites — mirror of vercel.json (keeps /?page_id=NNN URLs)
 # 200! = FORCE rewrite even though index.html exists at "/"
 # URL stays /?page_id=NNN; content served is the target .html
