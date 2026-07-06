@@ -433,6 +433,62 @@ function addToQuote(){
     <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="st-cta-label">WhatsApp</span>
   </a>
 </div>
+
+<!-- ═══════════ PRODUCT ENQUIRY POPUP (product-aware WhatsApp) ═══════════ -->
+<style>
+#st-enquiry{position:fixed;right:24px;bottom:232px;z-index:1598;width:302px;max-width:calc(100vw - 32px);background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(10,22,40,.28);font-family:'Inter',sans-serif;transform:translateY(16px) scale(.96);opacity:0;pointer-events:none;transform-origin:bottom right;transition:.3s cubic-bezier(.22,1,.36,1)}
+#st-enquiry.open{transform:none;opacity:1;pointer-events:all}
+.st-enq-head{display:flex;align-items:flex-start;gap:8px;padding:16px 16px 0}
+.st-enq-title{font-weight:800;font-size:15px;color:#0a1628;line-height:1.2}
+.st-enq-status{display:flex;align-items:center;gap:6px;font-size:12px;color:#5a6474;margin-top:4px}
+.st-enq-dot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 0 3px rgba(37,211,102,.2)}
+.st-enq-x{margin-left:auto;background:none;border:none;color:#9aa3af;font-size:22px;line-height:1;cursor:pointer;padding:0 2px}
+.st-enq-x:hover{color:#0a1628}
+.st-enq-body{padding:12px 16px 16px}
+.st-enq-msg{font-size:14px;color:#2d3748;line-height:1.5}
+.st-enq-msg b{color:#0a1628}
+.st-enq-sub{font-size:12.5px;color:#9aa3af;margin:6px 0 14px;line-height:1.45}
+.st-enq-btn{display:block;width:100%;text-align:center;padding:12px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;cursor:pointer;font-family:inherit;border:none;margin-bottom:9px;transition:.2s}
+.st-enq-btn:last-child{margin-bottom:0}
+.st-enq-quote{background:#25D366;color:#fff}
+.st-enq-quote:hover{background:#1ea352}
+.st-enq-alt{background:#f2f4f8;color:#0a1628}
+.st-enq-alt:hover{background:#e6eaf1}
+@media(max-width:768px){#st-enquiry{right:16px;bottom:220px;width:290px}}
+</style>
+<div id="st-enquiry" role="dialog" aria-label="Contact Setia Trafik sales team">
+  <div class="st-enq-head">
+    <div>
+      <div class="st-enq-title">Setia Trafik Sales Team</div>
+      <div class="st-enq-status"><span class="st-enq-dot"></span> Online &mdash; usually replies in minutes</div>
+    </div>
+    <button class="st-enq-x" onclick="stEnquiryClose()" aria-label="Close">&times;</button>
+  </div>
+  <div class="st-enq-body">
+    <div class="st-enq-msg">&#128075; Interested in <b id="st-enq-name">this product</b>?</div>
+    <div class="st-enq-sub">Tap a button &mdash; we'll reply on WhatsApp within minutes.</div>
+    <a class="st-enq-btn st-enq-quote" id="st-enq-quote" href="#" target="_blank" rel="noopener">Get a quote</a>
+    <a class="st-enq-btn st-enq-alt" id="st-enq-question" href="#" target="_blank" rel="noopener">Product question</a>
+    <a class="st-enq-btn st-enq-alt" href="tel:+60162244163">Call us</a>
+  </div>
+</div>
+<script>
+(function(){
+  var WA='60162244163';
+  var el=document.getElementById('st-enquiry');
+  var nameEl=document.getElementById('prodName');
+  var pname=(nameEl&&nameEl.textContent&&nameEl.textContent.trim())||'this product';
+  document.getElementById('st-enq-name').textContent=pname;
+  var q="Hi Setia Trafik, I'd like a quote for *"+pname+"*.\n\nPlease advise pricing and availability. Thank you.";
+  var qn="Hi Setia Trafik, I have a question about *"+pname+"*.\n\n";
+  document.getElementById('st-enq-quote').href='https://wa.me/'+WA+'?text='+encodeURIComponent(q);
+  document.getElementById('st-enq-question').href='https://wa.me/'+WA+'?text='+encodeURIComponent(qn);
+  window.stEnquiryClose=function(){el.classList.remove('open');try{sessionStorage.setItem('st_enq_dismissed','1');}catch(e){}};
+  var dismissed=false; try{dismissed=sessionStorage.getItem('st_enq_dismissed')==='1';}catch(e){}
+  if(!dismissed){ setTimeout(function(){el.classList.add('open');},1300); }
+})();
+</script>
+
 <script>
 (function(){
   var WA='60162244163';
