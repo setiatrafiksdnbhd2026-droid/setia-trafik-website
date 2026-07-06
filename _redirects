@@ -36,21 +36,12 @@ https://setia-trafik.netlify.app/*  https://setiatrafik.com/:splat  301!
 # ─────────────────────────────────────────────────────────────
 # 301 REDIRECTS — old ugly URLs → new clean URLs
 # (so anything Google indexed or anyone bookmarked still works)
+#
+# NOTE: the query-string legacy links (/?page_id=NNN, product-detail.html?slug=,
+# news-article.html?id=) are handled by the edge function
+# netlify/edge-functions/legacy-redirects.js so the destination stays clean with
+# NO leftover query string. Only the no-query .html paths are handled below.
 # ─────────────────────────────────────────────────────────────
-/   page_id=300   /quote               301!
-/   page_id=309   /cart                301!
-/   page_id=301   /products/cones      301!
-/   page_id=302   /products/barriers   301!
-/   page_id=303   /products/lights     301!
-/   page_id=304   /products/mirrors    301!
-/   page_id=305   /products/studs      301!
-/   page_id=306   /products/signage    301!
-/   page_id=307   /products/vms        301!
-/   page_id=308   /products/ppe        301!
-
-/product-detail.html   slug=:slug   /product/:slug   301!
-/news-article.html     id=:id       /news/:id        301!
-
 /products-cones.html      /products/cones      301!
 /products-barriers.html   /products/barriers   301!
 /products-lights.html     /products/lights     301!
