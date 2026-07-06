@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Quote Cart — Setia Trafik Sdn Bhd</title>
   <meta name="description" content="Review the products in your quote cart and send your full list to Setia Trafik on WhatsApp for fast pricing and availability."/>
-  <link rel="canonical" href="https://setiatrafik.com/?page_id=309">
+  <link rel="canonical" href="https://setiatrafik.com/cart">
   <meta name="robots" content="noindex,follow">
   <link rel="icon" href="favicon.png" type="image/png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -130,7 +130,7 @@
       <a href="/?page_id=163">Products</a>
       <a href="/?page_id=227">Who Are We</a>
       <a href="/?page_id=190">News</a>
-      <a href="/?page_id=300" class="nav-cta">Get a Quote</a>
+      <a href="/quote" class="nav-cta">Get a Quote</a>
     </div>
   </div>
 </nav>
@@ -156,7 +156,7 @@
   function esc(t){ return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 
   function detailLink(it){
-    return 'product-detail.html?slug='+encodeURIComponent(it.slug||'')+'&name='+encodeURIComponent(it.name||'')+'&cat='+encodeURIComponent(it.cat||'')+'&img='+encodeURIComponent(it.img||'');
+    return '/product/'+encodeURIComponent(it.slug||'');
   }
 
   function render(){

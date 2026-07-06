@@ -1,24 +1,66 @@
+# ─────────────────────────────────────────────────────────────
 # Force the default *.netlify.app subdomain to the real domain
-# so "netlify" never shows in the address bar (301 = permanent redirect)
+# so "netlify" never shows in the address bar (301 = permanent)
+# ─────────────────────────────────────────────────────────────
 https://setia-trafik.netlify.app/*  https://setiatrafik.com/:splat  301!
 
-# Netlify rewrites — mirror of vercel.json (keeps /?page_id=NNN URLs)
-# 200! = FORCE rewrite even though index.html exists at "/"
-# URL stays /?page_id=NNN; content served is the target .html
-
+# ─────────────────────────────────────────────────────────────
+# THE 7 LEGACY URLS — KEEP UNCHANGED
+# 200! = serve the target page but the address bar STAYS /?page_id=NNN
+# ─────────────────────────────────────────────────────────────
 /   page_id=149   /services.html          200!
 /   page_id=163   /products.html          200!
 /   page_id=227   /who.html               200!
 /   page_id=281   /coverage.html          200!
 /   page_id=170   /certifications.html    200!
 /   page_id=190   /news.html              200!
-/   page_id=300   /quote.html             200!
-/   page_id=301   /products-cones.html    200!
-/   page_id=302   /products-barriers.html 200!
-/   page_id=303   /products-lights.html   200!
-/   page_id=304   /products-mirrors.html  200!
-/   page_id=305   /products-studs.html    200!
-/   page_id=306   /products-signage.html  200!
-/   page_id=307   /products-vms.html      200!
-/   page_id=308   /products-ppe.html      200!
-/   page_id=309   /cart.html              200!
+
+# ─────────────────────────────────────────────────────────────
+# CLEAN PRETTY URLS (address bar shows the clean path; serves .html)
+# ─────────────────────────────────────────────────────────────
+/products/cones      /products-cones.html      200
+/products/barriers   /products-barriers.html   200
+/products/lights     /products-lights.html     200
+/products/mirrors    /products-mirrors.html    200
+/products/studs      /products-studs.html      200
+/products/signage    /products-signage.html    200
+/products/vms        /products-vms.html        200
+/products/ppe        /products-ppe.html        200
+/product/:slug       /product-detail.html?slug=:slug   200
+/news/:id            /news-article.html?id=:id          200
+/quote               /quote.html       200
+/cart                /cart.html        200
+/about               /about.html       200
+/thank-you           /thank-you.html   200
+
+# ─────────────────────────────────────────────────────────────
+# 301 REDIRECTS — old ugly URLs → new clean URLs
+# (so anything Google indexed or anyone bookmarked still works)
+# ─────────────────────────────────────────────────────────────
+/   page_id=300   /quote               301!
+/   page_id=309   /cart                301!
+/   page_id=301   /products/cones      301!
+/   page_id=302   /products/barriers   301!
+/   page_id=303   /products/lights     301!
+/   page_id=304   /products/mirrors    301!
+/   page_id=305   /products/studs      301!
+/   page_id=306   /products/signage    301!
+/   page_id=307   /products/vms        301!
+/   page_id=308   /products/ppe        301!
+
+/product-detail.html   slug=:slug   /product/:slug   301!
+/news-article.html     id=:id       /news/:id        301!
+
+/products-cones.html      /products/cones      301!
+/products-barriers.html   /products/barriers   301!
+/products-lights.html     /products/lights     301!
+/products-mirrors.html    /products/mirrors    301!
+/products-studs.html      /products/studs      301!
+/products-signage.html    /products/signage    301!
+/products-vms.html        /products/vms        301!
+/products-ppe.html        /products/ppe        301!
+
+/quote.html       /quote       301!
+/cart.html        /cart        301!
+/about.html       /about       301!
+/thank-you.html   /thank-you   301!
