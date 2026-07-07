@@ -1,0 +1,46 @@
+# Decap CMS configuration — git-based admin for setiatrafik.com
+# Content is edited here, committed to GitHub, and Netlify auto-deploys it live.
+
+backend:
+  name: github
+  repo: setiatrafiksdnbhd2026-droid/setia-trafik-website
+  branch: main
+  # Auth is handled by Netlify's OAuth provider (GitHub). See setup steps.
+
+# Where images uploaded through the admin are stored
+media_folder: "uploads"
+public_folder: "/uploads"
+
+# Show a live "Publish" button; changes commit straight to the main branch
+publish_mode: simple
+
+site_url: https://setiatrafik.com
+display_url: https://setiatrafik.com
+logo_url: https://setiatrafik.com/favicon.png
+
+collections:
+  # ── NEWS & PROJECTS ─────────────────────────────────────────────
+  - name: news
+    label: "News & Projects"
+    description: "Add, edit, reorder or remove the news cards shown on the News page."
+    files:
+      - name: news_list
+        label: "News Posts"
+        file: "news-data.json"
+        description: "The list of news/announcement cards."
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            label_singular: "Post"
+            summary: "{{fields.date}} — {{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date (e.g. JUNE 2025)", name: "date", widget: "string" }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - label: "Link slug (e.g. penang-ayer-itam-bypass)"
+                name: "slug"
+                widget: "string"
+                required: false
+                hint: "Used for the 'Read More' link: /news/your-slug"

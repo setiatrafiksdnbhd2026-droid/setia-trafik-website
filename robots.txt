@@ -3,6 +3,7 @@
 # Default: allow all standard search crawlers
 User-agent: *
 Allow: /
+Disallow: /admin/
 
 # AI answer engines & LLM crawlers — explicitly welcomed (AEO / GEO / LLMO / AIO)
 User-agent: GPTBot

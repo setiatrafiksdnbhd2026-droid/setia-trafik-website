@@ -860,52 +860,33 @@
       <h2 class="section-title">News &amp; Announcements</h2>
       <div class="divider"></div>
     </div>
-    <div class="news-grid">
-      <div class="news-card fade-in">
-        <div class="news-img">
-          <img src="1212121.jpg" alt="Penang Bypass TMP" onerror="this.style.display='none'" />
-        </div>
-        <div class="news-body">
-          <div class="news-date">JUNE 2025</div>
-          <h4>Setia Trafik Engaged for Penang Ayer Itam Bypass TMP</h4>
-          <p>Multi-year Traffic Management Plan deployment for one of Penang's most significant urban infrastructure upgrades — full TMP design, certified team and owned fleet mobilised.</p>
-          <a href="/news/penang-ayer-itam-bypass" class="news-read">Read More →</a>
-        </div>
-      </div>
-      <div class="news-card fade-in">
-        <div class="news-img">
-          <img src="P8041034-copy.jpg" alt="PLUS Highway Widening" onerror="this.style.display='none'" />
-        </div>
-        <div class="news-body">
-          <div class="news-date">APRIL 2025</div>
-          <h4>Selected for PLUS Yong Peng–Senai Third-Lane Widening</h4>
-          <p>Setia Trafik appointed as Traffic Management contractor for the major third-lane widening programme along the PLUS southern expressway corridor.</p>
-          <a href="/news/plus-yong-peng-senai" class="news-read">Read More →</a>
-        </div>
-      </div>
-      <div class="news-card fade-in">
-        <div class="news-img">
-          <img src="2-copy.jpg" alt="Central Spine Road Kelantan" onerror="this.style.display='none'" />
-        </div>
-        <div class="news-body">
-          <div class="news-date">FEBRUARY 2025</div>
-          <h4>Central Spine Road, Gua Musang — Kelantan Works Begin</h4>
-          <p>Setia Trafik delivers TMP on the critical Central Spine alignment connecting the East Coast through Kelantan, expanding our nationwide project footprint.</p>
-          <a href="/news/central-spine-gua-musang" class="news-read">Read More →</a>
-        </div>
-      </div>
-      <div class="news-card fade-in">
-        <div class="news-img">
-          <img src="5.jpg" alt="CIDB Certification" onerror="this.style.display='none'" />
-        </div>
-        <div class="news-body">
-          <div class="news-date">JANUARY 2025</div>
-          <h4>Setia Trafik Holds Active CIDB Grade G5 Status</h4>
-          <p>We are proud to maintain our CIDB Grade G5 registration (Active) — together with full MOF registration, Bumiputera status, PKK/STB, and SPKK — enabling us to tender and execute government and private sector traffic management projects nationwide.</p>
-          <a href="/news/cidb-grade-g5" class="news-read">Read More →</a>
-        </div>
-      </div>
-    </div>
+    <!-- News cards are rendered from /news-data.json — editable via the /admin panel -->
+    <div class="news-grid" id="news-grid"></div>
+    <script>
+    (function () {
+      var esc = function (s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+      var att = function (s) { return esc(s).replace(/"/g,'&quot;'); };
+      fetch('/news-data.json', { cache: 'no-cache' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var posts = (data && data.posts) || [];
+          var grid = document.getElementById('news-grid');
+          if (!grid) return;
+          grid.innerHTML = posts.map(function (p) {
+            var img = p.image
+              ? '<div class="news-img"><img src="' + att(p.image) + '" alt="' + att(p.title) + '" onerror="this.style.display=\'none\'"></div>'
+              : '';
+            var link = p.slug
+              ? '<a href="/news/' + att(p.slug) + '" class="news-read">Read More →</a>'
+              : '';
+            return '<div class="news-card">' + img +
+              '<div class="news-body"><div class="news-date">' + esc(p.date) + '</div>' +
+              '<h4>' + esc(p.title) + '</h4><p>' + esc(p.summary) + '</p>' + link + '</div></div>';
+          }).join('');
+        })
+        .catch(function () { /* leave grid empty on error */ });
+    })();
+    </script>
   </div>
 </section>
 
