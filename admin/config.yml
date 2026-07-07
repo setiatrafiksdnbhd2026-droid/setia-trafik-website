@@ -44,3 +44,39 @@ collections:
                 widget: "string"
                 required: false
                 hint: "Used for the 'Read More' link: /news/your-slug"
+
+  # ── PRODUCTS ────────────────────────────────────────────────────
+  - name: products
+    label: "Products"
+    description: "Add, edit or remove products shown on the product category pages."
+    files:
+      - name: product_list
+        label: "Product Catalog"
+        file: "products-data.json"
+        description: "All products across every category."
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            label_singular: "Product"
+            summary: "{{fields.cat}} — {{fields.name}} ({{fields.sku}})"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "SKU / Code", name: "sku", widget: "string", required: false }
+              - label: "Category"
+                name: "cat"
+                widget: "select"
+                options:
+                  - "Barriers & Hoardings"
+                  - "Cones & Posts"
+                  - "Convex Mirrors & Safety"
+                  - "Lights & Blinkers"
+                  - "PPE & Safety"
+                  - "Road Studs & Accessories"
+                  - "Signage"
+                  - "VMS / Solar PVMS"
+              - { label: "Image", name: "img", widget: "image", required: false }
+              - label: "Slug (URL id, e.g. pe-cone-750)"
+                name: "slug"
+                widget: "string"
+                hint: "Lowercase, dashes only. Used for the product link: /product/your-slug"
