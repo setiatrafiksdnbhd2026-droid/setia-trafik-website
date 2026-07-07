@@ -1,8 +1,9 @@
 /* products-render.js
- * Renders product cards from /products-data.json into #product-grid,
- * filtered by the grid's data-cat. Produces the same markup the pages
- * used to hard-code, so the existing search (data-name/data-sku) and
- * quote-cart (addQ) keep working. Edited via the /admin panel.
+ * Renders product cards from /products-data.json into each grid tagged with
+ * data-cat (and optional data-group for sub-sections). Produces the same
+ * markup the pages used to hard-code, so the existing search
+ * (data-name/data-sku) and quote-cart (addQ) keep working.
+ * Product content is edited via the /admin panel.
  */
 (function () {
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -27,20 +28,27 @@
   }
 
   function run() {
-    var grid = document.getElementById('product-grid');
-    if (!grid) return;
-    var cat = grid.getAttribute('data-cat');
+    var grids = document.querySelectorAll('.grid[data-cat]');
+    if (!grids.length) return;
     fetch('/products-data.json', { cache: 'no-cache' })
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        var list = ((data && data.products) || []).filter(function (p) { return !cat || p.cat === cat; });
-        var frag = document.createDocumentFragment();
-        list.forEach(function (p) { frag.appendChild(buildCard(p)); });
-        grid.innerHTML = '';
-        grid.appendChild(frag);
+        var all = (data && data.products) || [];
+        grids.forEach(function (grid) {
+          var cat = grid.getAttribute('data-cat');
+          var group = grid.getAttribute('data-group'); // null when the grid has no sub-section
+          var list = all.filter(function (p) {
+            if (p.cat !== cat) return false;
+            return group ? (p.group === group) : !p.group;
+          });
+          var frag = document.createDocumentFragment();
+          list.forEach(function (p) { frag.appendChild(buildCard(p)); });
+          grid.innerHTML = '';
+          grid.appendChild(frag);
+        });
         if (typeof upd === 'function') upd();
       })
-      .catch(function () { /* leave grid empty on error */ });
+      .catch(function () { /* leave grids empty on error */ });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);

@@ -76,6 +76,11 @@ collections:
                   - "Signage"
                   - "VMS / Solar PVMS"
               - { label: "Image", name: "img", widget: "image", required: false }
+              - label: "Sub-section (optional)"
+                name: "group"
+                widget: "string"
+                required: false
+                hint: "Only for categories with sub-groups (e.g. Signage: 'REAM Standard'). Leave blank otherwise. Must match the page's sub-heading exactly."
               - label: "Slug (URL id, e.g. pe-cone-750)"
                 name: "slug"
                 widget: "string"
