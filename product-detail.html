@@ -9,7 +9,7 @@
 :root{--blue:#1a3a6e;--navy:#0a1628;--gray-100:#f7f8fa;--gray-200:#eef0f3;--gray-400:#9aa3af;--gray-600:#5a6474;--gray-800:#2d3748;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;background:#fff;color:var(--gray-800);line-height:1.6}
-#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);box-shadow:0 2px 12px rgba(26,58,110,.08)}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);-webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);border-bottom:1px solid var(--gray-200);box-shadow:0 2px 12px rgba(26,58,110,.08)}
 .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:70px}
 .logo{display:flex;align-items:center;text-decoration:none}
 .nav-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap}

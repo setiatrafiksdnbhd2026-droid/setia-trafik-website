@@ -35,7 +35,7 @@
     #navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--gray-200);
       box-shadow: 0 2px 12px rgba(26,58,110,0.08);
       transition: all 0.3s ease;
@@ -151,7 +151,7 @@
       border: 1.5px solid rgba(255,255,255,0.2);
       border-radius: var(--radius); padding: 18px 24px;
       cursor: pointer; transition: all 0.25s; text-decoration: none;
-      display: block; backdrop-filter: blur(8px);
+      display: block; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
     }
     .hero-stat:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
     .hero-stat-num { font-size: 28px; font-weight: 800; color: #7ab0f5; line-height: 1; }
@@ -171,7 +171,7 @@
       font-weight: 600; font-size: 15px; text-decoration: none;
       border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s;
       display: inline-flex; align-items: center; gap: 8px;
-      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
     }
     .btn-outline:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.6); }
 
@@ -566,7 +566,7 @@
     .modal-overlay {
       position: fixed; inset: 0; background: rgba(10,22,40,0.5);
       z-index: 2000; display: none; align-items: center; justify-content: center;
-      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
     }
     .modal-overlay.open { display: flex; }
     .modal {
@@ -623,7 +623,7 @@
     /* ─── PRODUCT MODAL ──────────────────────────── */
     .prod-modal-overlay {
       position: fixed; inset: 0; z-index: 2000;
-      background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
+      background: rgba(0,0,0,0.65); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 20px;
     }
@@ -1936,7 +1936,7 @@
 
 <!-- ═══════════ CERTIFICATE VIEWER ═══════════ -->
 <style>
-#cert-viewer{position:fixed;inset:0;z-index:3000;background:rgba(10,22,40,.78);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px}
+#cert-viewer{position:fixed;inset:0;z-index:3000;background:rgba(10,22,40,.78);-webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);display:none;align-items:center;justify-content:center;padding:24px}
 #cert-viewer.open{display:flex}
 .cert-viewer-box{background:#fff;border-radius:14px;width:min(920px,100%);height:min(90vh,1000px);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
 .cert-viewer-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;background:#0a1628;color:#fff;flex-shrink:0}

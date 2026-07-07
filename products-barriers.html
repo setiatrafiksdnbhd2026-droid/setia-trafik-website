@@ -12,7 +12,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:'Inter',sans-serif;background:var(--white);color:var(--gray-800);line-height:1.6}
-    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);box-shadow:0 2px 12px rgba(26,58,110,.08)}
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);-webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);border-bottom:1px solid var(--gray-200);box-shadow:0 2px 12px rgba(26,58,110,.08)}
     .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:70px}
     .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
     .logo-img{height:48px;width:auto;object-fit:contain}
